@@ -3,7 +3,20 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  auth: {
+    cognitoAwsRegion: 'ap-southeast-2',
+    cognitoUserPoolId: 'ap-southeast-2_pgErjyL4O',
+    cognitoDomain: 'uoapool-sandbox',
+    cognitoClientId: 'client id',
+    redirectUri: 'http://localhost:4200',
+    scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
+    codeChallengeMethod: 'S256'
+  },
+  privateUrlKeyWords: {
+    whoNeedBearerToken: [],
+    whoNeedIdToken: []
+  }
 };
 
 /*

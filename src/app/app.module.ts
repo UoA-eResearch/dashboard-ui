@@ -4,15 +4,25 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { IonicStorageModule } from '@ionic/storage';
+import { AuthModule, CognitoConfigService } from '@uoa/auth';
+import { AppAuthConfigService } from './app-auth-config.service';
+import { ErrorPagesModule } from '@uoa/error-pages';
+
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    AuthModule, 
+    IonicStorageModule.forRoot(),
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ErrorPagesModule
   ],
-  providers: [],
+  providers: [
+    { provide: CognitoConfigService, useClass: AppAuthConfigService }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
