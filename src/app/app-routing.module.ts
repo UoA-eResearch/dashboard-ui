@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 
 const routes: Routes = [
@@ -11,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: 'error/:errorCode',
-    loadChildren: () => import('./error/error-routing.module').then((m) => m.ErrorRoutingModule),
+    loadChildren: () => import('./error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
 }
 ];
 

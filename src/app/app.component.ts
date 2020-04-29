@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '@uoa/auth';
-import { Platform } from '@ionic/angular';
+// import { Platform } from '@ionic/angular';
 // import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 // import { StatusBar } from '@ionic-native/status-bar/ngx';
 
@@ -13,19 +13,12 @@ export class AppComponent implements OnInit {
   title = 'dashboard-ui';
 
   constructor(
-    private loginService: LoginService,
-    private platform: Platform
-  ) {
-    this.initializeApp();
-  }
-
-  initializeApp() {
-    this.platform.ready()
-  }
+    private loginService: LoginService
+  ) {}
 
   async ngOnInit() {
-    this.platform.ready().then(async () => {
+    async () => {
       await this.loginService.loginSuccess();
-    });
+    }
   }
 }

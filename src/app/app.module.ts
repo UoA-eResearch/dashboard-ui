@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { AuthModule, CognitoConfigService } from '@uoa/auth';
-import { AppAuthConfigService } from './app-auth-config.service';
+import { AppAuthConfigService } from './services/app-auth-config.service';
 import { ErrorPagesModule } from '@uoa/error-pages';
 
 @NgModule({
