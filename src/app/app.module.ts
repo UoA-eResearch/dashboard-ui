@@ -8,6 +8,7 @@ import { IonicStorageModule } from '@ionic/storage';
 import { AuthModule, CognitoConfigService } from '@uoa/auth';
 import { AppAuthConfigService } from './services/app-auth-config.service';
 import { ErrorPagesModule } from '@uoa/error-pages';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ErrorPagesModule } from '@uoa/error-pages';
     IonicStorageModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
-    ErrorPagesModule
+    ErrorPagesModule,
+    BrowserAnimationsModule
   ],
   providers: [
     { provide: CognitoConfigService, useClass: AppAuthConfigService }
