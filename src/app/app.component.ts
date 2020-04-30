@@ -10,7 +10,7 @@ import { LoginService } from '@uoa/auth';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'dashboard-ui';
+  public title = 'dashboard-ui';
 
   constructor(
     private loginService: LoginService
