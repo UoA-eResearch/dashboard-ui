@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { LoginService } from 'uoa-auth-angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -14,7 +15,12 @@ export class DashboardComponent implements OnInit {
   public projectdb_person;
   public projectdb_person_projects;
   public loading$ = new Subject<boolean>();
-  constructor(private http: HttpClient, private _loginService: LoginService) {}
+
+  constructor(
+    private http: HttpClient, 
+    private _loginService: LoginService,
+    private router: Router
+  ) {}
 
   async ngOnInit() {
     this.authenticated = await this._loginService.isAuthenticated();
