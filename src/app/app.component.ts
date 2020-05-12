@@ -1,24 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { LoginService } from '@uoa/auth';
-// import { Platform } from '@ionic/angular';
-// import { SplashScreen } from '@ionic-native/splash-screen/ngx';
-// import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
-  public title = 'dashboard-ui';
-
-  constructor(
-    private loginService: LoginService
-  ) {}
-
-  async ngOnInit() {
-    async () => {
-      await this.loginService.loginSuccess();
-    }
-  }
+export class AppComponent {
+  public title = 'Research Hub Dashboard';
 }

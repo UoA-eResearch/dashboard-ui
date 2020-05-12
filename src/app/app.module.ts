@@ -1,13 +1,13 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { RouteReuseStrategy } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { IonicStorageModule } from '@ionic/storage';
-import { AuthModule, CognitoConfigService } from '@uoa/auth';
+import { AuthModule, CognitoConfigService } from 'uoa-auth-angular';
 import { AppAuthConfigService } from './services/app-auth-config.service';
-import { ErrorPagesModule } from '@uoa/error-pages';
+import { ErrorPagesModule } from 'uoa-error-pages-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
@@ -15,8 +15,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppComponent
   ],
   imports: [
-    AuthModule, 
-    IonicStorageModule.forRoot(),
+    AuthModule,
     BrowserModule,
     AppRoutingModule,
     ErrorPagesModule,

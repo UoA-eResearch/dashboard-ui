@@ -1,29 +1,29 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard } from './guards/auth.guard';
+import { AuthGuard, LoginSuccessGuard } from 'uoa-auth-angular';
 import { HomeComponent } from './components/home/home.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
+    redirectTo: '/home',
     pathMatch: 'full',
-  },
-  {
-    path: 'home',
-    component: HomeComponent,
-  },
-  {
-    path: 'dashboard',
-    canActivate: [AuthGuard],
-    component: DashboardComponent
   },
   {
     path: 'error/:errorCode',
     loadChildren: () => import('./error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
   },
+  {
+    path: 'home',
+    canActivate: [LoginSuccessGuard],
+    component: HomeComponent,
+  },
+  {
+    path: 'dashboard',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./components/dashboard/dashboard.module').then((m) => m.DashboardModule)
+  },  
   {
     path: '**',
     redirectTo: '/home',

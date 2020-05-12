@@ -1,1 +1,40 @@
-<p>dashboard works!</p>
+<h2>DASHBOARD!</h2>
+<a class="margin-right-l padding-bottom-s" (click)="logout()" routerLink="/home">Logout</a>
+<div class="margin-top-l margin-left-m">
+    <h2>Protected Page Content Area</h2>
+    <div>
+      <h3>User Info</h3>
+      <div *ngIf="userInfo && projectdb_person && projectdb_person.data" class="margin-top-l">
+        <p>Name: {{userInfo.firstName}} {{userInfo.lastName}}</p>
+        <p>UPI: {{userInfo.upi}}</p>
+        <p>Email: {{userInfo.email}}</p>
+        <p>Groups: {{userInfo.groups}}</p>
+        <p><strong>ProjectDB Person Id: </strong>{{projectdb_person.data.id}}</p>
+      </div>
+      <div *ngIf="projectdb_person && projectdb_person.error && !(loading$ | async)" class="margin-top-l">
+        Error: {{projectdb_person | json}}
+      </div>
+    </div>
+    <div>
+      <button *ngIf="projectdb_person && projectdb_person.data" (click)="getPersonProjects()">Get my projects</button>
+    </div>
+    <!-- <app-loading-indicator *ngIf="loading$ | async"></app-loading-indicator> -->
+    <div *ngIf="projectdb_person_projects && projectdb_person_projects.data && !(loading$ | async)" class="margin-top-l">
+      <table>
+        <thead>
+            <th>Project Id</th>
+            <th>Notes</th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let project of projectdb_person_projects.data; let even = even; let odd = odd" 
+            [ngClass]="{ odd: odd, even: even }">
+                <td>{{project.id}}</td>
+                <td>{{project.notes}}</td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+    <div *ngIf="projectdb_person_projects && projectdb_person_projects.error && !(loading$ | async)" class="margin-top-l">
+      Error: {{projectdb_person_projects | json}}
+    </div>
+  </div>

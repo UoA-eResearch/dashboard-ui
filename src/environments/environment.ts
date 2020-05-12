@@ -11,10 +11,11 @@ export const environment = {
     cognitoClientId: 'lrju6v80vse4bbaesjvnr2ff0',
     redirectUri: 'http://localhost:4200',
     scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
-    codeChallengeMethod: 'S256'
+    codeChallengeMethod: 'S256',
+    logout_uri: 'http://localhost:4200'
   },
   privateUrlKeyWords: {
-    whoNeedBearerToken: [],
+    whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],
     whoNeedIdToken: []
   }
 };

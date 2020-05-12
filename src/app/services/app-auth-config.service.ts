@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { CognitoConfigService } from '@uoa/auth';
+import { CognitoConfigService } from 'uoa-auth-angular';
 
 import { environment } from 'src/environments/environment';
 
@@ -18,5 +18,6 @@ export class AppAuthConfigService extends CognitoConfigService {
         this.scopes = environment.auth.scopes;
         this.redirectUri = environment.auth.redirectUri;
         this.bearerTokenUrlFilter = environment.privateUrlKeyWords.whoNeedBearerToken;
+        this.logoutUri = environment.auth.logout_uri;
     }
 }
