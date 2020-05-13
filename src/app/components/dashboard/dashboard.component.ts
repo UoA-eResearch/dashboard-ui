@@ -12,40 +12,40 @@ import { Router } from '@angular/router';
 export class DashboardComponent implements OnInit {
   public userInfo;
   public authenticated;
-  public projectdb_person;
-  public projectdb_person_projects;
+  public projectdbPerson;
+  public projectdbPersonProjects;
   public loading$ = new Subject<boolean>();
 
   constructor(
-    private http: HttpClient, 
-    private _loginService: LoginService,
+    private http: HttpClient,
+    private loginService: LoginService,
     private router: Router
   ) {}
 
   async ngOnInit() {
-    this.authenticated = await this._loginService.isAuthenticated();
-    console.log("User is authenticated: " + this.authenticated);
-    this.userInfo = await this._loginService.getUserInfo();
+    this.authenticated = await this.loginService.isAuthenticated();
+    console.log('User is authenticated: ' + this.authenticated);
+    this.userInfo = await this.loginService.getUserInfo();
     this.getPersonInfo();
   }
-  
+
   public logout() {
-    this._loginService.logout();
+    this.loginService.logout();
   }
 
   public getPersonInfo() {
     this.loading$.next(true);
     this.http
-      .get("https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/findByIdentity/" + this.userInfo.upi)
+      .get('https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/findByIdentity/' + this.userInfo.upi)
       // .pipe(tap((_) => this.loading$.next(false)))
       .subscribe(
         (res) => {
-          this.projectdb_person = res;
+          this.projectdbPerson = res;
           this.loading$.next(false);
         },
         (err) => {
           console.log('error', err.error.text);
-          this.projectdb_person = err;
+          this.projectdbPerson = err;
           this.loading$.next(false);
         }
       );
@@ -54,17 +54,17 @@ export class DashboardComponent implements OnInit {
   public getPersonProjects() {
     this.loading$.next(true);
     this.http
-      .get(`https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/${this.projectdb_person.data.id}/project`)
+      .get(`https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/${this.projectdbPerson.data.id}/project`)
       // .pipe(tap((_) => this.loading$.next(false)))
       .subscribe(
         (res) => {
-          this.projectdb_person_projects = res;
+          this.projectdbPersonProjects = res;
           console.log(res);
           this.loading$.next(false);
         },
         (err) => {
           console.log('error', err.error.text);
-          this.projectdb_person_projects = err;
+          this.projectdbPersonProjects = err;
           this.loading$.next(false);
         }
       );
