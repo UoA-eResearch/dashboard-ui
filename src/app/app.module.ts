@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 import { RouteReuseStrategy } from '@angular/router';
+
 import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,7 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     ErrorPagesModule,
     BrowserAnimationsModule,
-    StorageServiceModule
+    StorageServiceModule,
+    HttpClientModule
   ],
   providers: [
     { provide: CognitoConfigService, useClass: AppAuthConfigService }

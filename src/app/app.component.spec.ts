@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'dashboard-ui'`, () => {
+  it(`should have as title 'Research Hub Dashboard'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('dashboard-ui');
+    expect(app.title).toEqual('Research Hub Dashboard');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('dashboard-ui app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('Welcome to the Research Hub Dashboard!');
   });
 });
