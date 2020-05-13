@@ -1,39 +1,38 @@
 <h2>Dashboard content</h2>
 <a class="margin-right-l padding-bottom-s" (click)="logout()" routerLink="/home">Logout</a>
 <div class="margin-top-l margin-left-m">
-    <div>
-      <h3>User Info</h3>
-      <div *ngIf="userInfo && projectdbPerson && projectdbPerson.data" class="margin-top-l">
-        <p>Name: {{userInfo.firstName}} {{userInfo.lastName}}</p>
-        <p>UPI: {{userInfo.upi}}</p>
-        <p>Email: {{userInfo.email}}</p>
-        <p>Groups: {{userInfo.groups}}</p>
-        <p><strong>ProjectDB Person Id: </strong>{{projectdbPerson.data.id}}</p>
-      </div>
-      <div *ngIf="projectdbPerson && projectdbPerson.error && (loading$ | async) === (false | null | undefined)" class="margin-top-l">
-        Error: {{projectdbPerson | json}}
-      </div>
+  <div>
+    <h3>User Info</h3>
+    <div *ngIf="userInfo && projectdbPerson?.data" class="margin-top-l">
+      <p>Name: {{userInfo.firstName}} {{userInfo.lastName}}</p>
+      <p>UPI: {{userInfo.upi}}</p>
+      <p>Email: {{userInfo.email}}</p>
+      <p>Groups: {{userInfo.groups}}</p>
+      <p><strong>ProjectDB Person Id: </strong>{{projectdbPerson.data.id}}</p>
     </div>
-    <div>
-      <button *ngIf="projectdbPerson && projectdbPerson.data" (click)="getPersonProjects()">Get my projects</button>
-    </div>
-    <!-- <app-loading-indicator *ngIf="loading$ | async"></app-loading-indicator> -->
-    <div *ngIf="projectdbPersonProjects && projectdbPersonProjects.data && (loading$ | async) === (false | null | undefined)" class="margin-top-l">
-      <table>
-        <thead>
-            <th>Project Id</th>
-            <th>Notes</th>
-        </thead>
-        <tbody>
-            <tr *ngFor="let project of projectdbPersonProjects.data; let even = even; let odd = odd" 
-            [ngClass]="{ odd: odd, even: even }">
-                <td>{{project.id}}</td>
-                <td>{{project.notes}}</td>
-            </tr>
-        </tbody>
-    </table>
-    </div>
-    <div *ngIf="projectdbPersonProjects && projectdbPersonProjects.error && (loading$ | async) === (false | null | undefined)" class="margin-top-l">
-      Error: {{projectdbPersonProjects | json}}
+    <div *ngIf="projectdbPerson?.error && !(loading$ | async)" class="margin-top-l">
+      Error: {{projectdbPerson | json}}
     </div>
   </div>
+  <div>
+    <button *ngIf="projectdbPerson?.data" (click)="getPersonProjects()">Get my projects</button>
+  </div>
+  <div *ngIf="projectdbPersonProjects?.data && !(loading$ | async)" class="margin-top-l">
+    <table>
+      <thead>
+        <th>Project Id</th>
+        <th>Notes</th>
+      </thead>
+      <tbody>
+        <tr *ngFor="let project of projectdbPersonProjects.data; let even = even; let odd = odd"
+          [ngClass]="{ odd: odd, even: even }">
+          <td>{{project.id}}</td>
+          <td>{{project.notes}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div *ngIf="projectdbPersonProjects?.error && !(loading$ | async)" class="margin-top-l">
+    Error: {{projectdbPersonProjects | json}}
+  </div>
+</div>

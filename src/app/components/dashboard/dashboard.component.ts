@@ -37,7 +37,6 @@ export class DashboardComponent implements OnInit {
     this.loading$.next(true);
     this.http
       .get('https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/findByIdentity/' + this.userInfo.upi)
-      // .pipe(tap((_) => this.loading$.next(false)))
       .subscribe(
         (res) => {
           this.projectdbPerson = res;
@@ -55,7 +54,6 @@ export class DashboardComponent implements OnInit {
     this.loading$.next(true);
     this.http
       .get(`https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/${this.projectdbPerson.data.id}/project`)
-      // .pipe(tap((_) => this.loading$.next(false)))
       .subscribe(
         (res) => {
           this.projectdbPersonProjects = res;
