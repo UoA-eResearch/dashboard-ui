@@ -15,7 +15,7 @@
     </div>
   </div>
   <div>
-    <button *ngIf="projectdbPerson?.data" (click)="getPersonProjects()">Get my projects</button>
+    <button mat-raised-button color="primary" *ngIf="projectdbPerson?.data" (click)="getPersonProjects()">Get my projects</button>
   </div>
   <div *ngIf="projectdbPersonProjects?.data && !(loading$ | async)" class="margin-top-l">
     <table>

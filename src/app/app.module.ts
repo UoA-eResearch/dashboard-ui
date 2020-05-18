@@ -7,6 +7,7 @@ import { StorageServiceModule } from 'ngx-webstorage-service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { MaterialModule } from './app.material.module';
 
 import { AuthModule, CognitoConfigService } from 'uoa-auth-angular';
 import { AppAuthConfigService } from './services/app-auth-config.service';
@@ -24,7 +25,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ErrorPagesModule,
     BrowserAnimationsModule,
     StorageServiceModule,
-    HttpClientModule
+    HttpClientModule,
+    MaterialModule
   ],
   providers: [
     { provide: CognitoConfigService, useClass: AppAuthConfigService }

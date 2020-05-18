@@ -36,7 +36,7 @@ export class DashboardComponent implements OnInit {
   public getPersonInfo() {
     this.loading$.next(true);
     this.http
-      .get('https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/findByIdentity/' + this.userInfo.upi)
+      .get(`https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/findByIdentity/${this.userInfo.upi}`)
       .subscribe(
         (res) => {
           this.projectdbPerson = res;
