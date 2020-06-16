@@ -26,45 +26,10 @@ export class DashboardComponent implements OnInit {
     this.authenticated = await this.loginService.isAuthenticated();
     console.log('User is authenticated: ' + this.authenticated);
     this.userInfo = await this.loginService.getUserInfo();
-    this.getPersonInfo();
+    console.log(this.userInfo);
   }
 
   public logout() {
     this.loginService.logout();
-  }
-
-  public getPersonInfo() {
-    this.loading$.next(true);
-    this.http
-      .get(`https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/findByIdentity/${this.userInfo.upi}`)
-      .subscribe(
-        (res) => {
-          this.projectdbPerson = res;
-          this.loading$.next(false);
-        },
-        (err) => {
-          console.log('error', err.error.text);
-          this.projectdbPerson = err;
-          this.loading$.next(false);
-        }
-      );
-  }
-
-  public getPersonProjects() {
-    this.loading$.next(true);
-    this.http
-      .get(`https://apigw.sandbox.amazon.auckland.ac.nz/dev-projectdb-api-wrapper/person/${this.projectdbPerson.data.id}/project`)
-      .subscribe(
-        (res) => {
-          this.projectdbPersonProjects = res;
-          console.log(res);
-          this.loading$.next(false);
-        },
-        (err) => {
-          console.log('error', err.error.text);
-          this.projectdbPersonProjects = err;
-          this.loading$.next(false);
-        }
-      );
   }
 }

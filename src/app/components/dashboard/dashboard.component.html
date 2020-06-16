@@ -3,36 +3,14 @@
 <div class="margin-top-l margin-left-m">
   <div>
     <h3>User Info</h3>
-    <div *ngIf="userInfo && projectdbPerson?.data" class="margin-top-l">
+    <div *ngIf="userInfo" class="margin-top-l">
       <p>Name: {{userInfo.firstName}} {{userInfo.lastName}}</p>
       <p>UPI: {{userInfo.upi}}</p>
       <p>Email: {{userInfo.email}}</p>
       <p>Groups: {{userInfo.groups}}</p>
-      <p><strong>ProjectDB Person Id: </strong>{{projectdbPerson.data.id}}</p>
     </div>
-    <div *ngIf="projectdbPerson?.error && !(loading$ | async)" class="margin-top-l">
-      Error: {{projectdbPerson | json}}
+    <div *ngIf="!userInfo && !(loading$ | async)" class="margin-top-l">
+      Error: Could not get user info
     </div>
-  </div>
-  <div>
-    <button mat-raised-button color="primary" *ngIf="projectdbPerson?.data" (click)="getPersonProjects()">Get my projects</button>
-  </div>
-  <div *ngIf="projectdbPersonProjects?.data && !(loading$ | async)" class="margin-top-l">
-    <table>
-      <thead>
-        <th>Project Id</th>
-        <th>Notes</th>
-      </thead>
-      <tbody>
-        <tr *ngFor="let project of projectdbPersonProjects.data; let even = even; let odd = odd"
-          [ngClass]="{ odd: odd, even: even }">
-          <td>{{project.id}}</td>
-          <td>{{project.notes}}</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div *ngIf="projectdbPersonProjects?.error && !(loading$ | async)" class="margin-top-l">
-    Error: {{projectdbPersonProjects | json}}
   </div>
 </div>
