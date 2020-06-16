@@ -11,5 +11,6 @@ export const environment = {
   },
   privateUrlKeyWords: {
     whoNeedBearerToken: [],
-  }
+  },
+  dashboardGraphQlUrl: ''
 };

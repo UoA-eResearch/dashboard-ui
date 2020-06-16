@@ -17,7 +17,8 @@ export const environment = {
   privateUrlKeyWords: {
     whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],
     whoNeedIdToken: []
-  }
+  },
+  dashboardGraphQlUrl: 'http://localhost:4000/dev/graphql'
 };
 
 /*

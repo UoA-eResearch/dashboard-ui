@@ -13,6 +13,7 @@ import { AuthModule, CognitoConfigService } from 'uoa-auth-angular';
 import { AppAuthConfigService } from './services/app-auth-config.service';
 import { ErrorPagesModule } from 'uoa-error-pages-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserAnimationsModule,
     StorageServiceModule,
     HttpClientModule,
-    MaterialModule
+    MaterialModule,
+    GraphQLModule
   ],
   providers: [
     { provide: CognitoConfigService, useClass: AppAuthConfigService }
