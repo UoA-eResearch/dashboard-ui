@@ -5,6 +5,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory';
 import { environment } from 'src/environments/environment';
 
 const uri = environment.dashboardGraphQlUrl; // <-- add the URL of the GraphQL server here
+
 export function createApollo(httpLink: HttpLink) {
   return {
     link: httpLink.create({uri}),

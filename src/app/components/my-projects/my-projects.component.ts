@@ -6,7 +6,7 @@ import { LoginService } from 'uoa-auth-angular';
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 
-const CurrentUserPersonInfo = gql`
+const GET_PERSON_INFO = gql`
 query Person($username: String!) {
   user(username: $username) {
     id
@@ -19,11 +19,11 @@ query Person($username: String!) {
 }`;
 
 @Component({
-  selector: 'app-dashboard',
-  templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.scss']
+  selector: 'app-my-projects',
+  templateUrl: './my-projects.component.html',
+  styleUrls: ['./my-projects.component.scss']
 })
-export class DashboardComponent implements OnInit, OnDestroy {
+export class MyProjectsComponent implements OnInit, OnDestroy {
   public userInfo;
   public personInfo;
   public loading$ = new Subject<boolean>();
@@ -45,7 +45,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
     this.userInfo && (
       this.querySubscription = this.apollo
       .watchQuery<any>({
-        query: CurrentUserPersonInfo,
+        query: GET_PERSON_INFO,
         variables: {
           username: this.userInfo.upi,
         },

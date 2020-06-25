@@ -18,7 +18,7 @@ export const environment = {
     whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: 'http://localhost:4000/dev/graphql'
+  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/dev-cer-dashboard-graphql/graphql'
 };
 
 /*

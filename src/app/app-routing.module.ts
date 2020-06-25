@@ -20,9 +20,14 @@ const routes: Routes = [
     component: HomeComponent,
   },
   {
-    path: 'dashboard',
+    path: 'my-projects',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./components/dashboard/dashboard.module').then((m) => m.DashboardModule)
+    loadChildren: () => import('./components/my-projects/my-projects.module').then((m) => m.MyProjectsModule)
+  },
+  {
+    path: 'my-services',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./components/my-services/my-services.module').then((m) => m.MyServicesModule)
   },
   {
     path: '**',
