@@ -3,7 +3,7 @@ import { Subscription, Subject } from 'rxjs';
 
 import { LoginService } from 'uoa-auth-angular';
 
-import {Apollo} from 'apollo-angular';
+import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
 const GET_PERSON_INFO = gql`

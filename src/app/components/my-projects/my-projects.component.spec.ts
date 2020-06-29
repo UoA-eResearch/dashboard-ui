@@ -4,6 +4,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { MyProjectsComponent } from './my-projects.component';
+import { Apollo } from 'apollo-angular';
 
 describe('MyProjectsComponent', () => {
   let component: MyProjectsComponent;
@@ -15,7 +16,8 @@ describe('MyProjectsComponent', () => {
       imports: [
         HttpClientTestingModule,
         RouterTestingModule
-      ]
+      ],
+      providers: [ Apollo ]
     })
     .compileComponents();
   }));
