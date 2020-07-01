@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, Subject } from 'rxjs';
+import { Subscription, Subject, Observable } from 'rxjs';
 
 import { LoginService } from 'uoa-auth-angular';
 
@@ -35,14 +35,13 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
     private loginService: LoginService,
     private apollo: Apollo
   ) {}
-  
 
   async ngOnInit() {
     this.loading$.next(true);
     this.userInfo = await this.loginService.getUserInfo();
     this.loading$.next(false);
 
-    this.userInfo && (
+    if (this.userInfo) {
       this.querySubscription = this.apollo
       .watchQuery<any>({
         query: GET_PERSON_INFO,
@@ -55,15 +54,19 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
         this.personInfo = data.user;
         this.loading$.next(loading);
         this.error = data.error;
-      })
-    );
+      },
+      error => Observable.throw(error)
+      );
+    }
   }
 
   public logout() {
     this.loginService.logout();
   }
-  
+
   ngOnDestroy(): void {
-    this.querySubscription.unsubscribe();
+    if ( this.querySubscription) {
+      this.querySubscription.unsubscribe();
+    }
   }
 }
