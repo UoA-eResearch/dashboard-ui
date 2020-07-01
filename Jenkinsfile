@@ -12,20 +12,6 @@ pipeline {
             }
         }
         
-        stage('Run tests') {
-            steps {
-                echo 'Testing dashboard-ui project'
-
-                echo 'Running unit tests'
-                sh 'npm test'
-
-                echo 'Running e2e tests'
-                sh 'npm run e2e'
-
-                echo 'Testing complete'
-            }
-        }  
-        
         stage('Build') {
             when {
                 changeset "**/dashboard-ui/*.*"
@@ -45,6 +31,20 @@ pipeline {
                     sh "npm run build --configuration=${build}"
                     echo "Build complete"
                 }
+            }
+        }
+        
+        stage('Run tests') {
+            steps {
+                echo 'Testing dashboard-ui project'
+
+                echo 'Running unit tests'
+                sh 'npm run test:headless'
+
+                echo 'Running e2e tests'
+                sh 'npm run e2e'
+
+                echo 'Testing complete'
             }
         }
 
