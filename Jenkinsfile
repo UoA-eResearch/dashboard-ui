@@ -13,11 +13,16 @@ pipeline {
         }
         
         stage('Run tests') {
-            when {
-                changeset "**/dashboard-ui/*.*"
-            }
             steps {
                 echo 'Testing dashboard-ui project'
+
+                echo 'Running unit tests'
+                sh 'npm test --watch=false'
+
+                echo 'Running e2e tests'
+                sh 'npm run e2e'
+
+                echo 'Testing complete'
             }
         }  
         
