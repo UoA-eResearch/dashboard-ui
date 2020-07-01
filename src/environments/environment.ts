@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  version: '1.1.VERSION_WILL_BE_REPLACED_BY_CICD',
   auth: {
     cognitoAwsRegion: 'ap-southeast-2',
     cognitoUserPoolId: 'ap-southeast-2_pgErjyL4O',
@@ -18,7 +19,7 @@ export const environment = {
     whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/dev-cer-dashboard-graphql/graphql'
+  dashboardGraphQlUrl: 'http://localhost:4000/dev/graphql'
 };
 
 /*

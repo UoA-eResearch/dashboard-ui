@@ -13,6 +13,7 @@ export const environment = {
   },
   privateUrlKeyWords: {
     whoNeedBearerToken: [],
+    whoNeedIdToken: []
   },
   dashboardGraphQlUrl: ''
 };
