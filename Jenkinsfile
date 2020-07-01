@@ -86,12 +86,10 @@ pipeline {
         }
   
         stage('Deploy') {
-            when {
-                changeset "**/dashboard-ui/*.*"
-            }
             steps {
                 echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
                 echo "I can use the awsProfile value here... ${awsProfile}"
+                echo "Just testing :)"
             }
         }
     }
