@@ -17,7 +17,7 @@ pipeline {
                 echo 'Testing dashboard-ui project'
 
                 echo 'Running unit tests'
-                sh 'npm test --watch=false'
+                sh 'npm test'
 
                 echo 'Running e2e tests'
                 sh 'npm run e2e'
