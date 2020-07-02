@@ -13,9 +13,6 @@ pipeline {
         }
         
         stage('Build') {
-            when {
-                changeset "**/dashboard-ui/*.*"
-            }
             steps {
                 echo "Building dashboard-ui project. Build number: ${env.BUILD_NUMBER}"
                 script {
