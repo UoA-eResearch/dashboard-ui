@@ -6,10 +6,10 @@ export const environment = {
     cognitoUserPoolId: 'ap-southeast-2_pgErjyL4O',
     cognitoDomain: 'uoapool-sandbox',
     cognitoClientId: 'lrju6v80vse4bbaesjvnr2ff0',
-    redirectUri: 'http://localhost:4200',
+    redirectUri: 'https://domx0qy8opg01.cloudfront.net',
     scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
     codeChallengeMethod: 'S256',
-    logout_uri: 'http://localhost:4200'
+    logout_uri: 'https://domx0qy8opg01.cloudfront.net'
   },
   privateUrlKeyWords: {
     whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],

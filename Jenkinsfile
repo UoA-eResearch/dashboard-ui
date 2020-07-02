@@ -17,7 +17,7 @@ pipeline {
                 echo "Building dashboard-ui project. Build number: ${env.BUILD_NUMBER}"
                 script {
                     def build = (env.BRANCH_NAME == 'prod') ? 'production' : env.BRANCH_NAME
-                    echo "Build =${build}"
+                    echo "Build = ${build}"
                     sh "node --version"
                     sh "npm --version"
                     sh "npm install"
@@ -90,8 +90,15 @@ pipeline {
         stage('Deploy') {
             steps {
                 echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
-                echo "I can use the awsProfile value here... ${awsProfile}"
-                echo "Just testing :)"
+                
+                def s3BucketName = (
+                    env.BRANCH_NAME == 'prod' ? 'cer-dashboard' : 
+                    env.BRANCH_NAME == 'nonprod' ? 'cer-dashboard-nonprod' : 
+                    'cer-dashboard-sandbox'
+                )
+
+                sh "aws s3 sync www s3://${s3BucketName} --delete --profile ${awsProfile}"
+                echo "Sync complete"
             }
         }
     }
