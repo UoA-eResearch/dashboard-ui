@@ -104,6 +104,25 @@ pipeline {
                 
             }
         }
+
+        stage("Invalidate CloudFront") {
+            steps {
+                script {
+                    echo "Invalidating..."
+
+                    def awsCloudFrontDistroId = (
+                        env.BRANCH_NAME == 'prod' ? '' : 
+                        env.BRANCH_NAME == 'nonprod' ? '' : 
+                        'E1ULTSGYFI5SZU'
+                    )
+
+                    echo "Cloudfront distro id: ${awsCloudFrontDistroId}"
+                    
+                    sh "aws cloudfront create-invalidation --distribution-id ${awsCloudFrontDistroId} --paths '/*' --profile ${awsProfile}"
+                    echo "Invalidation started"
+                }
+            }
+        }
     }
     
     post {
