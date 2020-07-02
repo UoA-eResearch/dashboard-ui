@@ -89,16 +89,19 @@ pipeline {
   
         stage('Deploy') {
             steps {
-                echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
-                
-                def s3BucketName = (
-                    env.BRANCH_NAME == 'prod' ? 'cer-dashboard' : 
-                    env.BRANCH_NAME == 'nonprod' ? 'cer-dashboard-nonprod' : 
-                    'cer-dashboard-sandbox'
-                )
+                script {
+                    echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
+                    
+                    def s3BucketName = (
+                        env.BRANCH_NAME == 'prod' ? 'cer-dashboard' : 
+                        env.BRANCH_NAME == 'nonprod' ? 'cer-dashboard-nonprod' : 
+                        'cer-dashboard-sandbox'
+                    )
 
-                sh "aws s3 sync www s3://${s3BucketName} --delete --profile ${awsProfile}"
-                echo "Sync complete"
+                    sh "aws s3 sync www s3://${s3BucketName} --delete --profile ${awsProfile}"
+                    echo "Sync complete"
+                }
+                
             }
         }
     }
