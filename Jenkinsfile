@@ -25,7 +25,7 @@ pipeline {
                     sh "sed -i 's/VERSION_WILL_BE_REPLACED_BY_CICD/#${env.BUILD_NUMBER}/g' src/environments/environment.${env.BRANCH_NAME}.ts"
 
                     echo "Building the app..."
-                    sh "npm run build --configuration=${build}"
+                    sh "npm run build -- --configuration=${build}"
                     echo "Build complete"
                 }
             }
