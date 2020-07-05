@@ -1,4 +1,7 @@
 awsProfile = ''
+slackChannel = "research-hub"
+slackCredentials = "UoA-Slack-Access-Research-Hub"
+
 
 pipeline {
     agent {
@@ -9,7 +12,8 @@ pipeline {
         stage("Checkout") {
             steps {
                 checkout scm
-                githubNotify description: "Build starting...", status: "PENDING"
+                // githubNotify description: "Build starting...", status: "PENDING"
+                slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
             }
         }
         
@@ -129,11 +133,13 @@ pipeline {
     post {
         success {
             echo "Jenkins job ran successfully. Deployed to ${env.BRANCH_NAME}"
-            githubNotify description: "Build number ${env.BUILD_NUMBER} succeeded.",  status: "SUCCESS"
+            // githubNotify description: "Build number ${env.BUILD_NUMBER} succeeded.",  status: "SUCCESS"
+            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, message: "Build successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
         }
         failure {
             echo 'Jenkins job failed :('
-            githubNotify description: "Build number ${env.BUILD_NUMBER} failed.",  status: "FAILURE"
+            // githubNotify description: "Build number ${env.BUILD_NUMBER} failed.",  status: "FAILURE"
+            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, message: "Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
         }
     }
 }
