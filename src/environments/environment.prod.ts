@@ -9,7 +9,7 @@ export const environment = {
     redirectUri: '',
     scopes: 'openid profile',
     codeChallengeMethod: 'S256',
-    logout_uri: ''
+    logoutUri: ''
   },
   privateUrlKeyWords: {
     whoNeedBearerToken: [],

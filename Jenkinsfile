@@ -12,7 +12,6 @@ pipeline {
         stage("Checkout") {
             steps {
                 checkout scm
-                githubNotify(description: "Build starting...", status: "PENDING")
                 slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
             }
         }

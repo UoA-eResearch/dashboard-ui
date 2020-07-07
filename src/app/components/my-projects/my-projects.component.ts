@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Subject, Observable } from 'rxjs';
 
-import { LoginService } from 'uoa-auth-angular';
+import { LoginService } from '@uoa/auth';
 
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
@@ -10,6 +10,7 @@ const GET_PERSON_INFO = gql`
 query Person($username: String!) {
   user(username: $username) {
     id
+    full_name
     email
     start_date
     projects {

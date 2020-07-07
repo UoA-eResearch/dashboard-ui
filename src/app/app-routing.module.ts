@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard, LoginSuccessGuard } from 'uoa-auth-angular';
+import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
 import { HomeComponent } from './components/home/home.component';
 
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { CognitoConfigService } from 'uoa-auth-angular';
+import { CognitoConfigService } from '@uoa/auth';
 
 import { environment } from 'src/environments/environment';
 
@@ -18,6 +18,10 @@ export class AppAuthConfigService extends CognitoConfigService {
         this.scopes = environment.auth.scopes;
         this.redirectUri = environment.auth.redirectUri;
         this.bearerTokenUrlFilter = environment.privateUrlKeyWords.whoNeedBearerToken;
-        this.logoutUri = environment.auth.logout_uri;
+        this.logoutUri = environment.auth.logoutUri;
+        // If you dont want to use refreshtoken to get new token, set to false
+        this.useRefreshToken = true;
+        // If you don't want to navigate to login page when token is expired, set to false
+        this.navigateWithoutToken = true;
     }
 }

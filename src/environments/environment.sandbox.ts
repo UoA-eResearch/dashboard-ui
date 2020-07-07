@@ -9,10 +9,10 @@ export const environment = {
     redirectUri: 'https://domx0qy8opg01.cloudfront.net',
     scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
     codeChallengeMethod: 'S256',
-    logout_uri: 'https://domx0qy8opg01.cloudfront.net'
+    logoutUri: 'https://domx0qy8opg01.cloudfront.net'
   },
   privateUrlKeyWords: {
-    whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],
+    whoNeedBearerToken: [{ url: 'apigw.sandbox.amazon.auckland.ac.nz', optional: false }],
     whoNeedIdToken: []
   },
   dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/dev-cer-dashboard-graphql/graphql'

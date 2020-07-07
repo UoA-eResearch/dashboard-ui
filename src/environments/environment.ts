@@ -13,13 +13,13 @@ export const environment = {
     redirectUri: 'http://localhost:4200',
     scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
     codeChallengeMethod: 'S256',
-    logout_uri: 'http://localhost:4200'
+    logoutUri: 'http://localhost:4200'
   },
   privateUrlKeyWords: {
-    whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],
+    whoNeedBearerToken: [{ url: 'apigw.sandbox.amazon.auckland.ac.nz', optional: false }],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: 'http://localhost:4000/dev/graphql'
+  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/dev-cer-dashboard-graphql/graphql'
 };
 
 /*
