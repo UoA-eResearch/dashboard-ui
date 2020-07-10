@@ -4,7 +4,7 @@ import { HttpLinkModule, HttpLink } from 'apollo-angular-link-http';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { environment } from 'src/environments/environment';
 
-const uri = environment.dashboardGraphQlUrl; // <-- add the URL of the GraphQL server here
+const uri = environment.dashboardGraphQlUrl;
 
 export function createApollo(httpLink: HttpLink) {
   return {
