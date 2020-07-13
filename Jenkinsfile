@@ -1,13 +1,13 @@
 awsProfile = ''
-tagSet = '''TagSet=[
-    {Key=BusinessService,Value=Faculty of Science},
-    {Key=Department,Value=Centre for eResearch},
-    {Key=ProjectCode,Value=N/A},
-    {Key=WikiLink,Value=testing},
-    {Key=Application,Value=CeR Research Dashboard},
-    {Key=CostCentre,Value=N/A}]'''
 slackChannel = "research-hub"
 slackCredentials = "UoA-Slack-Access-Research-Hub"
+tagSet = '''TagSet=[\
+{Key=BusinessService,Value=Faculty of Science},
+{Key=Department,Value=Centre for eResearch},
+{Key=ProjectCode,Value=N/A},
+{Key=WikiLink,Value=testing},
+{Key=Application,Value=CeR Research Dashboard},
+{Key=CostCentre,Value=N/A}]'''
 
 
 pipeline {
