@@ -1,4 +1,11 @@
 awsProfile = ''
+tagSet = '''TagSet=[
+    {Key=BusinessService,Value=Faculty of Science},
+    {Key=Department,Value=Centre for eResearch},
+    {Key=ProjectCode,Value=N/A},
+    {Key=WikiLink,Value=testing},
+    {Key=Application,Value=CeR Research Dashboard},
+    {Key=CostCentre,Value=N/A}]'''
 slackChannel = "research-hub"
 slackCredentials = "UoA-Slack-Access-Research-Hub"
 
@@ -104,6 +111,9 @@ pipeline {
 
                     sh "aws s3 sync www s3://${s3BucketName} --delete --profile ${awsProfile}"
                     echo "Sync complete"
+
+                    sh "aws s3api put-bucket-tagging --bucket ${s3BucketName} --tagging ${tagSet}"
+                    echo "Tags updated"
                 }
                 
             }
