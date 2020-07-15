@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MaterialModule } from './app.material.module';
 
+import { CoreModule } from './core/core.module';
 import { AuthModule, CognitoConfigService, StorageService } from '@uoa/auth';
 import { AppAuthConfigService } from './services/app-auth-config.service';
 import { AppStorageService } from './services/app-storage.service';
@@ -20,6 +21,7 @@ import { GraphQLModule } from './graphql.module';
   imports: [
     AuthModule,
     BrowserModule,
+    CoreModule,
     AppRoutingModule,
     ErrorPagesModule,
     BrowserAnimationsModule,
