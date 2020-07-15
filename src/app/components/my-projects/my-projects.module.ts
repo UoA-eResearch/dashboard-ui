@@ -9,6 +9,7 @@ import { MaterialModule } from 'src/app/app.material.module';
   declarations: [MyProjectsComponent],
   imports: [
     CommonModule, MyProjectsRoutingModule, MaterialModule
-  ]
+  ],
+  exports: [MyProjectsComponent]
 })
 export class MyProjectsModule { }
