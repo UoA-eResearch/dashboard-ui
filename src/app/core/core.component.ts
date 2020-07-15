@@ -10,8 +10,8 @@ import { map, shareReplay } from 'rxjs/operators';
 })
 export class CoreComponent {
   routes = [
-    { path: 'my-projects', label: 'My Projects' },
-    { path: 'my-services', label: 'My Services' },
+    { path: '/my-projects', label: 'My Projects' },
+    { path: '/my-services', label: 'My Services' },
   ]
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
