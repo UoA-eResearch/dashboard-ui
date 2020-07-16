@@ -1,14 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
 import { MyServicesComponent } from './my-services.component';
-import { MyServicesRoutingModule } from './my-services-routing.module';
 import { MaterialModule } from 'src/app/app.material.module';
 
 
 @NgModule({
   declarations: [MyServicesComponent],
   imports: [
-    CommonModule, MyServicesRoutingModule, MaterialModule
+    CommonModule,
+    MaterialModule,
+    RouterModule.forChild([
+      {
+        path: '',
+        component: MyServicesComponent
+      }
+    ]),
   ],
   exports: [MyServicesComponent]
 })

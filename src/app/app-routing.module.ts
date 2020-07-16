@@ -14,7 +14,7 @@ const routes: Routes = [
   // },
   {
     path: '**',
-    redirectTo: 'home', //TODO: create a page not found component
+    redirectTo: '/', //TODO: create a page not found component
   },
 ];
 
