@@ -1,5 +1,6 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { HomeModule } from '../home.module';
 import { HomeDashBoardComponent } from './home-dashboard.component';
 import { MaterialModule } from '../../../../app.material.module';
@@ -14,7 +15,8 @@ describe('HomeDashBoardComponent', () => {
       imports: [
         LayoutModule,
         HomeModule,
-        MaterialModule
+        MaterialModule,
+        RouterTestingModule
       ]
     }).compileComponents();
   }));

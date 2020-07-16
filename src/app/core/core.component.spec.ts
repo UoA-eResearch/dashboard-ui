@@ -1,6 +1,11 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { MaterialModule } from './../app.material.module';
+import { LayoutModule } from '@angular/cdk/layout';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { CoreComponent } from './core.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 describe('CoreComponent', () => {
   let component: CoreComponent;
@@ -9,9 +14,12 @@ describe('CoreComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        MaterialModule,
+        LayoutModule,
+        BrowserAnimationsModule
       ],
-      declarations: [ CoreComponent ]
+      declarations: [ CoreComponent, NavbarComponent ]
     })
     .compileComponents();
   }));
