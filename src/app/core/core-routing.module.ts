@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
 import { CoreComponent } from './core.component';
-import { HomeComponent } from './../components/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 
 
 const routes: Routes = [
@@ -23,16 +23,16 @@ const routes: Routes = [
       {
         path: 'my-projects',
         canActivate: [AuthGuard],
-        loadChildren: () => import('./../components/my-projects/my-projects.module').then((m) => m.MyProjectsModule)
+        loadChildren: () => import('./components/my-projects/my-projects.module').then((m) => m.MyProjectsModule)
       },
       {
         path: 'my-services',
         canActivate: [AuthGuard],
-        loadChildren: () => import('./../components/my-services/my-services.module').then((m) => m.MyServicesModule)
+        loadChildren: () => import('./components/my-services/my-services.module').then((m) => m.MyServicesModule)
       },
       {
         path: 'error/:errorCode',
-        loadChildren: () => import('./../error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
+        loadChildren: () => import('./error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
       },
     ]
   }

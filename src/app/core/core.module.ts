@@ -3,10 +3,10 @@ import { CommonModule } from '@angular/common';
 import { CoreComponent } from './core.component';
 import { CoreRoutingModule  } from './core-routing.module';
 import { MaterialModule } from './../app.material.module';
-import { HomeModule } from './../components/home/home.module';
-import { MyProjectsModule } from './../components/my-projects/my-projects.module';
-import { MyServicesModule } from './../components/my-services/my-services.module';
-import { NavbarComponent } from '../components/navbar/navbar.component';
+import { HomeModule } from './components/home/home.module';
+import { MyProjectsModule } from './components/my-projects/my-projects.module';
+import { MyServicesModule } from './components/my-services/my-services.module';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @NgModule({
   declarations: [CoreComponent, NavbarComponent],

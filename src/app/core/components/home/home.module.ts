@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { HomeDashBoardComponent } from './home-dashboard/home-dashboard.component';
-import { MaterialModule } from '../../app.material.module';
+import { MaterialModule } from './../../../app.material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
