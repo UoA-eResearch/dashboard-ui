@@ -8,6 +8,17 @@
   left: 15px;
   right: 15px;
   bottom: 15px;
+  display:flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  flex-shrink: 0;
+}
+
+.dashboard-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
 }
 
 .more-button {
@@ -17,5 +28,14 @@
 }
 
 .dashboard-card-content {
-  text-align: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  text-align: start;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+
+.dashboard-card-actions {
+  float: right;
 }

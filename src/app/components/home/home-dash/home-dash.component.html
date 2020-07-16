@@ -2,8 +2,11 @@
   <h1 class="mat-h1">Dashboard</h1>
   <mat-grid-list cols="2" rowHeight="350px">
     <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+
       <mat-card class="dashboard-card">
-        <mat-card-header>
+
+        <mat-card-header class="dashboard-header">
+          <div mat-card-avatar class="dashboard-header-image"></div>
           <mat-card-title>
             {{card.title}}
             <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
@@ -14,10 +17,21 @@
               <button mat-menu-item>Remove</button>
             </mat-menu>
           </mat-card-title>
+          <!-- <mat-card-subtitle>subtitle goes here</mat-card-subtitle> -->
         </mat-card-header>
+
+        <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+
         <mat-card-content class="dashboard-card-content">
-          <div>Card Content Here</div>
+          <p>{{card.content}}</p>
         </mat-card-content>
+
+        <mat-card-actions align="end" class="dashboard-card-actions">
+          <button mat-fab color="accent" routerLink="{{card.routerLink}}">
+            <span class="material-icons">arrow_right_alt</span>
+          </button>
+        </mat-card-actions>
+
       </mat-card>
     </mat-grid-tile>
   </mat-grid-list>

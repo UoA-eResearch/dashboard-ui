@@ -13,18 +13,66 @@ export class HomeDashComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { title: 'Card 1', cols: 1, rows: 1 },
-          { title: 'Card 2', cols: 1, rows: 1 },
-          { title: 'Card 3', cols: 1, rows: 1 },
-          { title: 'Card 4', cols: 1, rows: 1 }
+          { 
+            title: 'My Projects',
+            content: 'View and manage your projects.',
+            routerLink: '/my-projects',
+            cols: 1,
+            rows: 1
+          },
+          { 
+            title: 'My Services',
+            content: 'View and manage your VMs, storage allocations etc.',
+            routerLink: '/my-services',
+            cols: 1,
+            rows: 1
+          },
+          { 
+            title: 'Get More Stuff',
+            content: 'Get a VM, storage etc.',
+            routerLink: '/getstuff',
+            cols: 1,
+            rows: 1
+          },
+          { 
+            title: 'Instruction Manual',
+            content: 'Get help with all the things, FAQs, handy hints.',
+            routerLink: '/help',
+            cols: 1,
+            rows: 1
+          }
         ];
       }
 
       return [
-        { title: 'Card 1', cols: 2, rows: 1 },
-        { title: 'Card 2', cols: 1, rows: 1 },
-        { title: 'Card 3', cols: 1, rows: 2 },
-        { title: 'Card 4', cols: 1, rows: 1 }
+        { 
+          title: 'My Projects',
+          content: 'View and manage your projects.',
+          routerLink: '/my-projects',
+          cols: 2,
+          rows: 1
+        },
+        { 
+          title: 'My Services',
+          content: 'View and manage your VMs, storage allocations etc.',
+          routerLink: '/my-services',
+          cols: 1,
+          rows: 1
+        },
+        { 
+          title: 'Get More Stuff',
+          content: 'Get a VM, storage etc.',
+          routerLink: '/getstuff',
+          cols: 1,
+          rows: 2
+        },
+        { 
+          title: 'Instruction Manual',
+          content: 'Get help with all the things, FAQs, handy hints.',
+          routerLink: '/help',
+          cols: 1,
+          rows: 1
+        }
       ];
     })
   );
