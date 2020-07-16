@@ -1,16 +1,16 @@
 import { LayoutModule } from '@angular/cdk/layout';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { HomeModule } from './../home.module';
-import { HomeDashComponent } from './home-dash.component';
-import { MaterialModule } from './../../../app.material.module';
+import { HomeModule } from '../home.module';
+import { HomeDashBoardComponent } from './home-dashboard.component';
+import { MaterialModule } from '../../../app.material.module';
 
-describe('HomeDashComponent', () => {
-  let component: HomeDashComponent;
-  let fixture: ComponentFixture<HomeDashComponent>;
+describe('HomeDashBoardComponent', () => {
+  let component: HomeDashBoardComponent;
+  let fixture: ComponentFixture<HomeDashBoardComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeDashComponent],
+      declarations: [HomeDashBoardComponent],
       imports: [
         LayoutModule,
         HomeModule,
@@ -20,7 +20,7 @@ describe('HomeDashComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HomeDashComponent);
+    fixture = TestBed.createComponent(HomeDashBoardComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

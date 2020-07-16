@@ -3,11 +3,11 @@ import { map } from 'rxjs/operators';
 import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
-  selector: 'home-dash',
-  templateUrl: './home-dash.component.html',
-  styleUrls: ['./home-dash.component.scss']
+  selector: 'home-dashboard',
+  templateUrl: './home-dashboard.component.html',
+  styleUrls: ['./home-dashboard.component.scss']
 })
-export class HomeDashComponent {
+export class HomeDashBoardComponent {
   /** Based on the screen size, switch from standard to one column per row */
   cards = this.breakpointObserver.observe(Breakpoints.Handset).pipe(
     map(({ matches }) => {

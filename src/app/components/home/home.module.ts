@@ -2,12 +2,12 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
-import { HomeDashComponent } from './home-dash/home-dash.component';
+import { HomeDashBoardComponent } from './home-dashboard/home-dashboard.component';
 import { MaterialModule } from '../../app.material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 
 @NgModule({
-  declarations: [HomeComponent, HomeDashComponent],
+  declarations: [HomeComponent, HomeDashBoardComponent],
   imports: [
     CommonModule,
     RouterModule.forChild([
@@ -21,7 +21,7 @@ import { LayoutModule } from '@angular/cdk/layout';
   ],
   exports: [
     HomeComponent,
-    HomeDashComponent
+    HomeDashBoardComponent
   ]
 })
 export class HomeModule { }

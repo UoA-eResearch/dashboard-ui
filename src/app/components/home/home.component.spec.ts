@@ -1,7 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomeComponent } from './home.component';
-import { HomeDashComponent } from './home-dash/home-dash.component';
+import { HomeDashBoardComponent } from './home-dashboard/home-dashboard.component';
 import { MaterialModule } from './../../app.material.module';
 
 describe('HomeComponent', () => {
@@ -14,7 +14,7 @@ describe('HomeComponent', () => {
         RouterTestingModule,
         MaterialModule
       ],
-      declarations: [ HomeComponent, HomeDashComponent ]
+      declarations: [ HomeComponent, HomeDashBoardComponent ]
     })
     .compileComponents();
   }));
