@@ -9,10 +9,11 @@ import { HomeModule } from './components/home/home.module';
 import { MyProjectsModule } from './components/my-projects/my-projects.module';
 import { MyServicesModule } from './components/my-services/my-services.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
-  declarations: [CoreComponent, NavbarComponent],
+  declarations: [CoreComponent, NavbarComponent, FooterComponent],
   imports: [
     CommonModule,
     CoreRoutingModule,
