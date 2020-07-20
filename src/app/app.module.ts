@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { MaterialModule } from './app.material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { CoreModule } from './core/core.module';
 import { AuthModule, CognitoConfigService, StorageService } from '@uoa/auth';
@@ -30,7 +31,8 @@ import { GraphQLModule } from './graphql.module';
     HttpClientModule,
     MaterialModule,
     LayoutModule,
-    GraphQLModule
+    GraphQLModule,
+    FlexLayoutModule
   ],
   providers: [
     { provide: CognitoConfigService, useClass: AppAuthConfigService },

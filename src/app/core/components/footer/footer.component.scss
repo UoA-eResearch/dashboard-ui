@@ -18,7 +18,7 @@ footer.footer-xs {
   height: $height-footer !important;
   flex-direction: column;
   box-sizing: border-box;
-  display: flex;
+  display: flex;    //temp hack
   place-content: center;
   align-items: center;
 }

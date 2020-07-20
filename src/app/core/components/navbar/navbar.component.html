@@ -13,27 +13,35 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row>
-        <button 
-          type="button"
-          aria-label="Toggle sidenav"
-          mat-icon-button
-          (click)="drawer.toggle()"
-          *ngIf="isHandset$ | async">
-          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-        </button>
-        <button mat-button routerLink="/home">
-          <h3>Logo</h3>
-        </button>
-        <a mat-button *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a>
-      </mat-toolbar-row>
-    </mat-toolbar>
+    <div class="sidenav-content-wrapper">
+      <div class="sidenav-content" fxLayout="column" ngClass.xs="sidenav-content-xs">
+        <div class="app-toolbar-container">
+          <mat-toolbar color="primary" class="site-content app-toolbar" ngClass.xs="site-content app-toolbar-xs">
+            <mat-toolbar-row class="app-toolbar-row" ngClass.xs="app-toolbar-row-xs">
+              <button 
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                (click)="drawer.toggle()"
+                *ngIf="isHandset$ | async">
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+              </button>
+              <button mat-button routerLink="/home">
+                <h3>Logo</h3>
+              </button>
+              <a mat-button *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a>
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
 
-    <router-outlet></router-outlet>
+        <router-outlet></router-outlet>
+      </div>
 
-    <app-footer></app-footer>
-  
+      <div>
+        <app-footer></app-footer>
+      </div>
+
+    </div>
   </mat-sidenav-content>
 </mat-sidenav-container>
 

@@ -1,3 +1,5 @@
+@import '../../../../styles';
+
 .sidenav-container {
   height: 100%;
 }
@@ -14,4 +16,28 @@
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+.app-toolbar-container {
+  position: relative;
+  background-color: $color-primary;
+  color: white;
+}
+
+.app-toolbar {
+  padding-left: $padding-site;
+  padding-right: $padding-site;
+}
+
+.app-toolbar-xs {
+  padding-left: $offset-xs;
+  padding-right: $offset-xs;
+}
+
+.app-toolbar .app-toolbar-row {
+  height: 64px;
+}
+
+.app-toolbar-xs .app-toolbar-row {
+  height: 48px;
 }
