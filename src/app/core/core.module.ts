@@ -10,10 +10,11 @@ import { MyProjectsModule } from './components/my-projects/my-projects.module';
 import { MyServicesModule } from './components/my-services/my-services.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header/header.component';
 
 
 @NgModule({
-  declarations: [CoreComponent, NavbarComponent, FooterComponent],
+  declarations: [CoreComponent, NavbarComponent, FooterComponent, HeaderComponent],
   imports: [
     CommonModule,
     CoreRoutingModule,
