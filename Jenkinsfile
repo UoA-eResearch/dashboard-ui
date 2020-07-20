@@ -50,7 +50,7 @@ pipeline {
                 sh 'npm run test:headless'
 
                 echo 'Running e2e tests'
-                // sh 'npm run e2e'
+                sh 'npm run e2e'
 
                 echo 'Testing complete'
             }
