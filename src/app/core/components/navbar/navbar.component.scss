@@ -1,15 +1,61 @@
 @import '../../../../styles';
 
+
+/*
+ * Dashboard Logo
+ */
+
+ .dashboard-logo {
+  height: 32px;
+}
+
+.dashboard-logo img {
+  @extend .dashboard-logo;
+}
+
+.dashboard-logo-xs {
+  height: 22px;
+}
+
+.dashboard-logo-xs img {
+  @extend .dashboard-logo-xs;
+}
+
+
+/*
+ * Nav
+ */
+
 .sidenav-container {
-  height: 100%;
+  position: relative;
+  min-height: 100vh;
 }
 
-.sidenav {
-  width: 200px;
+.sidenav-container mat-sidenav {
+  //min-width: $sidenav-width;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+  background-color: $color-background;
 }
 
-.sidenav .mat-toolbar {
-  background: inherit;
+.sidenav-container mat-sidenav mat-nav-list {
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+.sidenav-content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-content {
+  flex: 1 0 auto; // So that content takes up space correctly in IE11 (pushing sticky footer out of the way)
+  min-height: calc(100vh - #{$height-footer});
+  background-color: $color-background;
+}
+
+.sidenav-content-xs {
+  @extend .sidenav-content;
+  min-height: calc(100vh - #{$height-footer-xs});
 }
 
 .mat-toolbar.mat-primary {

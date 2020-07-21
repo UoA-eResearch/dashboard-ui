@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { CoreComponent } from './core.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 describe('CoreComponent', () => {
   let component: CoreComponent;
@@ -19,7 +21,12 @@ describe('CoreComponent', () => {
         LayoutModule,
         BrowserAnimationsModule
       ],
-      declarations: [ CoreComponent, NavbarComponent ]
+      declarations: [
+        CoreComponent,
+        NavbarComponent,
+        HeaderComponent,
+        FooterComponent
+      ]
     })
     .compileComponents();
   }));

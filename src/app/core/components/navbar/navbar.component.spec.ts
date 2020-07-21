@@ -4,6 +4,8 @@ import { MaterialModule } from './../../../app.material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { CoreModule } from './../../core.module';
+import { SharedModule } from './../../../shared/shared.module';
 import { NavbarComponent } from './navbar.component';
 
 
@@ -18,7 +20,9 @@ describe('NavbarComponent', () => {
         RouterTestingModule,
         MaterialModule,
         LayoutModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        CoreModule,
+        SharedModule
       ]
     })
     .compileComponents();
