@@ -4,8 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MaterialModule } from './app.material.module';
-import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -31,8 +29,6 @@ import { GraphQLModule } from './graphql.module';
     ErrorPagesModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MaterialModule,
-    LayoutModule,
     GraphQLModule
   ],
   providers: [

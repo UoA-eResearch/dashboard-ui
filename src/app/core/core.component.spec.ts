@@ -1,12 +1,9 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MaterialModule } from './../app.material.module';
-import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { SharedModule } from './../shared/shared.module';
 import { CoreComponent } from './core.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 
 describe('CoreComponent', () => {
@@ -17,14 +14,12 @@ describe('CoreComponent', () => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        MaterialModule,
-        LayoutModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
+        SharedModule
       ],
       declarations: [
         CoreComponent,
         NavbarComponent,
-        HeaderComponent,
         FooterComponent
       ]
     })
