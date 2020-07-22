@@ -3,5 +3,23 @@
   [description]="pageInfo.description"
   [imageUrl]="pageInfo.imageUrl"></app-header>
 <div class="my-services-container">
-  <p>my-services works!</p>
+  <mat-card>
+    <mat-card-title>
+      <h2>My Services</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. 
+        Nulla finibus magna ac odio commodo, in suscipit turpis euismod. Aenean vel ipsum sem. In faucibus leo ut faucibus pharetra. 
+        Nam laoreet tellus vel accumsan mollis. Fusce vel mi a erat facilisis maximus.
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-flat-button color="primary" routerLink="/my-services">
+        Request New Resource
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  
+  <p>Services here</p>
 </div>

@@ -25,7 +25,7 @@ query Person($username: String!) {
 })
 export class MyProjectsComponent implements OnInit, OnDestroy {
   pageInfo: PageInfo = {
-    title: 'My Projects',
+    title: 'Projects Dashboard',
     description: `View and manage your eResearch projects, project members, 
                   and project-related services.`,
     imageUrl: "https://via.placeholder.com/1680x220"

@@ -36,9 +36,9 @@ describe('MyProjectsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'My Projects'`, () => {
+  it(`should have as title 'Projects Dashboard'`, () => {
     const fixture = TestBed.createComponent(MyProjectsComponent);
     const app = fixture.componentInstance;
-    expect(app.pageInfo.title).toEqual('My Projects');
+    expect(app.pageInfo.title).toEqual('Projects Dashboard');
   });
 });

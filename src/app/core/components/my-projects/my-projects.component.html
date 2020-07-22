@@ -3,8 +3,24 @@
   [description]="pageInfo.description"
   [imageUrl]="pageInfo.imageUrl"></app-header>
 <div class="my-projects-container">
-  <h2>My Projects</h2>
-  <a class="margin-right-l padding-bottom-s" (click)="logout()" routerLink="/home">Logout</a>
+  <mat-card>
+    <mat-card-title>
+      <h2>My Projects</h2>
+    </mat-card-title>
+    <mat-card-content>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. 
+        Nulla finibus magna ac odio commodo, in suscipit turpis euismod. Aenean vel ipsum sem. In faucibus leo ut faucibus pharetra. 
+        Nam laoreet tellus vel accumsan mollis. Fusce vel mi a erat facilisis maximus.
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-flat-button color="primary" routerLink="/my-projects">
+        Create New Project
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <a class="margin-right-l padding-bottom-s" (click)="logout()" routerLink="/">Logout</a>
   <div class="margin-top-l margin-left-m">
     <div>
       <h3>User Info</h3>

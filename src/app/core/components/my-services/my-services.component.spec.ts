@@ -28,9 +28,9 @@ describe('MyServicesComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(`should have as title 'My Services'`, () => {
+  it(`should have as title 'Services Dashboard'`, () => {
     const fixture = TestBed.createComponent(MyServicesComponent);
     const app = fixture.componentInstance;
-    expect(app.pageInfo.title).toEqual('My Services');
+    expect(app.pageInfo.title).toEqual('Services Dashboard');
   });
 });
