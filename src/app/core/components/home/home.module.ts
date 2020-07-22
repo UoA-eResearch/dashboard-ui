@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { RouterModule } from '@angular/router';
 import { HomeDashBoardComponent } from './home-dashboard/home-dashboard.component';
-import { MaterialModule } from './../../../app.material.module';
-import { LayoutModule } from '@angular/cdk/layout';
+import { SharedModule } from './../../../shared/shared.module';
 
 @NgModule({
   declarations: [HomeComponent, HomeDashBoardComponent],
@@ -16,8 +15,7 @@ import { LayoutModule } from '@angular/cdk/layout';
         component: HomeComponent
       }
     ]),
-    MaterialModule,
-    LayoutModule
+    SharedModule
   ],
   exports: [
     HomeComponent,

@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Subject, Observable } from 'rxjs';
-
 import { LoginService } from '@uoa/auth';
-
+import { PageInfo } from './../../../model/PageInfo';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
@@ -25,10 +24,16 @@ query Person($username: String!) {
   styleUrls: ['./my-projects.component.scss']
 })
 export class MyProjectsComponent implements OnInit, OnDestroy {
-  public userInfo;
-  public personInfo;
-  public loading$ = new Subject<boolean>();
-  public error;
+  pageInfo: PageInfo = {
+    title: 'My Projects',
+    description: `View and manage your eResearch projects, project members, 
+                  and project-related services.`,
+    imageUrl: "https://via.placeholder.com/1680x220"
+  }
+  userInfo;
+  personInfo;
+  loading$ = new Subject<boolean>();
+  error;
 
   private querySubscription: Subscription;
 
@@ -61,7 +66,7 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
     }
   }
 
-  public logout() {
+  logout() {
     this.loginService.logout();
   }
 

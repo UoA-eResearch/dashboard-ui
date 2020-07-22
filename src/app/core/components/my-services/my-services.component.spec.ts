@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedModule } from './../../../shared/shared.module';
 import { MyServicesComponent } from './my-services.component';
 
 describe('MyServicesComponent', () => {
@@ -8,7 +8,12 @@ describe('MyServicesComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MyServicesComponent ]
+      declarations: [
+        MyServicesComponent
+      ],
+      imports: [
+        SharedModule
+      ]
     })
     .compileComponents();
   }));
@@ -21,5 +26,11 @@ describe('MyServicesComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it(`should have as title 'My Services'`, () => {
+    const fixture = TestBed.createComponent(MyServicesComponent);
+    const app = fixture.componentInstance;
+    expect(app.pageInfo.title).toEqual('My Services');
   });
 });

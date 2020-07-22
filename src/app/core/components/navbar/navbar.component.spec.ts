@@ -1,9 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { MaterialModule } from './../../../app.material.module';
-import { LayoutModule } from '@angular/cdk/layout';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
 import { CoreModule } from './../../core.module';
 import { SharedModule } from './../../../shared/shared.module';
 import { NavbarComponent } from './navbar.component';
@@ -18,8 +15,6 @@ describe('NavbarComponent', () => {
       declarations: [ NavbarComponent ],
       imports: [
         RouterTestingModule,
-        MaterialModule,
-        LayoutModule,
         BrowserAnimationsModule,
         CoreModule,
         SharedModule

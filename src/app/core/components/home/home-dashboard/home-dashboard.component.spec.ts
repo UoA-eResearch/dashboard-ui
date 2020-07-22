@@ -1,9 +1,8 @@
-import { LayoutModule } from '@angular/cdk/layout';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomeModule } from '../home.module';
 import { HomeDashBoardComponent } from './home-dashboard.component';
-import { MaterialModule } from '../../../../app.material.module';
+import { SharedModule } from './../../../../shared/shared.module';
 
 describe('HomeDashBoardComponent', () => {
   let component: HomeDashBoardComponent;
@@ -13,10 +12,9 @@ describe('HomeDashBoardComponent', () => {
     TestBed.configureTestingModule({
       declarations: [HomeDashBoardComponent],
       imports: [
-        LayoutModule,
         HomeModule,
-        MaterialModule,
-        RouterTestingModule
+        RouterTestingModule,
+        SharedModule
       ]
     }).compileComponents();
   }));

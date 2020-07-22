@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageInfo } from './../../../model/PageInfo';
 
 @Component({
   selector: 'app-my-services',
@@ -6,6 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./my-services.component.scss']
 })
 export class MyServicesComponent implements OnInit {
+  pageInfo: PageInfo = {
+    title: 'My Services',
+    description: `View and manage your eResearch services, such as 
+                  Virtual Machines, storage, and Nectar allocations.`,
+    imageUrl: "https://via.placeholder.com/1680x220"
+  }
 
   constructor() { }
 

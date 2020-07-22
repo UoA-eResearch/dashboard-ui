@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { PageInfo } from './../../../model/PageInfo';
 
 @Component({
   selector: 'app-home',
@@ -6,7 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  public title = 'Research Hub Dashboard';
+  pageInfo: PageInfo = {
+    title: 'Welcome to the eResearch Dashboard',
+    description: `The eResearch Dashboard lets you view, manage and interact with
+                  services that have been provided to you by the Centre for eResearch.`,
+    imageUrl: "https://via.placeholder.com/1680x220"
+  }
   
   constructor() {}
 }
