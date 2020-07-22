@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,10 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  title: string = "Title";
-  description: string = "This is the description";
-  imageUrl: string = "https://via.placeholder.com/1680x220";
-  isVisible: boolean = true;
+  @Input('title') title: string;
+  @Input('description') description: string;
+  @Input('imageUrl') imageUrl: string;
 
   constructor() { }
 

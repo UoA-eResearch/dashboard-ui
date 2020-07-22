@@ -1,7 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { MaterialModule } from './../../../app.material.module';
-import { LayoutModule } from '@angular/cdk/layout';
-
 import { CoreModule } from './../../core.module';
 import { SharedModule } from './../../../shared/shared.module';
 import { HeaderComponent } from './header.component';
@@ -14,8 +11,6 @@ describe('HeaderComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ HeaderComponent ],
       imports: [
-        MaterialModule,
-        LayoutModule,
         CoreModule,
         SharedModule
       ]
