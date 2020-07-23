@@ -6,8 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./faqs-panel.component.scss']
 })
 export class FaqsPanelComponent implements OnInit {
-  faqs = {
-    vm: {
+  faqs = [
+    {
       title: "Virtual Machine FAQs",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. Nulla finibus magna ac odio commodo, in suscipit turpis euismod.",
       faqs: [
@@ -21,7 +21,7 @@ export class FaqsPanelComponent implements OnInit {
         }
       ]
     },
-    dropbox: {
+    {
       title: "Dropbox FAQs",
       description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. Nulla finibus magna ac odio commodo, in suscipit turpis euismod.",
       faqs: [
@@ -35,7 +35,7 @@ export class FaqsPanelComponent implements OnInit {
         }
       ]
     }
-  }
+  ]
 
   constructor() { }
 
