@@ -2,52 +2,58 @@
   [title]="pageInfo.title"
   [description]="pageInfo.description"
   [imageUrl]="pageInfo.imageUrl"></app-header>
-<div class="my-projects-container">
-  <mat-card>
-    <mat-card-title>
-      <h2>My Projects</h2>
-    </mat-card-title>
-    <mat-card-content>
-      <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. 
-        Nulla finibus magna ac odio commodo, in suscipit turpis euismod. Aenean vel ipsum sem. In faucibus leo ut faucibus pharetra. 
-        Nam laoreet tellus vel accumsan mollis. Fusce vel mi a erat facilisis maximus.
-      </p>
-    </mat-card-content>
-    <mat-card-actions align="end">
-      <button mat-flat-button color="primary" routerLink="/my-projects">
-        Create New Project
-      </button>
-    </mat-card-actions>
-  </mat-card>
-  <a class="margin-right-l padding-bottom-s" (click)="logout()" routerLink="/">Logout</a>
-  <div class="margin-top-l margin-left-m">
-    <div>
-      <h3>User Info</h3>
-      <div *ngIf="(loading$ | async)">
-        Loading...
-      </div>
-      <div *ngIf="userInfo" class="margin-top-l">
-        <p>Name: {{userInfo.firstName}} {{userInfo.lastName}}</p>
-        <p>UPI: {{userInfo.upi}}</p>
-        <p>Email: {{userInfo.email}}</p>
-        <p>Groups: {{userInfo.groups}}</p>
-      </div>
-      <div *ngIf="!userInfo && !(loading$ | async)" class="margin-top-l">
-        Error: Could not get user info
-      </div>
-      <div *ngIf="(loading$ | async)">
-        Loading...
-      </div>
-      <div *ngIf="error">
-        Error: {{error}}
-      </div>
-      <div *ngIf="personInfo">
-        PersonInfo: {{personInfo | json }}
-        <div *ngFor="let project of personInfo.projects">
-          <p>Project Id: {{project.id}}</p>
+<div class="my-projects-container" fxLayout="row wrap" fxLayoutAlign="end">
+  <div class="my-projects-content" fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="start">
+    <mat-card>
+      <mat-card-title>
+        <h2>My Projects</h2>
+      </mat-card-title>
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. 
+          Nulla finibus magna ac odio commodo, in suscipit turpis euismod. Aenean vel ipsum sem. In faucibus leo ut faucibus pharetra. 
+          Nam laoreet tellus vel accumsan mollis. Fusce vel mi a erat facilisis maximus.
+        </p>
+      </mat-card-content>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="primary" routerLink="/my-projects">
+          Create New Project
+        </button>
+      </mat-card-actions>
+    </mat-card>
+    
+    <div class="margin-top-l margin-left-m">
+      <div>
+        <h3>User Info</h3>
+        <div *ngIf="(loading$ | async)">
+          Loading...
+        </div>
+        <div *ngIf="userInfo" class="margin-top-l">
+          <p>Name: {{userInfo.firstName}} {{userInfo.lastName}}</p>
+          <p>UPI: {{userInfo.upi}}</p>
+          <p>Email: {{userInfo.email}}</p>
+          <p>Groups: {{userInfo.groups}}</p>
+        </div>
+        <div *ngIf="!userInfo && !(loading$ | async)" class="margin-top-l">
+          Error: Could not get user info
+        </div>
+        <div *ngIf="(loading$ | async)">
+          Loading...
+        </div>
+        <div *ngIf="error">
+          Error: {{error}}
+        </div>
+        <div *ngIf="personInfo">
+          PersonInfo: {{personInfo | json }}
+          <div *ngFor="let project of personInfo.projects">
+            <p>Project Id: {{project.id}}</p>
+          </div>
         </div>
       </div>
     </div>
+    <a class="margin-right-l padding-bottom-s" (click)="logout()" routerLink="/">Logout</a>
   </div>
+  
+  <faqs-panel></faqs-panel>
+  
 </div>

@@ -1,8 +1,10 @@
-.my-projects-container {
-  margin-top: 2em;
+@import '../../../../styles';
+
+
+.my-projects-content {
+  margin: 2em;
   margin-left: 3em;
-  margin-right: 2em;
-  margin-bottom: 2em;
+  width: 50%;
 }
 
 .mat-card {
