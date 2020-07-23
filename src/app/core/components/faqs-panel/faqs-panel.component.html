@@ -2,8 +2,8 @@
   <mat-expansion-panel *ngFor="let category of faqs">
     <mat-expansion-panel-header>
       <mat-panel-title>
-        <mat-icon matListIcon>note</mat-icon>
-        {{category.title}}
+        <div mat-card-avatar class="faqs-avatar"></div>
+        <p class="faqs-category-title">{{category.title}}</p>
       </mat-panel-title>
     </mat-expansion-panel-header>
     <p class="faqs-description">
