@@ -4,11 +4,12 @@ import { MaterialModule } from './../app.material.module';
 import { LayoutModule } from '@angular/cdk/layout';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HeaderComponent } from './../core/components/header/header.component';
-
+import { FaqsPanelComponent } from './../core/components/faqs-panel/faqs-panel.component';
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    FaqsPanelComponent
   ],
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { HeaderComponent } from './../core/components/header/header.component';
     FlexLayoutModule,
     MaterialModule,
     LayoutModule,
-    HeaderComponent
+    HeaderComponent,
+    FaqsPanelComponent
   ]
 })
 export class SharedModule { }

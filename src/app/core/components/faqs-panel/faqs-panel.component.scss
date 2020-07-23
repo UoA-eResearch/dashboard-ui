@@ -1,0 +1,30 @@
+@import '../../../../styles';
+
+.faqs-panel-container {
+  background-color: white;
+  height: 100%;
+  padding: 10px;
+  width: 300px;
+}
+
+.faqs-panel-container-sm {
+  @extend .faqs-panel-container;
+  width: 100%;
+}
+
+.mat-list-item {
+  padding-top: 1em;
+}
+
+.mat-divider {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+.faqs-description {
+  font-size: small;
+}
+
+.faqs-question {
+  font-size: small;
+}

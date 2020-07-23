@@ -1,0 +1,27 @@
+<div class="faqs-panel-container" ngClass.lt-md="faqs-panel-container-sm">
+
+  <mat-list>
+    <h3 matSubheader>{{faqs.vm.title}}</h3>
+    <p class="faqs-description"><span>Description: </span>{{faqs.vm.description}}</p>
+    <div *ngFor="let faq of faqs.vm.faqs">
+      <mat-list-item>
+        <mat-icon matListIcon>note</mat-icon>
+        <h4 class="faqs-question">{{faq.question}}</h4>
+      </mat-list-item>
+      <h5>{{faq.answer}}</h5>
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <h3 matSubheader>{{faqs.dropbox.title}}</h3>
+    <p class="faqs-description"><span>Description: </span>{{faqs.dropbox.description}}</p>
+    <div *ngFor="let faq of faqs.dropbox.faqs">
+      <mat-list-item>
+        <mat-icon matListIcon>note</mat-icon>
+        <h4 class="faqs-question">{{faq.question}}</h4>
+      </mat-list-item>
+      <h5>{{faq.answer}}</h5>
+    </div>
+      
+  </mat-list>
+</div>
