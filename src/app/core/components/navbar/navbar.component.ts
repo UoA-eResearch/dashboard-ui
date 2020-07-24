@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginService } from '@uoa/auth';
-import { UserInfo } from './../../../model/UserInfo';
+import { LoginService, UserInfoDto } from '@uoa/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -9,13 +9,14 @@ import { UserInfo } from './../../../model/UserInfo';
 })
 export class NavbarComponent implements OnInit {
   authenticated: boolean;
-  userInfo: UserInfo;
+  showLoginBtn = true;
+  userInfo: UserInfoDto;
   routes = [
     { path: '/my-projects', label: 'My Projects' },
     { path: '/my-services', label: 'My Services' },
   ]
 
-  constructor(private loginService: LoginService) { }
+  constructor(public loginService: LoginService, private router: Router) { }
 
   async ngOnInit() {
     this.authenticated = await this.loginService.isAuthenticated();
@@ -24,6 +25,11 @@ export class NavbarComponent implements OnInit {
     // TODO userInfo.groups is in unexpected format..
     // var groups: string = <string><unknown>this.userInfo.groups;
     // console.log(groups.substring(1, groups.length-1).split(", "));
+  }
+
+  async login() {
+    console.log(this.router.url);
+    await this.loginService.doLogin(this.router.url);
   }
 
   logout() {
