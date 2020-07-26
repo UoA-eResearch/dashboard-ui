@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CoreModule } from './../../core.module';
 import { SharedModule } from './../../../shared/shared.module';
@@ -14,10 +15,11 @@ describe('NavbarComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ NavbarComponent ],
       imports: [
+        HttpClientTestingModule,
         RouterTestingModule,
-        BrowserAnimationsModule,
+        SharedModule,
         CoreModule,
-        SharedModule
+        BrowserAnimationsModule
       ]
     })
     .compileComponents();
