@@ -43,10 +43,8 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
   ) {}
 
   async ngOnInit() {
-    this.loading$.next(true);
     this.userInfo = await this.loginService.getUserInfo();
-    this.loading$.next(false);
-
+    this.loading$.next(true);
     if (this.userInfo) {
       this.querySubscription = this.apollo
       .watchQuery<any>({
@@ -64,10 +62,9 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
       error => Observable.throw(error)
       );
     }
-  }
-
-  logout() {
-    this.loginService.logout();
+    else {
+      console.log("Error: No user info");
+    }
   }
 
   ngOnDestroy(): void {
