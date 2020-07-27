@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent implements OnInit {
   authenticated: boolean;
-  showLoginBtn = true;
   userInfo: UserInfoDto;
   routes = [
     { path: '/my-projects', label: 'My Projects' },
@@ -20,7 +19,9 @@ export class NavbarComponent implements OnInit {
 
   async ngOnInit() {
     this.authenticated = await this.loginService.isAuthenticated();
-    this.userInfo = await this.loginService.getUserInfo();
+    if (this.authenticated) {
+      this.userInfo = await this.loginService.getUserInfo();
+    }
     
     // TODO userInfo.groups is in unexpected format..
     // var groups: string = <string><unknown>this.userInfo.groups;
@@ -28,8 +29,11 @@ export class NavbarComponent implements OnInit {
   }
 
   async login() {
-    console.log(this.router.url);
-    await this.loginService.doLogin(this.router.url);
+    const success = await this.loginService.doLogin(this.router.url);
+    if (success) {
+      this.authenticated = await this.loginService.isAuthenticated();
+      this.userInfo = await this.loginService.getUserInfo();
+    }
   }
 
   logout() {

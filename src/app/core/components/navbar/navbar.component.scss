@@ -71,8 +71,8 @@
 }
 
 .app-toolbar {
-  padding-left: $padding-site;
-  padding-right: $padding-site;
+  padding-left: 1em;
+  padding-right: 1em;
 }
 
 .app-toolbar-xs {
@@ -86,4 +86,28 @@
 
 .app-toolbar-xs .app-toolbar-row {
   height: 48px;
+}
+
+/*
+ * User Profile
+ */
+.user-menu-container {
+  margin-right: 8px;
+  margin-left: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.user-menu-list {
+  margin-bottom: 8px;
+}
+
+.user-menu-list mat-list-item mat-icon {
+  color: $color-pink;
+}
+
+.user-menu-list mat-list-item p {
+  font-size: 0.7em !important;
+  color: black;
 }
