@@ -21,6 +21,15 @@
   background-size: cover;
 }
 
+.mat-card-title {
+  padding-top: 7px;
+}
+
+.mat-card-image {
+  padding-top: 1em;
+  cursor: pointer;
+}
+
 .more-button {
   position: absolute;
   top: 5px;
@@ -28,14 +37,11 @@
 }
 
 .dashboard-card-content {
-  padding-top: 15px;
-  padding-bottom: 15px;
   text-align: start;
   flex-grow: 1;
-  overflow: auto;
 }
 
-
 .dashboard-card-actions {
-  float: right;
+  display: flex;
+  justify-content: flex-end;
 }
