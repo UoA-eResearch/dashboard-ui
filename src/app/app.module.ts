@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -17,7 +16,7 @@ import { FooterComponent } from '@layout/footer/footer.component';
     AppComponent,
     ContentLayoutComponent,
     NavbarComponent,
-    FooterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +24,11 @@ import { FooterComponent } from '@layout/footer/footer.component';
     SharedModule, 
     AppRoutingModule,
     BrowserAnimationsModule
+  ],
+  exports: [
+    ContentLayoutComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
