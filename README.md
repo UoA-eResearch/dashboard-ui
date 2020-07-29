@@ -32,6 +32,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 `npm run test -- --code-coverage`. The code coverage report is generated and stored in the `coverage/` folder. Coverage thresholds are set at 80% for all files. Less than 80% coverage will generate errors to warn you. 
 To change any of the test configurations, see [karma.conf.js](karma.conf.js).
 
+To run unit tests with VSCode debugging enabled, run `ng test --browsers ChromeDebug`, wait for Karma to open up Chrome and run the tests. Leave it running and then in VSCode debug tab, select 'Debug tests in Chrome' from the launch dropdown. VSCode will attach to the Karma process and you can now put in breakpoints and debug your unit tests.
+
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).

@@ -37,6 +37,12 @@ module.exports = function (config) {
     singleRun: false,
     restartOnFileChange: true,
     failOnEmptyTestSuite: false,
-    codeCoverage: true
+    codeCoverage: true,
+    customLaunchers: {
+      ChromeDebug: {
+        base: 'Chrome',
+        flags: ['--remote-debugging-port=9222']
+      }
+    }
   });
 };
