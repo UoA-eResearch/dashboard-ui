@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription, Subject, Observable } from 'rxjs';
 import { LoginService } from '@uoa/auth';
-import { PageInfo } from './../../../model/PageInfo';
+import { PageInfo } from '@data/type/PageInfo';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 

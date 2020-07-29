@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PageInfo } from './../../../model/PageInfo';
+import { PageInfo } from '@data/type/PageInfo';
 
 @Component({
   selector: 'app-home',

@@ -7,8 +7,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
-import { SharedModule } from './shared/shared.module';
-import { CoreModule } from './core/core.module';
+import { SharedModule } from '@shared/shared.module';
+import { CoreModule } from '@app/core.module';
 import { AuthModule, CognitoConfigService, StorageService } from '@uoa/auth';
 import { AppAuthConfigService } from './services/app-auth-config.service';
 import { AppStorageService } from './services/app-storage.service';

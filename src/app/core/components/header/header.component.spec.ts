@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CoreModule } from './../../core.module';
-import { SharedModule } from './../../../shared/shared.module';
+import { CoreModule } from '@app/core.module';
+import { SharedModule } from '@shared/shared.module';
 import { HeaderComponent } from './header.component';
 
 describe('HeaderComponent', () => {
