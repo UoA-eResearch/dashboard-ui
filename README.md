@@ -12,6 +12,16 @@ Run `ng generate component component-name` to generate a new component. You can 
 
 [Angular Material schematics](https://material.angular.io/guide/schematics) are also available. For example, to generate a Material Table, run `ng generate @angular/material:table <component-name>`.
 
+## Project Folder Structure
+
+This project is organised in alignment with the recommendations in [angular-folder-structure](https://angular-folder-structure.readthedocs.io/en/latest/index.html).
+The app is broken into the following main folders:
+* core -> this module is for classes used by app.module. Resources which are always loaded such as route guards, HTTP interceptors, and application level services belong in this directory.
+* data -> holds the types (models/entities) and services for data consumed by the application.
+* layout -> this directory contains components which are parts of the main layout such as Nav, Footer, etc. and have a <router-outlet></router-outlet> in the html for other components to embed within.
+* modules -> contains a collection of modules which are each independent of each other. This allows Angular to load only the module it requires to display the request thereby saving bandwidth and speeding the entire application.
+* shared -> contains classes and resources which are used in more than one dynamically loaded module. By always loading with the application the shared components are ready whenever a module requests them. It is a good place for resources used by some modules some of the time but not all modules all of the time.
+
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `www/` directory. Use the `--prod` flag for a production build.
