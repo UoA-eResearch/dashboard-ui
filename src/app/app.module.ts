@@ -6,19 +6,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-
 import { SharedModule } from '@shared/shared.module';
 import { CoreModule } from '@app/core.module';
 import { AuthModule, CognitoConfigService, StorageService } from '@uoa/auth';
 import { AppAuthConfigService } from './services/app-auth-config.service';
 import { AppStorageService } from './services/app-storage.service';
 import { ErrorPagesModule } from '@uoa/error-pages';
-
 import { GraphQLModule } from './graphql.module';
+
+import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
+import { NavbarComponent } from '@layout/navbar/navbar.component';
+import { FooterComponent } from '@layout/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    NavbarComponent,
+    FooterComponent,
+    ContentLayoutComponent
   ],
   imports: [
     AuthModule,

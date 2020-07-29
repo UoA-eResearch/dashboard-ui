@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
 import { MyProjectsComponent } from './my-projects.component';
+import { MyProjectsRoutingModule } from './my-projects-routing.module';
 import { SharedModule } from '@shared/shared.module';
 
 
@@ -9,13 +9,8 @@ import { SharedModule } from '@shared/shared.module';
   declarations: [MyProjectsComponent],
   imports: [
     CommonModule,
-    SharedModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: MyProjectsComponent
-      }
-    ]), 
+    MyProjectsRoutingModule,
+    SharedModule
   ],
   exports: [MyProjectsComponent]
 })

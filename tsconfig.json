@@ -31,6 +31,9 @@
       ],
       "@data/*": [
         "src/app/data/*"
+      ],
+      "@layout/*": [
+        "src/app/layout/*"
       ]
     }
   },
