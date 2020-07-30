@@ -25,6 +25,10 @@ const routes: Routes = [
         loadChildren: () => import('@modules/my-services/my-services.module').then((m) => m.MyServicesModule)
       },
       {
+        path: 'help',
+        loadChildren: () => import('@modules/help/help.module').then((m) => m.HelpModule)
+      },
+      {
         path: 'error/:errorCode',
         loadChildren: () => import('@modules/error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
       },

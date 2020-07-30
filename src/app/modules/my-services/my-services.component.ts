@@ -11,7 +11,7 @@ export class MyServicesComponent implements OnInit {
     title: 'Services Dashboard',
     description: `View and manage your eResearch services, such as 
                   Virtual Machines, storage, and Nectar allocations.`,
-    imageUrl: "https://via.placeholder.com/1680x220"
+    imageUrl: 'https://via.placeholder.com/1680x220'
   }
 
   constructor() { }
