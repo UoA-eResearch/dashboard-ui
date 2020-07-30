@@ -1,16 +1,36 @@
 import { AppPage } from './app.po';
 import { browser, logging } from 'protractor';
 
-describe('workspace-project App', () => {
+describe('App Home Page Tests', () => {
   let page: AppPage;
 
   beforeEach(() => {
     page = new AppPage();
+    page.navigateTo();
   });
 
   it('should display welcome message', () => {
-    page.navigateTo();
     expect(page.getTitleText()).toEqual('Welcome to the eResearch Dashboard');
+  });
+
+  it('should display the navbar', () => {
+    expect(page.getNavBar).toBeTrue;
+  });
+
+  it('should display the dashboard logo in the navbar', () => {
+    expect(page.getNavBarLogo).toBeTrue;
+  });
+
+  it('should display the footer', () => {
+    expect(page.getFooter).toBeTrue;
+  });
+
+  it('should display the home dashboard', () => {
+    expect(page.getHomeDashboard).toBeTrue;
+  });
+
+  it('should display home dashboard title', () => {
+    expect(page.getHomeDashboardTitleText()).toEqual('Access eResearch Services:');
   });
 
   afterEach(async () => {
