@@ -19,9 +19,9 @@ export class AppAuthConfigService extends CognitoConfigService {
         this.redirectUri = environment.auth.redirectUri;
         this.bearerTokenUrlFilter = environment.privateUrlKeyWords.whoNeedBearerToken;
         this.logoutUri = environment.auth.logoutUri;
-        // If you dont want to use refreshtoken to get new token, set to false
-        this.useRefreshToken = true;
-        // If you don't want to navigate to login page when token is expired, set to false
-        this.navigateWithoutToken = true;
+        // If you dont want to use refreshtoken to get new token, set to false. Default = true.
+        this.useRefreshToken;
+        // If you don't want to navigate to login page when token is expired, set to false. Default = true.
+        this.navigateWithoutToken;
     }
 }
