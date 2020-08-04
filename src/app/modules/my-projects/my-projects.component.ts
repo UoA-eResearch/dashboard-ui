@@ -26,10 +26,10 @@ query Person($username: String!) {
 export class MyProjectsComponent implements OnInit, OnDestroy {
   pageInfo: PageInfo = {
     title: 'Projects Dashboard',
-    description: `View and manage your eResearch projects, project members, 
+    description: `View and manage your eResearch projects, project members,
                   and project-related services.`,
-    imageUrl: "https://via.placeholder.com/1680x220"
-  }
+    imageUrl: 'https://via.placeholder.com/1680x220'
+  };
   userInfo;
   personInfo;
   loading$ = new Subject<boolean>();
@@ -63,7 +63,7 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
       );
     }
     else {
-      console.log("Error: No user info");
+      console.log('Error: No user info');
     }
   }
 

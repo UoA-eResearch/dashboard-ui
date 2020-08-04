@@ -13,7 +13,7 @@ export class HomeDashBoardComponent {
     map(({ matches }) => {
       if (matches) {
         return [
-          { 
+          {
             title: 'My Projects',
             image: 'https://via.placeholder.com/250x150',
             altText: 'placeholder',
@@ -22,7 +22,7 @@ export class HomeDashBoardComponent {
             cols: 2,
             rows: 1
           },
-          { 
+          {
             title: 'My Services',
             image: 'https://via.placeholder.com/250x150',
             altText: 'placeholder',
@@ -31,7 +31,7 @@ export class HomeDashBoardComponent {
             cols: 2,
             rows: 1
           },
-          { 
+          {
             title: 'Get More Stuff',
             image: 'https://via.placeholder.com/250x150',
             altText: 'placeholder',
@@ -40,7 +40,7 @@ export class HomeDashBoardComponent {
             cols: 2,
             rows: 1
           },
-          { 
+          {
             title: 'Instruction Manual',
             image: 'https://via.placeholder.com/250x150',
             altText: 'placeholder',
@@ -53,7 +53,7 @@ export class HomeDashBoardComponent {
       }
 
       return [
-        { 
+        {
           title: 'My Projects',
           image: 'https://via.placeholder.com/250x150',
           altText: 'placeholder',
@@ -62,7 +62,7 @@ export class HomeDashBoardComponent {
           cols: 2,
           rows: 1
         },
-        { 
+        {
           title: 'My Services',
           image: 'https://via.placeholder.com/250x150',
           altText: 'placeholder',
@@ -71,7 +71,7 @@ export class HomeDashBoardComponent {
           cols: 1,
           rows: 1
         },
-        { 
+        {
           title: 'Get More Stuff',
           image: 'https://via.placeholder.com/250x150',
           altText: 'placeholder',
@@ -80,7 +80,7 @@ export class HomeDashBoardComponent {
           cols: 1,
           rows: 1
         },
-        { 
+        {
           title: 'Instruction Manual',
           image: 'https://via.placeholder.com/250x150',
           altText: 'placeholder',

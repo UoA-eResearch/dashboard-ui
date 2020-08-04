@@ -3,7 +3,7 @@ import { SharedModule } from '@shared/shared.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FaqsPanelComponent } from './faqs-panel.component';
 
-describe('FaqsPanelComponent', () => {  
+describe('FaqsPanelComponent', () => {
   let component: FaqsPanelComponent;
   let fixture: ComponentFixture<FaqsPanelComponent>;
 

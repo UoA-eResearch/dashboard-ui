@@ -13,7 +13,7 @@ export class HelpComponent implements OnInit {
                   as well as specific instructions for using the tools and services
                   provided by the Centre for eResearch.`,
     imageUrl: 'https://via.placeholder.com/1680x220'
-  }
+  };
 
   constructor() { }
 

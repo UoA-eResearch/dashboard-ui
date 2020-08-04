@@ -11,8 +11,8 @@ export class HomeComponent {
     title: 'Welcome to the eResearch Dashboard',
     description: `The eResearch Dashboard lets you view, manage and interact with
                   services that have been provided to you by the Centre for eResearch.`,
-    imageUrl: "https://via.placeholder.com/1680x220"
-  }
-  
+    imageUrl: 'https://via.placeholder.com/1680x220'
+  };
+
   constructor() {}
 }

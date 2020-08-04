@@ -29,5 +29,5 @@ describe('AppAuthConfigService', () => {
     expect(service.logoutUri).toBeTruthy();
     expect(service.useRefreshToken).toBeDefined();
     expect(service.navigateWithoutToken).toBeDefined();
-  })
+  });
 });

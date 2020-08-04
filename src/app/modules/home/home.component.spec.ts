@@ -5,7 +5,7 @@ import { HomeComponent } from './home.component';
 import { HomeDashBoardComponent } from './home-dashboard/home-dashboard.component';
 
 
-describe('HomeComponent', () => {  
+describe('HomeComponent', () => {
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 

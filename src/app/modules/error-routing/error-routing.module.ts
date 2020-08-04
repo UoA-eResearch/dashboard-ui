@@ -5,7 +5,7 @@ import { ErrorPagesModule, ErrorPage } from '@uoa/error-pages';
 
 @NgModule({
   imports: [
-    ErrorPagesModule, 
+    ErrorPagesModule,
     RouterModule.forChild([{ path: '', component: ErrorPage }])
   ],
   exports: [RouterModule],
