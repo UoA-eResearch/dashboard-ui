@@ -158,8 +158,9 @@
             "devServerTarget": "dashboard-ui:serve"
           },
           "configurations": {
-            "production": {
-              "devServerTarget": "dashboard-ui:serve:production"
+            "test": {
+              "devServerTarget": "dashboard-ui:serve:nonprod",
+              "baseUrl": "<NON-PROD/TEST BASE URL>"
             }
           }
         }

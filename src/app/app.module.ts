@@ -7,6 +7,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { CoreModule } from '@app/core.module';
 import { SharedModule } from '@shared/shared.module';
 
+import { ErrorPagesModule } from '@uoa/error-pages';
+
 import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
 import { NavbarComponent } from '@layout/navbar/navbar.component';
 import { FooterComponent } from '@layout/footer/footer.component';
@@ -23,7 +25,8 @@ import { FooterComponent } from '@layout/footer/footer.component';
     CoreModule,
     SharedModule, 
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ErrorPagesModule
   ],
   exports: [
     ContentLayoutComponent,

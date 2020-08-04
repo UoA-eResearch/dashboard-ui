@@ -29,4 +29,13 @@ export class AppPage {
   getHomeDashboardTitleText(): Promise<string> {
     return element(by.css('home-dashboard h1')).getText() as Promise<string>;
   }
+
+  getUserName(): Promise<string> {
+    return element(by.id('user-fullname')).getText() as Promise<string>;
+  }
+
+  // test only after logout
+  getSignInButton(): Promise<boolean> {
+    return element(by.className('signin-button')).isDisplayed() as Promise<boolean>;
+  }
 }

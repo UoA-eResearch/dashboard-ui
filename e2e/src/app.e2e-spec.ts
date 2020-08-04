@@ -33,6 +33,10 @@ describe('App Home Page Tests', () => {
     expect(page.getHomeDashboardTitleText()).toEqual('Access eResearch Services:');
   });
 
+  it('should display the logged in users full name', () => {
+    expect(page.getUserName()).toEqual('Rose McColl');
+  })
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
