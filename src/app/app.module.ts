@@ -23,7 +23,7 @@ import { FooterComponent } from '@layout/footer/footer.component';
   imports: [
     BrowserModule,
     CoreModule,
-    SharedModule, 
+    SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ErrorPagesModule

@@ -40,7 +40,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/', //TODO: create a page not found component
+    redirectTo: '/', // TODO: create a page not found component
   },
 ];
 
