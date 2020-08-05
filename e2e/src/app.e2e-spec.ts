@@ -34,7 +34,7 @@ describe('App Home Page Tests', () => {
   });
 
   it('should display the logged in users full name', () => {
-    expect(page.getUserName()).toEqual('Rose McColl');
+    expect(page.getUserName()).toEqual('Research Hub Automation Test Account');
   })
 
   afterEach(async () => {

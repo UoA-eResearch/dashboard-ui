@@ -31,7 +31,6 @@ describe('HomeComponent', () => {
   });
 
   it(`should have as title 'Welcome to the eResearch Dashboard'`, () => {
-    const fixture = TestBed.createComponent(HomeComponent);
     const app = fixture.componentInstance;
     expect(app.pageInfo.title).toEqual('Welcome to the eResearch Dashboard');
   });

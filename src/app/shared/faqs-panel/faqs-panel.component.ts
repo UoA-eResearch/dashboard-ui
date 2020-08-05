@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'faqs-panel',
+  selector: 'app-faqs-panel',
   templateUrl: './faqs-panel.component.html',
   styleUrls: ['./faqs-panel.component.scss']
 })

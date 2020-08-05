@@ -35,7 +35,6 @@ describe('HelpComponent', () => {
   });
 
   it(`should have as title 'Welcome to the eResearch Help Repository!'`, () => {
-    const fixture = TestBed.createComponent(HelpComponent);
     const app = fixture.componentInstance;
     expect(app.pageInfo.title).toEqual('Welcome to the eResearch Help Repository!');
   });

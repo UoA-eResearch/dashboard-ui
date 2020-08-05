@@ -41,7 +41,6 @@ describe('MyProjectsComponent', () => {
   });
 
   it(`should have as title 'Projects Dashboard'`, () => {
-    const fixture = TestBed.createComponent(MyProjectsComponent);
     const app = fixture.componentInstance;
     expect(app.pageInfo.title).toEqual('Projects Dashboard');
   });

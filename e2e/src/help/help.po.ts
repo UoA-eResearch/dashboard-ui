@@ -15,6 +15,6 @@ export class HelpPage {
   }
 
   getFaqsComponent(): Promise<boolean> {
-    return element(by.className('faqs-panel')).isDisplayed() as Promise<boolean>;
+    return element(by.className('app-faqs-panel')).isDisplayed() as Promise<boolean>;
   }
 }

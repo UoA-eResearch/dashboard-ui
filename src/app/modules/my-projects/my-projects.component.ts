@@ -1,5 +1,5 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, Subject, Observable } from 'rxjs';
+import { Subscription, Subject, Observable, throwError } from 'rxjs';
 import { LoginService } from '@uoa/auth';
 import { PageInfo } from '@data/type/PageInfo';
 import { Apollo } from 'apollo-angular';
@@ -59,7 +59,7 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
         this.loading$.next(loading);
         this.error = data.error;
       },
-      error => Observable.throw(error)
+      error => throwError(new Error(error))
       );
     }
     else {

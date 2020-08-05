@@ -23,11 +23,11 @@ export class AppPage {
   }
 
   getHomeDashboard(): Promise<boolean> {
-    return element(by.css('home-dashboard')).isDisplayed() as Promise<boolean>;
+    return element(by.css('app-home-dashboard')).isDisplayed() as Promise<boolean>;
   }
 
   getHomeDashboardTitleText(): Promise<string> {
-    return element(by.css('home-dashboard h1')).getText() as Promise<string>;
+    return element(by.css('app-home-dashboard h1')).getText() as Promise<string>;
   }
 
   getUserName(): Promise<string> {

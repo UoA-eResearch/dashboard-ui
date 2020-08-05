@@ -35,7 +35,6 @@ describe('MyServicesComponent', () => {
   });
 
   it(`should have as title 'Services Dashboard'`, () => {
-    const fixture = TestBed.createComponent(MyServicesComponent);
     const app = fixture.componentInstance;
     expect(app.pageInfo.title).toEqual('Services Dashboard');
   });
