@@ -38,37 +38,43 @@
               <a mat-button *ngFor="let route of routes" fxHide.lt-md [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a>
 
               <!-- login/logout/profile -->
-              <button class="signin-button" *ngIf="!authenticated" mat-button (click)="login()">Sign In</button>
+              <div *ngIf="loginService.loggedIn$ | async as loggedIn; else signin">
 
-              <button class="button-menu" *ngIf="authenticated" mat-button [matMenuTriggerFor]="userMenu">
-                <mat-icon matPrefix style="margin-right: 5px;" fxHide.xs>person</mat-icon>
-                <span id="user-fullname" fxHide fxShow.gt-md>{{ userInfo?.firstName + ' ' + userInfo?.lastName }}</span>
-                <span id="user-firstname" fxHide fxShow.md>{{ userInfo?.firstName }}</span>
-                <span id="user-initials" fxHide.gt-sm>{{ userInfo?.firstName?.charAt(0) + userInfo?.lastName?.charAt(0) }}</span>
-              </button>
-
-              <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
-                <div class="user-menu-container" *ngIf="authenticated">
-                  <!-- <img src="/assets/images/uoa-logo-blue.svg"> -->
-
-                  <mat-list class="user-menu-list">
-                    <mat-list-item>
-                      <mat-icon mat-list-icon>person</mat-icon>
-                      <p mat-line>{{ userInfo?.firstName + ' ' + userInfo?.lastName }}</p>
-                    </mat-list-item>
-                    <mat-list-item>
-                      <mat-icon mat-list-icon>note</mat-icon>
-                      <p mat-line>{{ userInfo?.email }}</p>
-                    </mat-list-item>
-                  </mat-list>
-
-                  <div fxLayout="row" fxLayoutAlign="end">
-                    <button mat-raised-button style="color: black; background-color: white;" (click)="logout()">
-                      Sign Out
-                    </button>
-                  </div>
+                <div *ngIf="loginService.userInfo$ | async as userInfo">
+                  <button class="button-menu" mat-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon matPrefix style="margin-right: 5px;" fxHide.xs>person</mat-icon>
+                    <span id="user-fullname" fxHide fxShow.gt-md>{{ userInfo?.firstName + ' ' + userInfo?.lastName }}</span>
+                    <span id="user-firstname" fxHide fxShow.md>{{ userInfo?.firstName }}</span>
+                    <span id="user-initials" fxHide.gt-sm>{{ userInfo?.firstName?.charAt(0) + userInfo?.lastName?.charAt(0) }}</span>
+                  </button>
+    
+                  <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+                    <div class="user-menu-container">
+                      <!-- <img src="/assets/images/uoa-logo-blue.svg"> -->
+    
+                      <mat-list class="user-menu-list">
+                        <mat-list-item>
+                          <mat-icon mat-list-icon>person</mat-icon>
+                          <p mat-line>{{ userInfo?.firstName + ' ' + userInfo?.lastName }}</p>
+                        </mat-list-item>
+                        <mat-list-item>
+                          <mat-icon mat-list-icon>note</mat-icon>
+                          <p mat-line>{{ userInfo?.email }}</p>
+                        </mat-list-item>
+                      </mat-list>
+    
+                      <div fxLayout="row" fxLayoutAlign="end">
+                        <button mat-raised-button style="color: black; background-color: white;" (click)="logout()">
+                          Sign Out
+                        </button>
+                      </div>
+                    </div>
+                  </mat-menu>
                 </div>
-              </mat-menu>
+              </div>
+              <ng-template #signin>
+                <button class="signin-button" mat-button (click)="login()">Sign In</button>
+              </ng-template>
 
             </mat-toolbar-row>
           </mat-toolbar>
