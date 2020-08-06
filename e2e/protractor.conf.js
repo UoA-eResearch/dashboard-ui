@@ -26,8 +26,8 @@ exports.config = {
   params: {
     loginUrl: "iam.test.auckland.ac.nz/profile/SAML2/Redirect/SSO",
     credentials: {
-      username: process.env.dashboard_ui_test_creds_username,
-      password: process.env.dashboard_ui_test_creds_password
+      username: process.env.TEST_ACCT_USERNAME,
+      password: process.env.TEST_ACCT_PASSWORD
     }
   },
   framework: 'jasmine',
@@ -58,7 +58,7 @@ exports.config = {
       browser.driver.findElement(by.id('password')).sendKeys(browser.params.credentials.password);
       browser.driver.findElement(by.className('login-button')).click();
     });
-
+    
     // wait for the login to complete and return to the base url
     return browser.driver.wait(async function() {
       const url = await browser.driver.getCurrentUrl();

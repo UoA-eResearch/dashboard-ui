@@ -49,8 +49,13 @@ pipeline {
                 echo 'Running unit tests'
                 sh 'npm run test:headless'
 
-                echo 'Running e2e tests'
-                sh 'npm run e2e'
+                // Set service account credentials as env vars for e2e tests
+                withCredentials([
+                    usernamePassword(credentialsId: 'Automation-Test-Account', passwordVariable: 'TEST_ACCT_PASSWORD', usernameVariable: 'TEST_ACCT_USERNAME')
+                ]) {
+                    echo 'Running e2e tests'
+                    sh 'npm run e2e'
+                }
 
                 echo 'Testing complete'
             }

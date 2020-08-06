@@ -35,8 +35,13 @@ To change any of the test configurations, see [karma.conf.js](karma.conf.js).
 To run unit tests with VSCode debugging enabled, run `ng test --browsers ChromeDebug`, wait for Karma to open up Chrome and run the tests. Leave it running and then in VSCode debug tab, select 'Debug tests in Chrome' from the launch dropdown. VSCode will attach to the Karma process and you can now put in breakpoints and debug your unit tests.
 
 ## Running end-to-end tests
+[Protractor](https://www.protractortest.org/) is used for e2e testing. The e2e tests test the main routes, user interactions and page elements of this web app. This includes tests of protected pages, therefore a login step is required prior to running the tests. This login step is defined in the [configuration file](e2e/protractor.conf.js), under the `onPrepare()` function.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+For running e2e tests locally, you must set the Research Hub Automation Test Account username and password (get from secret server) as environment variables.
+
+Run `set "TEST_ACCT_USERNAME=<username>" & set "TEST_ACCT_PASSWORD=<password>" && ng e2e` to set the environment variables and execute the end-to-end tests.
+
+During the CI/CD process (see below), the credentials must be available in the Jenkins server. The [Jenkinsfile](Jenkinsfile) picks up the credentials and sets them as environment variables using the withCredentials() plugin.
 
 ## Further help
 
