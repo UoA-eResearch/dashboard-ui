@@ -7,7 +7,7 @@ export class AppPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('app-header h1')).getText() as Promise<string>;
+    return element(by.className('header-title')).getText() as Promise<string>;
   }
 
   getNavBar(): Promise<boolean> {
