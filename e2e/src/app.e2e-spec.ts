@@ -9,8 +9,9 @@ describe('App Home Page Tests', () => {
     page.navigateTo();
   });
 
-  it('should display welcome message', () => {
-    expect(page.getTitleText()).toEqual('Welcome to the eResearch Dashboard');
+  it('should display welcome message', async () => {
+    const welcomeMsg = await page.getTitleText();
+    expect(welcomeMsg).toEqual('Welcome to the eResearch Dashboard');
   });
 
   it('should display the navbar', () => {

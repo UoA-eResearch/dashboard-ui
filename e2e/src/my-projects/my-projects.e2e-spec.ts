@@ -10,9 +10,6 @@ describe('My Projects Page Tests', () => {
   });
 
   it('should display projects dashboard welcome message', async () => {
-
-    console.log(await browser.getCurrentUrl());
-
     expect(page.getTitleText()).toEqual('Projects Dashboard');
   });
 
