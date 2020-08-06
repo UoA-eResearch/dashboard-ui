@@ -17,11 +17,11 @@ export class NavbarComponent implements OnInit {
   constructor(public loginService: LoginService, private router: Router) { }
   
   async ngOnInit() {
-    const authenticated = await this.loginService.isAuthenticated();
-        
-    if (authenticated) {
-      await this.loginService.getUserInfo();
-    }
+    try {
+      await this.loginService.isAuthenticated();
+    } catch(error) {
+      return console.log(error.message);
+    };
   }
 
   async login() {

@@ -36,4 +36,22 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should call loginService.doLogin() when login is called', async() => {
+    const loginServiceSpy = spyOn(component.loginService, "doLogin");
+    component.login();
+    await expect(loginServiceSpy).toHaveBeenCalled();
+  });
+
+  it('should call loginService.logout() when logout is called', async() => {
+    const loginServiceSpy = spyOn(component.loginService, "logout");
+    component.logout();
+    await expect(loginServiceSpy).toHaveBeenCalled();
+  });
+
+  it('should not call getUserInfo unless user is authenticated', async() => {
+    const loginServiceSpy = spyOn(component.loginService, "getUserInfo");
+    component.ngOnInit();
+    await expect(loginServiceSpy).toHaveBeenCalledTimes(0);
+  });
 });
