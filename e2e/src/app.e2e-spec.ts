@@ -10,6 +10,7 @@ describe('App Home Page Tests', () => {
   });
 
   it('should display welcome message', async () => {
+    await browser.waitForAngular();
     const welcomeMsg = await page.getTitleText();
     expect(welcomeMsg).toEqual('Welcome to the eResearch Dashboard');
   });
@@ -34,7 +35,9 @@ describe('App Home Page Tests', () => {
     expect(page.getHomeDashboardTitleText()).toEqual('Access eResearch Services:');
   });
 
-  it('should display the logged in users full name', () => {
+  it('should display the logged in users full name', async () => {
+    console.log("Logged in user name:");
+    console.log(await page.getUserName());
     expect(page.getUserName()).toEqual('Research Hub Automation Test Account');
   })
 
