@@ -43,6 +43,12 @@ Run `set "TEST_ACCT_USERNAME=<username>" & set "TEST_ACCT_PASSWORD=<password>" &
 
 During the CI/CD process (see below), the credentials must be available in the Jenkins server. The [Jenkinsfile](Jenkinsfile) picks up the credentials and sets them as environment variables using the withCredentials() plugin.
 
+### Running e2e tests on Browserstack
+[Browserstack]() allows you to run automated Selenium testing on a range of different desktop and mobile browsers. The configuration for running our e2e tests on Browserstack is here: [Browserstack Config](e2e/protractor.conf.browserstack-remote.js).
+To use Browserstack you must set the Browserstack username and access key in your environment variables. Get the username and access key by logging into Browserstack with the Developer uoaeresearch google account. 
+Once you have the credentials set up, run the e2e tests on Browserstack using the following command (replace baseUrl with whatever instance of the app you want to test against):
+`"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-remote.js --baseUrl https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/`
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
