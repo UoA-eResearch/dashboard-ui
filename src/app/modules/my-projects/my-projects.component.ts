@@ -5,15 +5,25 @@ import { PageInfo } from '@data/type/PageInfo';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 
-const GET_PERSON_INFO = gql`
+const GET_PERSON_PROJECTS = gql`
 query Person($username: String!) {
   user(username: $username) {
-    id
-    full_name
-    email
-    start_date
     projects {
-      id
+      project {
+        id
+        title
+        start_date
+        end_date
+        description
+        members {
+          role {
+            name
+          }
+          person {
+            full_name
+          }
+        }
+      }
     }
   }
 }`;
@@ -31,7 +41,7 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
     imageUrl: 'https://via.placeholder.com/1680x220'
   };
   userInfo: UserInfoDto;
-  personInfo: any;
+  personProjects: any;
   loading$ = new Subject<boolean>();
   error: any;
 
@@ -48,19 +58,32 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
     if (this.userInfo) {
       this.querySubscription = this.apollo
       .watchQuery<any>({
-        query: GET_PERSON_INFO,
+        query: GET_PERSON_PROJECTS,
         variables: {
           username: this.userInfo.upi,
         },
       })
       .valueChanges
-      .subscribe(({ data, loading }) => {
-        this.personInfo = data.user;
-        this.loading$.next(loading);
-        this.error = data.error;
-      },
-      error => throwError(new Error(error))
+      .subscribe(
+        ({ data, loading }) => {
+          this.personProjects = data.user;
+          this.loading$.next(loading);
+          console.log(data);
+        },
+        error => {
+          this.loading$.next(false);          
+          if (error.message === 'GraphQL error: 404: NOT FOUND') {
+            this.personProjects = [];
+          }
+          else {
+            console.log(JSON.stringify(error));
+            this.error = error;
+          }          
+        }
       );
+    }
+    else {
+      throw new Error("Error: User info not found, please try reloading the page.");
     }
   }
 
