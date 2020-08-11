@@ -14,12 +14,58 @@ query Project($id: Int!) {
     start_date
     end_date
     description
+    status {
+      name
+    }
     members {
       role {
         name
       }
       person {
         full_name
+        identities {
+          username
+        }
+        email
+        divisions {
+          division
+          divisional_role {
+            name
+          }
+        }
+      }
+    }
+    services {
+      dropbox {
+        id
+        name
+      }
+      nectar {
+        id
+        name
+      }
+      research_drive {
+        id
+        name
+      }
+      vis {
+        id
+        name
+      }
+      vm {
+        id
+        name
+      }
+    }
+    research_outputs {
+      researchoutput {
+        date_reported
+        description
+        doi
+        uri
+        type {
+          name
+        }
       }
     }
   }

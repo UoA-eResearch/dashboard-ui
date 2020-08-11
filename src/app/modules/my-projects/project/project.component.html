@@ -29,24 +29,104 @@
     <mat-card *ngIf="project && !(loading$ | async)">
       <mat-card-content>
         <mat-tab-group>
-          <mat-tab label="First">
+          <mat-tab label="Project Details">
             <ng-template matTabContent>
-              Content 1
+              <h3>Project Title</h3>
+              <p>{{project.title}}</p>
+              <mat-divider></mat-divider>
+              <h3>Description</h3>
+              <p>{{project.description}}</p>
+              <mat-divider></mat-divider>
+              <h3>Estimated Project End Date</h3>
+              <p>{{project.end_date | date}}</p>
+              <mat-divider></mat-divider>
+              <h3>Project Status</h3>
+              <p>{{project.status.name}}</p>
             </ng-template>
           </mat-tab>
-          <mat-tab label="Second">
+
+          <mat-tab label="Members">
             <ng-template matTabContent>
-              Content 2
+              <div *ngFor="let member of project.members" class="project-member">
+                <mat-card >
+                  <mat-card-header>
+                    <div mat-card-avatar class="member-avatar-image"></div>
+                    <mat-card-title>{{member.person.full_name}}</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <!-- TO DO: deal with external members -->
+                    <p>{{member.person.divisions.division}}, {{member.person.divisions.divisional_role.name}}</p>
+                    <mat-chip-list aria-label="Project Member Roles">
+                      <mat-chip>{{member.role.name}}</mat-chip>
+                    </mat-chip-list>
+                  </mat-card-content>
+                </mat-card>
+                <mat-divider></mat-divider>
+              </div>
             </ng-template>
           </mat-tab>
-          <mat-tab label="Third">
+
+          <mat-tab label="Resources">
             <ng-template matTabContent>
-              Content 3
+              <div *ngIf="project.services.dropbox.length > 0; else noDropbox">
+                <p *ngFor="let dropbox of project.services.dropbox">{{dropbox.name}}</p>
+              </div>
+              <ng-template #noDropbox>
+                <div *ngIf="!(loading$ | async) && !error">
+                  <p>No Dropbox allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/71">the Research Hub</a></p>
+                </div>
+              </ng-template>
+              <div *ngIf="project.services.nectar.length > 0; else noNectar">
+                <p *ngFor="let nectar of project.services.nectar">{{nectar.name}}</p>
+              </div>
+              <ng-template #noNectar>
+                <div *ngIf="!(loading$ | async) && !error">
+                  <p>No Nectar allocations. To get it, go to <a href="https://dashboard.rc.nectar.org.au/auth/login/">Nectar Research Cloud</a></p>
+                </div>
+              </ng-template>
+              <div *ngIf="project.services.research_drive.length > 0; else noDrive">
+                <p *ngFor="let research_drive of project.services.research_drive">{{research_drive.name}}</p>
+              </div>
+              <ng-template #noDrive>
+                <div *ngIf="!(loading$ | async) && !error">
+                  <p>No Research Drive allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/49">the Research Hub</a></p>
+                </div>
+              </ng-template>
+              <div *ngIf="project.services.vis.length > 0; else noVis">
+                <p *ngFor="let vis of project.services.vis">{{vis.name}}</p>
+              </div>
+              <ng-template #noVis>
+                <div *ngIf="!(loading$ | async) && !error">
+                  <p>No Visualisation projects. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/29">the Research Hub</a></p>
+                </div>
+              </ng-template>
+              <div *ngIf="project.services.vm.length > 0; else noVm">
+                <p *ngFor="let vm of project.services.vm">{{vm.name}}</p>
+              </div>
+              <ng-template #noVm>
+                <div *ngIf="!(loading$ | async) && !error">
+                  <p>No Research VM allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/1">the Research Hub</a></p>
+                </div>
+              </ng-template>
             </ng-template>
           </mat-tab>
-          <mat-tab label="Fourth">
+
+          <mat-tab label="Research Outputs">
             <ng-template matTabContent>
-              Content 4
+              <div *ngIf="project.research_outputs.length > 0; else noResearchOutputs">
+                <div *ngFor="let researchOutput of project.research_outputs">
+                  <h3>{{researchOutput.type.name}}</h3>
+                  <h4>{{researchOutput.date_reported | date}}</h4>
+                  <p>{{researchOutput.description}}</p>
+                  <a href="{{researchOutput.uri}}">{{researchOutput.doi}}</a>
+                </div>
+                <mat-divider></mat-divider>
+              </div>
+              <ng-template #noResearchOutputs>
+                <div *ngIf="!(loading$ | async) && !error">
+                  <p>No Research VM allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/1">the Research Hub</a></p>
+                </div>
+              </ng-template>
             </ng-template>
           </mat-tab>
         </mat-tab-group>
