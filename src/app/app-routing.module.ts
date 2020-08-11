@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
 import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
+import { ProjectComponent } from '@modules/my-projects/project/project.component';
 
 const routes: Routes = [
   {
@@ -18,6 +19,11 @@ const routes: Routes = [
         path: 'my-projects',
         canActivate: [AuthGuard],
         loadChildren: () => import('@modules/my-projects/my-projects.module').then((m) => m.MyProjectsModule)
+      },
+      {
+        path: 'my-projects/:id',
+        canActivate: [AuthGuard],
+        component: ProjectComponent
       },
       {
         path: 'my-services',

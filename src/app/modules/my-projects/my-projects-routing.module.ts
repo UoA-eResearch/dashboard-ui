@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { MyProjectsComponent } from './my-projects.component';
+import { ProjectComponent } from './project/project.component';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: MyProjectsComponent
+    pathMatch: 'full',
+    component: MyProjectsComponent    
   }
 ];
 

@@ -1,0 +1,29 @@
+@import './../../../../styles';
+
+
+.project-content {
+  margin: 2em;
+  margin-left: 3em;
+}
+
+.mat-card {
+  margin-bottom: 2em;
+}
+
+.mat-card>.mat-card-actions:last-child {
+  padding-right: 8px;
+  padding-bottom: 8px;
+}
+
+.project-description {
+  padding-top: 1em;
+}
+
+.mat-card-title {
+  color: $color-pink;
+  line-height: 1.2em;
+}
+
+.mat-card-subtitle {
+  color: $color-primary;
+}
