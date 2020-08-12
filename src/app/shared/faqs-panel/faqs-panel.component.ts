@@ -10,6 +10,7 @@ export class FaqsPanelComponent implements OnInit {
     {
       title: 'Virtual Machine FAQs',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. Nulla finibus magna ac odio commodo, in suscipit turpis euismod.',
+      avatarImg: 'assets/imgs/research-vm.jpg',
       faqs: [
         {
           question: 'How do I grant someone access to my VM?',
@@ -24,6 +25,7 @@ export class FaqsPanelComponent implements OnInit {
     {
       title: 'Dropbox FAQs',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. Nulla finibus magna ac odio commodo, in suscipit turpis euismod.',
+      avatarImg: 'assets/imgs/dropbox.svg',
       faqs: [
         {
           question: 'How do I grant someone access to my DropBox?',
