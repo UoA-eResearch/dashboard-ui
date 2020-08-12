@@ -84,19 +84,25 @@ export class ProjectComponent implements OnInit, OnDestroy {
     imageUrl: 'https://via.placeholder.com/1680x220'
   };
   userInfo: UserInfoDto;
-  id: any;
-  project: any;
+  id;
+  project;
   loading$ = new Subject<boolean>();
-  error: any;
+  error;
 
   private querySubscription: Subscription;
+  private paramsSubscription: Subscription;
 
   constructor(
     private loginService: LoginService,
     private apollo: Apollo,
     private route: ActivatedRoute
   ) {
-    this.id = +this.route.snapshot.paramMap.get('id');
+    this.paramsSubscription = route.params.subscribe(
+      params =>{
+          this.id = parseInt(params['id']);
+      }
+    );
+    // this.id = +this.route.snapshot.paramMap.get('id');
   }
 
 
@@ -117,7 +123,6 @@ export class ProjectComponent implements OnInit, OnDestroy {
         ({ data, loading }) => {
           this.project = data.project;
           this.loading$.next(loading);
-          console.log(data);
         },
         error => {
           this.loading$.next(false);          
@@ -139,6 +144,10 @@ export class ProjectComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.querySubscription) {
       this.querySubscription.unsubscribe();
+    }
+
+    if (this.paramsSubscription) {
+      this.paramsSubscription.unsubscribe();
     }
   }
 }

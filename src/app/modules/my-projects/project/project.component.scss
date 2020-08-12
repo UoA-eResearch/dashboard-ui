@@ -28,7 +28,10 @@
   color: $color-primary;
 }
 
-.member-avatar-image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+.avatar-image {
   background-size: cover;
+}
+
+.mat-chip {
+  white-space: nowrap;
 }

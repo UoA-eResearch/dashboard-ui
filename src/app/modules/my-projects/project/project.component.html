@@ -47,90 +47,113 @@
 
           <mat-tab label="Members">
             <ng-template matTabContent>
-              <div *ngFor="let member of project.members" class="project-member">
-                <mat-card >
-                  <mat-card-header>
-                    <div mat-card-avatar class="member-avatar-image"></div>
-                    <mat-card-title>{{member.person.full_name}}</mat-card-title>
-                  </mat-card-header>
-                  <mat-card-content>
+              <mat-list role="list">
+                <mat-list-item *ngFor="let member of project.members" class="project-member" role="listitem">
+                  <img matListAvatar class="avatar-image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="avatar">
+                  <h3 matLine>{{member.person.full_name}}</h3>
+                  <p matLine *ngFor="let division of member.person.divisions">
+                    {{division.division}}, {{division.divisional_role.name}}
                     <!-- TO DO: deal with external members -->
-                    <p>{{member.person.divisions.division}}, {{member.person.divisions.divisional_role.name}}</p>
+                  </p>
+                  <p matLine>
                     <mat-chip-list aria-label="Project Member Roles">
                       <mat-chip>{{member.role.name}}</mat-chip>
                     </mat-chip-list>
-                  </mat-card-content>
-                </mat-card>
-                <mat-divider></mat-divider>
-              </div>
+                  </p>
+                  <mat-divider></mat-divider>
+                </mat-list-item>
+              </mat-list>
             </ng-template>
           </mat-tab>
 
           <mat-tab label="Resources">
             <ng-template matTabContent>
-              <div *ngIf="project.services.dropbox.length > 0; else noDropbox">
-                <p *ngFor="let dropbox of project.services.dropbox">{{dropbox.name}}</p>
-              </div>
-              <ng-template #noDropbox>
-                <div *ngIf="!(loading$ | async) && !error">
-                  <p>No Dropbox allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/71">the Research Hub</a></p>
-                </div>
-              </ng-template>
-              <div *ngIf="project.services.nectar.length > 0; else noNectar">
-                <p *ngFor="let nectar of project.services.nectar">{{nectar.name}}</p>
-              </div>
-              <ng-template #noNectar>
-                <div *ngIf="!(loading$ | async) && !error">
-                  <p>No Nectar allocations. To get it, go to <a href="https://dashboard.rc.nectar.org.au/auth/login/">Nectar Research Cloud</a></p>
-                </div>
-              </ng-template>
-              <div *ngIf="project.services.research_drive.length > 0; else noDrive">
-                <p *ngFor="let research_drive of project.services.research_drive">{{research_drive.name}}</p>
-              </div>
-              <ng-template #noDrive>
-                <div *ngIf="!(loading$ | async) && !error">
-                  <p>No Research Drive allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/49">the Research Hub</a></p>
-                </div>
-              </ng-template>
-              <div *ngIf="project.services.vis.length > 0; else noVis">
-                <p *ngFor="let vis of project.services.vis">{{vis.name}}</p>
-              </div>
-              <ng-template #noVis>
-                <div *ngIf="!(loading$ | async) && !error">
-                  <p>No Visualisation projects. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/29">the Research Hub</a></p>
-                </div>
-              </ng-template>
-              <div *ngIf="project.services.vm.length > 0; else noVm">
-                <p *ngFor="let vm of project.services.vm">{{vm.name}}</p>
-              </div>
-              <ng-template #noVm>
-                <div *ngIf="!(loading$ | async) && !error">
-                  <p>No Research VM allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/1">the Research Hub</a></p>
-                </div>
-              </ng-template>
+              <mat-list role="list" *ngIf="project.services.dropbox.length > 0">
+                <h3><a href="https://www.dropbox.com">Dropbox</a></h3>
+                <mat-list-item *ngFor="let dropbox of project.services.dropbox" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/dropbox.svg" alt="avatar">
+                  <h3 matLine>{{dropbox.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/my-services/dropbox/{{dropbox.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+
+              <mat-list role="list" *ngIf="project.services.nectar.length > 0">
+                <h3><a href="https://dashboard.rc.nectar.org.au/auth/login/">Nectar Research Cloud</a></h3>
+                <mat-list-item *ngFor="let nectar of project.services.nectar" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/nectar.jpg" alt="avatar">
+                  <h3 matLine>{{nectar.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/my-services/nectar/{{nectar.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+
+              <mat-list role="list" *ngIf="project.services.research_drive.length > 0">
+                <h3><a href="https://research-hub.auckland.ac.nz/#/content/49">Research Storage Drive</a></h3>
+                <mat-list-item *ngFor="let research_drive of project.services.research_drive" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/research-storage.jpg" alt="avatar">
+                  <h3 matLine>{{research_drive.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/my-services/research-drive/{{research_drive.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+
+              <mat-list role="list" *ngIf="project.services.vis.length > 0">
+                <h3><a href="https://research-hub.auckland.ac.nz/#/content/29">Visualisation Services</a></h3>
+                <mat-list-item *ngFor="let vis of project.services.vis" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/vis.jpg" alt="avatar">
+                  <h3 matLine>{{vis.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/my-services/visualisation/{{vis.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+
+              <mat-list role="list" *ngIf="project.services.vm.length > 0">
+                <h3><a href="https://research-hub.auckland.ac.nz/#/content/1">Research Virtual Machines</a></h3>
+                <mat-list-item *ngFor="let vm of project.services.vm" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/research-vm.jpg" alt="avatar">
+                  <h3 matLine>{{vm.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/my-services/research-vm/{{vm.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
             </ng-template>
           </mat-tab>
 
           <mat-tab label="Research Outputs">
             <ng-template matTabContent>
               <div *ngIf="project.research_outputs.length > 0; else noResearchOutputs">
-                <div *ngFor="let researchOutput of project.research_outputs">
-                  <h3>{{researchOutput.type.name}}</h3>
-                  <h4>{{researchOutput.date_reported | date}}</h4>
-                  <p>{{researchOutput.description}}</p>
-                  <a href="{{researchOutput.uri}}">{{researchOutput.doi}}</a>
+                <div *ngFor="let researchoutput of project.research_outputs">
+                  <h3>{{researchoutput.researchoutput.type.name}}</h3>
+                  <h4>{{researchoutput.researchoutput.date_reported | date}}</h4>
+                  <p>{{researchoutput.researchoutput.description}}</p>
+                  <p>
+                    <span *ngIf="researchoutput.researchoutput.uri"><a href="{{researchoutput.researchoutput.uri}}">{{researchoutput.researchoutput.uri}}</a></span>
+                    <span *ngIf="researchoutput.researchoutput.doi">                
+                      <a href="https://doi.org/{{researchoutput.researchoutput.doi}}">{{researchoutput.researchoutput.doi}}</a>
+                    </span>
+                  </p>
+                  <mat-divider></mat-divider>
                 </div>
-                <mat-divider></mat-divider>
+                
               </div>
               <ng-template #noResearchOutputs>
                 <div *ngIf="!(loading$ | async) && !error">
-                  <p>No Research VM allocations. To get it, go to <a href="https://research-hub.auckland.ac.nz/#/content/1">the Research Hub</a></p>
+                  <p>No outputs from this research project have been recorded here yet.</p>
                 </div>
               </ng-template>
             </ng-template>
           </mat-tab>
+
         </mat-tab-group>
       </mat-card-content>
     </mat-card>
+
+    <p>To get Dropbox, go to <a href="https://research-hub.auckland.ac.nz/#/content/71">the Research Hub</a></p>
+    <p>To get Nectar, go to <a href="https://dashboard.rc.nectar.org.au/auth/login/">Nectar Research Cloud</a></p>
+    <p>To get a Research Drive, go to <a href="https://research-hub.auckland.ac.nz/#/content/49">the Research Hub</a></p>
+    <p>To enquire about a starting a Visualisation project, go to <a href="https://research-hub.auckland.ac.nz/#/content/29">the Research Hub</a></p>
+    <p>To get a Research Virtual Machine, go to <a href="https://research-hub.auckland.ac.nz/#/content/1">the Research Hub</a></p>
+
   </div>
 </div>
