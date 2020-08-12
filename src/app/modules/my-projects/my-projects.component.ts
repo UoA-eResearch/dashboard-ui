@@ -4,6 +4,7 @@ import { LoginService, UserInfoDto } from '@uoa/auth';
 import { PageInfo } from '@data/type/PageInfo';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Router } from '@angular/router';
 
 const GET_PERSON_PROJECTS = gql`
 query Person($username: String!) {
@@ -49,7 +50,8 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
 
   constructor(
     private loginService: LoginService,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -85,6 +87,11 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
     else {
       throw new Error("Error: User info not found, please try reloading the page.");
     }
+  }
+
+  openProject(projectId) {
+    console.log("ID:" + projectId);
+    this.router.navigateByUrl(`/my-projects/${projectId}`);
   }
 
   ngOnDestroy(): void {

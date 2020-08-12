@@ -49,7 +49,7 @@
                 </p>
               </mat-card-content>
               <mat-card-actions align="end">
-                <button mat-flat-button color="accent" routerLink="/my-projects/{{personProject.project.id}}">View</button>
+                <button mat-flat-button color="accent" (click)="openProject(personProject.project.id)">View</button>
               </mat-card-actions>
             </mat-card>
             
