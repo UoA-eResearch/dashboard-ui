@@ -28,7 +28,7 @@
     <!-- project details -->
     <mat-card *ngIf="project && !(loading$ | async)">
       <mat-card-content>
-        <mat-tab-group>
+        <mat-tab-group dynamicHeight animationDuration="0ms">
           <mat-tab label="Project Details">
             <ng-template matTabContent>
               <h3>Project Title</h3>
@@ -149,11 +149,11 @@
       </mat-card-content>
     </mat-card>
 
-    <p>To get Dropbox, go to <a href="https://research-hub.auckland.ac.nz/#/content/71">the Research Hub</a></p>
+    <!-- <p>To get Dropbox, go to <a href="https://research-hub.auckland.ac.nz/#/content/71">the Research Hub</a></p>
     <p>To get Nectar, go to <a href="https://dashboard.rc.nectar.org.au/auth/login/">Nectar Research Cloud</a></p>
     <p>To get a Research Drive, go to <a href="https://research-hub.auckland.ac.nz/#/content/49">the Research Hub</a></p>
     <p>To enquire about a starting a Visualisation project, go to <a href="https://research-hub.auckland.ac.nz/#/content/29">the Research Hub</a></p>
-    <p>To get a Research Virtual Machine, go to <a href="https://research-hub.auckland.ac.nz/#/content/1">the Research Hub</a></p>
+    <p>To get a Research Virtual Machine, go to <a href="https://research-hub.auckland.ac.nz/#/content/1">the Research Hub</a></p> -->
 
   </div>
 </div>

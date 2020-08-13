@@ -97,16 +97,13 @@ export class ProjectComponent implements OnInit, OnDestroy {
     private apollo: Apollo,
     private route: ActivatedRoute
   ) {
-    this.paramsSubscription = route.params.subscribe(
+    this.paramsSubscription = this.route.params.subscribe(
       params =>{
           this.id = parseInt(params['id']);
       }
     );
-    // this.id = +this.route.snapshot.paramMap.get('id');
   }
 
-
-  // TODO: CHECK THE USER IS ALLOWED TO ACCESS THIS PROJECT ID (implement in graphql server, check in front end also?)
   async ngOnInit() {
     this.userInfo = await this.loginService.getUserInfo();
     this.loading$.next(true);
