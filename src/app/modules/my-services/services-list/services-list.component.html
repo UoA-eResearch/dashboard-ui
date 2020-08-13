@@ -1,0 +1,74 @@
+<div *ngIf="services.dropbox.length > 0">
+  <div *ngFor="let dropbox of services.dropbox">
+    <mat-card class="service-card">
+      <mat-card-header>
+        <mat-card-title>Dropbox</mat-card-title>
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/dropbox.svg">
+        <mat-card-subtitle>{{dropbox.name}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="accent" (click)="openService('dropbox', dropbox.id)">View</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="services.nectar.length > 0">
+  <div *ngFor="let nectar of services.nectar">
+    <mat-card class="service-card">
+      <mat-card-header>
+        <mat-card-title>Nectar Research Cloud</mat-card-title>
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/nectar.jpg">
+        <mat-card-subtitle>{{nectar.name}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="accent" (click)="openService('nectar', nectar.id)">View</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="services.research_drive.length > 0">
+  <div *ngFor="let research_drive of services.research_drive">
+    <mat-card class="service-card">
+      <mat-card-header>
+        <mat-card-title>Research Storage Drive</mat-card-title>
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/research-storage.jpg">
+        <mat-card-subtitle>{{research_drive.name}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="accent" (click)="openService('research_drive', research_drive.id)">View</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="services.vis.length > 0">
+  <div *ngFor="let vis of services.vis">
+    <mat-card class="service-card">
+      <mat-card-header>
+        <mat-card-title>Visualisation Project</mat-card-title>
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/vis.jpg">
+        <mat-card-subtitle>{{vis.name}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="accent" (click)="openService('vis', vis.id)">View</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
+
+<div *ngIf="services.vm.length > 0">
+  <div *ngFor="let vis of services.vm">
+    <mat-card class="service-card">
+      <mat-card-header>
+        <mat-card-title>Research Virtual Machine</mat-card-title>
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/research-vm.jpg">
+        <mat-card-subtitle>{{vm.name}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-actions align="end">
+        <button mat-flat-button color="accent" (click)="openService('vm', vm.id)">View</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>
