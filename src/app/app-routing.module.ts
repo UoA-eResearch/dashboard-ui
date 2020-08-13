@@ -34,7 +34,7 @@ const routes: Routes = [
       },
       {
         path: 'service',
-        canActivate: [AuthGuard, OnlyAdminGuard],
+        canActivate: [AuthGuard],
         loadChildren: () => import('@modules/cer-services/cer-services.module').then((m) => m.CerServicesModule)
       },
       {
