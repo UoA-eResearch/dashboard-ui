@@ -1,3 +1,6 @@
+@import './../../../styles';
+
+
 .my-services-content {
   margin: 2em;
   margin-left: 3em;
@@ -11,4 +14,13 @@
 .mat-card>.mat-card-actions:last-child {
   padding-right: 8px;
   padding-bottom: 8px;
+}
+
+.mat-card-title {
+  color: $color-pink;
+  line-height: 1.2em;
+}
+
+.mat-card-subtitle {
+  color: $color-primary;
 }

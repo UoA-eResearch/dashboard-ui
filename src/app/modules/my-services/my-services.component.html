@@ -5,9 +5,8 @@
 <div class="my-services-container" fxLayout="row wrap" fxLayoutAlign="end">
   <div class="my-services-content" fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="start">
     <mat-card>
-      <mat-card-title>
-        <h2>My Services</h2>
-      </mat-card-title>
+      <mat-card-title>My Services</mat-card-title>
+      <mat-card-subtitle>Services | Dashboard</mat-card-subtitle>
       <mat-card-content>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. 
@@ -16,12 +15,33 @@
         </p>
       </mat-card-content>
       <mat-card-actions align="end">
-        <button mat-flat-button color="primary" routerLink="/my-services">
+        <button mat-flat-button color="primary">
           Request New Resource
         </button>
       </mat-card-actions>
     </mat-card>
-    <p>Services here</p>
+
+    <div class="margin-top-l margin-left-m">
+      
+      <div *ngIf="(loading$ | async)">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div *ngIf="error">
+        Error: {{error.message}}
+      </div>
+
+      <div *ngIf="!(loading$ | async) && !hasNoServices; else noServices">
+        <app-services-list [services]="personServices"></app-services-list>
+      </div>
+      <ng-template #noServices>
+        <div *ngIf="!(loading$ | async) && !error && hasNoServices">
+          You haven't been allocated any CeR services yet!
+        </div>
+      </ng-template>
+
+    </div>
+    
   </div>
   
   <app-faqs-panel></app-faqs-panel>
