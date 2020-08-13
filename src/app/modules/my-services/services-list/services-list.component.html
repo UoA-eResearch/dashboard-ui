@@ -1,4 +1,4 @@
-<div *ngIf="services.dropbox.length > 0">
+<div *ngIf="services?.dropbox?.length > 0">
   <div *ngFor="let dropbox of services.dropbox">
     <mat-card class="service-card">
       <mat-card-header>
@@ -13,7 +13,7 @@
   </div>
 </div>
 
-<div *ngIf="services.nectar.length > 0">
+<div *ngIf="services?.nectar?.length > 0">
   <div *ngFor="let nectar of services.nectar">
     <mat-card class="service-card">
       <mat-card-header>
@@ -28,7 +28,7 @@
   </div>
 </div>
 
-<div *ngIf="services.research_drive.length > 0">
+<div *ngIf="services?.research_drive?.length > 0">
   <div *ngFor="let research_drive of services.research_drive">
     <mat-card class="service-card">
       <mat-card-header>
@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<div *ngIf="services.vis.length > 0">
+<div *ngIf="services?.vis?.length > 0">
   <div *ngFor="let vis of services.vis">
     <mat-card class="service-card">
       <mat-card-header>
@@ -58,8 +58,8 @@
   </div>
 </div>
 
-<div *ngIf="services.vm.length > 0">
-  <div *ngFor="let vis of services.vm">
+<div *ngIf="services?.vm?.length > 0">
+  <div *ngFor="let vm of services.vm">
     <mat-card class="service-card">
       <mat-card-header>
         <mat-card-title>Research Virtual Machine</mat-card-title>

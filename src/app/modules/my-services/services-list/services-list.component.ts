@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ServicesListComponent implements OnInit {
 
-  @Input() services: Object;
+  @Input() services;
 
   constructor(private router: Router) { }
 
