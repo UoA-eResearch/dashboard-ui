@@ -25,7 +25,7 @@ query Project($id: Int!) {
 @Injectable({
   providedIn: 'root'
 })
-export class OnlyMembersGuard implements CanActivate {
+export class OnlyProjectMembersGuard implements CanActivate {
   constructor(
     private loginService: LoginService,
     private apollo: Apollo,

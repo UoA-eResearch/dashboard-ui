@@ -3,7 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
 import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
 import { ProjectComponent } from '@modules/my-projects/project/project.component';
-import { OnlyMembersGuard } from '@app/guard/only-members.guard';
+import { OnlyProjectMembersGuard } from '@app/guard/only-project-members.guard';
 
 const routes: Routes = [
   {
@@ -23,7 +23,7 @@ const routes: Routes = [
       },
       {
         path: 'my-projects/:id',
-        canActivate: [AuthGuard, OnlyMembersGuard],
+        canActivate: [AuthGuard, OnlyProjectMembersGuard],
         component: ProjectComponent
       },
       {
