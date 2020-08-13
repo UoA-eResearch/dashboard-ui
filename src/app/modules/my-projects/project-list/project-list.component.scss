@@ -1,11 +1,4 @@
-@import './../../../styles';
-
-
-.my-projects-content {
-  margin: 2em;
-  margin-left: 3em;
-  width: 50%;
-}
+@import './../../../../styles';
 
 .mat-card {
   margin-bottom: 2em;
@@ -14,6 +7,15 @@
 .mat-card>.mat-card-actions:last-child {
   padding-right: 8px;
   padding-bottom: 8px;
+}
+
+.project-description {
+  padding-top: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 5; /* number of lines to show */
+  -webkit-box-orient: vertical;
 }
 
 .mat-card-title {
