@@ -4,6 +4,7 @@ import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
 import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
 import { ProjectComponent } from '@modules/my-projects/project/project.component';
 import { OnlyProjectMembersGuard } from '@app/guard/only-project-members.guard';
+import { OnlyAdminGuard } from '@app/guard/only-admin.guard';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
         path: 'my-services',
         canActivate: [AuthGuard],
         loadChildren: () => import('@modules/my-services/my-services.module').then((m) => m.MyServicesModule)
+      },
+      {
+        path: 'service',
+        canActivate: [AuthGuard, OnlyAdminGuard],
+        loadChildren: () => import('@modules/cer-services/cer-services.module').then((m) => m.CerServicesModule)
       },
       {
         path: 'help',
