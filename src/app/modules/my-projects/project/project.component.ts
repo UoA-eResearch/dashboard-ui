@@ -98,8 +98,8 @@ export class ProjectComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute
   ) {
     this.paramsSubscription = this.route.params.subscribe(
-      params =>{
-          this.id = parseInt(params['id']);
+      params => {
+        this.id = parseInt(params['id']);
       }
     );
   }
@@ -132,9 +132,6 @@ export class ProjectComponent implements OnInit, OnDestroy {
           }          
         }
       );
-    }
-    else {
-      throw new Error("Error: User info not found, please try reloading the page.");
     }
   }
 

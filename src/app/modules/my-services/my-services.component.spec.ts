@@ -4,6 +4,7 @@ import { CoreModule } from '@app/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MyServicesComponent } from './my-services.component';
+import { ServicesListComponent } from './services-list/services-list.component';
 
 describe('MyServicesComponent', () => {
   let component: MyServicesComponent;
@@ -12,7 +13,7 @@ describe('MyServicesComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [
-        MyServicesComponent
+        MyServicesComponent, ServicesListComponent
       ],
       imports: [
         SharedModule,

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class ProjectListComponent {
 
-  @Input() projects: [];
+  @Input() projects: Array<Object>;
 
   constructor(private router: Router) { }
 
