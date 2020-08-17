@@ -9,12 +9,14 @@ import { GraphQLModule } from './graphql.module';
 
 import { HeaderComponent } from './header/header.component';
 import { FaqsPanelComponent } from './faqs-panel/faqs-panel.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
-    FaqsPanelComponent
+    FaqsPanelComponent,
+    PageNotFoundComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { FaqsPanelComponent } from './faqs-panel/faqs-panel.component';
     ErrorPagesModule,
     GraphQLModule,
     HeaderComponent,
-    FaqsPanelComponent
+    FaqsPanelComponent,
+    PageNotFoundComponent
   ]
 })
 export class SharedModule { }

@@ -3,8 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
 import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
 import { ProjectComponent } from '@modules/my-projects/project/project.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
 import { OnlyProjectMembersGuard } from '@app/guard/only-project-members.guard';
-import { OnlyAdminGuard } from '@app/guard/only-admin.guard';
+
 
 const routes: Routes = [
   {
@@ -42,6 +43,10 @@ const routes: Routes = [
         loadChildren: () => import('@modules/help/help.module').then((m) => m.HelpModule)
       },
       {
+        path: 'notfound',
+        component: PageNotFoundComponent
+      },
+      {
         path: 'error/:errorCode',
         loadChildren: () => import('@modules/error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
       },
@@ -53,7 +58,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/', // TODO: create a page not found component
+    redirectTo: '/notfound'
   },
 ];
 
