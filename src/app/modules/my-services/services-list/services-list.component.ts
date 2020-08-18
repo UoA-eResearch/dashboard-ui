@@ -16,7 +16,7 @@ export class ServicesListComponent implements OnInit {
   }
 
   openService(serviceType: string, serviceId: number) {
-    this.router.navigateByUrl(`/${serviceType}/${serviceId}`);
+    this.router.navigateByUrl(`service/${serviceType}/${serviceId}`);
   }
 
 }

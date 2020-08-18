@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { UserInfoDto, LoginService } from '@uoa/auth';
 import { Subject, Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import gql from 'graphql-tag';
 
 
@@ -46,7 +46,8 @@ export class DropboxDetailsComponent implements OnInit, OnDestroy {
   constructor(
     private loginService: LoginService,
     private apollo: Apollo,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.paramsSubscription = this.route.params.subscribe(
       params => {
@@ -76,7 +77,7 @@ export class DropboxDetailsComponent implements OnInit, OnDestroy {
         error => {
           this.loading$.next(false);          
           if (error.message === 'GraphQL error: 404: NOT FOUND') {
-            this.dropbox = [];
+            this.router.navigate(['/notfound']);
           }
           else {
             console.debug(JSON.stringify(error));
