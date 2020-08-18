@@ -5,10 +5,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { MyServicesComponent } from './my-services.component';
 import { ServicesListComponent } from './services-list/services-list.component';
+import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
+
 
 describe('MyServicesComponent', () => {
   let component: MyServicesComponent;
   let fixture: ComponentFixture<MyServicesComponent>;
+  let controller: ApolloTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -19,13 +22,17 @@ describe('MyServicesComponent', () => {
         SharedModule,
         CoreModule,
         BrowserAnimationsModule,
-        RouterTestingModule
+        RouterTestingModule,
+        ApolloTestingModule
       ]
     })
     .compileComponents();
+    
+    controller = TestBed.get(ApolloTestingController);
   }));
 
   beforeEach(() => {
+    
     fixture = TestBed.createComponent(MyServicesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -38,5 +45,9 @@ describe('MyServicesComponent', () => {
   it(`should have as title 'Services Dashboard'`, () => {
     const app = fixture.componentInstance;
     expect(app.pageInfo.title).toEqual('Services Dashboard');
+  });
+
+  afterEach(() => {
+    controller.verify();
   });
 });

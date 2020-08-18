@@ -5,30 +5,34 @@ import { SharedModule } from '@shared/shared.module';
 import { CoreModule } from '@app/core.module';
 import { MyProjectsComponent } from './my-projects.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Apollo } from 'apollo-angular';
+import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
 import { ProjectComponent } from './project/project.component';
 import { ProjectListComponent } from './project-list/project-list.component';
 
 describe('MyProjectsComponent', () => {
   let component: MyProjectsComponent;
   let fixture: ComponentFixture<MyProjectsComponent>;
+  let controller: ApolloTestingController;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [MyProjectsComponent, ProjectComponent, ProjectListComponent],
       imports: [
-        HttpClientTestingModule,
         RouterTestingModule,
+        HttpClientTestingModule,
         SharedModule,
         CoreModule,
-        BrowserAnimationsModule
-      ],
-      providers: [ Apollo ]
+        BrowserAnimationsModule,
+        ApolloTestingModule
+      ]
     })
     .compileComponents();
+    
+    controller = TestBed.get(ApolloTestingController);
   }));
 
   beforeEach(() => {
+    
     fixture = TestBed.createComponent(MyProjectsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -36,6 +40,7 @@ describe('MyProjectsComponent', () => {
 
   afterEach(() => {
     fixture.destroy();
+    controller.verify();
   });
 
   it('should create', () => {

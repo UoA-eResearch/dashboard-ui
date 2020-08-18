@@ -5,7 +5,6 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './app.material.module';
 import { ErrorPagesModule } from '@uoa/error-pages';
-import { GraphQLModule } from './graphql.module';
 
 import { HeaderComponent } from './header/header.component';
 import { FaqsPanelComponent } from './faqs-panel/faqs-panel.component';
@@ -24,8 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FlexLayoutModule,
     MaterialModule,
     LayoutModule,
-    ErrorPagesModule,
-    GraphQLModule
+    ErrorPagesModule
   ],
   exports: [
     CommonModule,
@@ -34,7 +32,6 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     MaterialModule,
     LayoutModule,
     ErrorPagesModule,
-    GraphQLModule,
     HeaderComponent,
     FaqsPanelComponent,
     PageNotFoundComponent
