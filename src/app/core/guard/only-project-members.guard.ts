@@ -35,7 +35,7 @@ export class OnlyProjectMembersGuard implements CanActivate {
   async canActivate(
     next: ActivatedRouteSnapshot, 
     state: RouterStateSnapshot
-    ): Promise<boolean> {
+    ): Promise<boolean | UrlTree> {
     const userInfo = await this.loginService.getUserInfo();
     const projectId = next.params.id;
     const result = await this.apollo.query<any>({
