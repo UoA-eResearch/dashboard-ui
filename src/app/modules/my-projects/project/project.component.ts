@@ -127,7 +127,7 @@ export class ProjectComponent implements OnInit, OnDestroy {
             this.project = [];
           }
           else {
-            console.log(JSON.stringify(error));
+            console.debug(JSON.stringify(error));
             this.error = error;
           }          
         }

@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { SharedModule } from '@shared/shared.module';
 import { CerServiceRoutingModule } from './cer-services.routing.module'; 
 import { CerServicesComponent } from './cer-services.component';
-import { DropboxComponent } from './dropbox/dropbox.component';
+import { DropboxListComponent } from './dropbox/dropbox-list.component';
 import { DropboxDetailsComponent } from './dropbox/dropbox-details/dropbox-details.component';
 
 
 @NgModule({
-  declarations: [CerServicesComponent, DropboxComponent, DropboxDetailsComponent],
+  declarations: [CerServicesComponent, DropboxListComponent, DropboxDetailsComponent],
   imports: [
     CommonModule,
     SharedModule,

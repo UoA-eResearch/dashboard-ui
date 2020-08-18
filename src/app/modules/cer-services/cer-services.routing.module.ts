@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { CerServicesComponent } from './cer-services.component';
-import { DropboxComponent } from './dropbox/dropbox.component';
+import { DropboxListComponent } from './dropbox/dropbox-list.component';
 import { DropboxDetailsComponent } from './dropbox/dropbox-details/dropbox-details.component';
 import { OnlyServiceMembersGuard } from '@app/guard/only-service-members.guard';
+import { OnlyAdminGuard } from '@app/guard/only-admin.guard';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
     children: [
       {
         path: 'dropbox',
-        component: DropboxComponent
+        canActivate: [OnlyAdminGuard],
+        component: DropboxListComponent
       },
       {
         path: 'dropbox/:id',
