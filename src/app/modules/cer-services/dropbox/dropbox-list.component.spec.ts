@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { DropboxComponent } from './dropbox.component';
+import { DropboxListComponent } from './dropbox-list.component';
 
-describe('DropboxComponent', () => {
-  let component: DropboxComponent;
-  let fixture: ComponentFixture<DropboxComponent>;
+describe('DropboxListComponent', () => {
+  let component: DropboxListComponent;
+  let fixture: ComponentFixture<DropboxListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ DropboxComponent ]
+      declarations: [ DropboxListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(DropboxComponent);
+    fixture = TestBed.createComponent(DropboxListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
