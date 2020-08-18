@@ -73,7 +73,7 @@
                 <mat-list-item *ngFor="let dropbox of project.services.dropbox" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/dropbox.svg" alt="avatar">
                   <h3 matLine>{{dropbox.name}}</h3>
-                  <button mat-flat-button color="accent" routerLink="/my-services/dropbox/{{dropbox.id}}">View</button>
+                  <button mat-flat-button color="accent" routerLink="/service/dropbox/{{dropbox.id}}">View</button>
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
@@ -83,7 +83,7 @@
                 <mat-list-item *ngFor="let nectar of project.services.nectar" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/nectar.jpg" alt="avatar">
                   <h3 matLine>{{nectar.name}}</h3>
-                  <button mat-flat-button color="accent" routerLink="/my-services/nectar/{{nectar.id}}">View</button>
+                  <button mat-flat-button color="accent" routerLink="/service/nectar/{{nectar.id}}">View</button>
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
@@ -93,7 +93,7 @@
                 <mat-list-item *ngFor="let research_drive of project.services.research_drive" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/research-storage.jpg" alt="avatar">
                   <h3 matLine>{{research_drive.name}}</h3>
-                  <button mat-flat-button color="accent" routerLink="/my-services/research-drive/{{research_drive.id}}">View</button>
+                  <button mat-flat-button color="accent" routerLink="/service/research-drive/{{research_drive.id}}">View</button>
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
@@ -103,7 +103,7 @@
                 <mat-list-item *ngFor="let vis of project.services.vis" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/vis.jpg" alt="avatar">
                   <h3 matLine>{{vis.name}}</h3>
-                  <button mat-flat-button color="accent" routerLink="/my-services/visualisation/{{vis.id}}">View</button>
+                  <button mat-flat-button color="accent" routerLink="/service/vis/{{vis.id}}">View</button>
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
@@ -113,7 +113,7 @@
                 <mat-list-item *ngFor="let vm of project.services.vm" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/research-vm.jpg" alt="avatar">
                   <h3 matLine>{{vm.name}}</h3>
-                  <button mat-flat-button color="accent" routerLink="/my-services/research-vm/{{vm.id}}">View</button>
+                  <button mat-flat-button color="accent" routerLink="/service/research-vm/{{vm.id}}">View</button>
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
