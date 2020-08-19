@@ -1,7 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '@shared/shared.module';
-import { CoreModule } from '@app/core.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HelpComponent } from './help.component';
 
@@ -15,9 +13,7 @@ describe('HelpComponent', () => {
         HelpComponent
       ],
       imports: [
-        RouterTestingModule,
         SharedModule,
-        CoreModule,
         BrowserAnimationsModule
       ]
     })
@@ -37,5 +33,9 @@ describe('HelpComponent', () => {
   it(`should have as title 'Welcome to the eResearch Help Repository!'`, () => {
     const app = fixture.componentInstance;
     expect(app.pageInfo.title).toEqual('Welcome to the eResearch Help Repository!');
+  });
+
+  afterEach(() => {
+    fixture.destroy();
   });
 });

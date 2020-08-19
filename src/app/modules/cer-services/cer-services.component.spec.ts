@@ -1,7 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { SharedModule } from '@shared/shared.module';
-import { CoreModule } from '@app/core.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CerServicesComponent } from './cer-services.component';
 
@@ -13,9 +10,6 @@ describe('CerServicesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CerServicesComponent ],
       imports: [
-        SharedModule,
-        CoreModule,
-        BrowserAnimationsModule,
         RouterTestingModule
       ]
     })
@@ -30,5 +24,9 @@ describe('CerServicesComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  afterEach(() => {
+    fixture.destroy();
   });
 });

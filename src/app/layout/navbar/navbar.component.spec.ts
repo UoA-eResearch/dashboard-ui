@@ -54,4 +54,8 @@ describe('NavbarComponent', () => {
     component.ngOnInit();
     await expect(loginServiceSpy).toHaveBeenCalledTimes(0);
   });
+
+  afterEach(() => {
+    fixture.destroy();
+  });
 });

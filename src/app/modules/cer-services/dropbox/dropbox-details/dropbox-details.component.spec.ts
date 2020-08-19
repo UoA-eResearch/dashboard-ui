@@ -19,11 +19,10 @@ describe('DropboxDetailsComponent', () => {
       ]
     })
     .compileComponents();
-
-    controller = TestBed.get(ApolloTestingController);
   }));
 
   beforeEach(() => {
+    controller = TestBed.inject(ApolloTestingController);
     fixture = TestBed.createComponent(DropboxDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -35,5 +34,6 @@ describe('DropboxDetailsComponent', () => {
 
   afterEach(() => {
     controller.verify();
+    fixture.destroy();
   });
 });

@@ -41,4 +41,8 @@ describe('HomeComponent', () => {
   //   const compiled = fixture.nativeElement;
   //   expect(compiled.querySelector('span').textContent).toContain('Welcome to the eResearch Dashboard!');
   // });
+
+  afterEach(() => {
+    fixture.destroy();
+  });
 });

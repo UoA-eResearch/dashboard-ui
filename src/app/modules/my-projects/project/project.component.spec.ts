@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { SharedModule } from '@shared/shared.module';
 import { CoreModule } from '@app/core.module';
 import { ProjectComponent } from './project.component';
@@ -18,6 +19,7 @@ describe('ProjectComponent', () => {
       declarations: [ ProjectComponent ],
       imports: [
         RouterTestingModule,
+        HttpClientTestingModule,
         SharedModule,
         CoreModule,
         BrowserAnimationsModule,
@@ -25,11 +27,10 @@ describe('ProjectComponent', () => {
       ]
     })
     .compileComponents();
-    
-    controller = TestBed.get(ApolloTestingController);
   }));
 
   beforeEach(() => {
+    controller = TestBed.inject(ApolloTestingController);
     fixture = TestBed.createComponent(ProjectComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -41,5 +42,6 @@ describe('ProjectComponent', () => {
 
   afterEach(() => {
     controller.verify();
+    fixture.destroy();
   });
 });

@@ -34,4 +34,8 @@ describe('PageNotFoundComponent', () => {
     expect(el.getAttribute('routerLink')).toBe('/');
     expect(el.textContent).toContain('home');
   });
+
+  afterEach(() => {
+    fixture.destroy();
+  });
 });

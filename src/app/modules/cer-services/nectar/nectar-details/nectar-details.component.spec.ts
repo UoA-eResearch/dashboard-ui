@@ -19,11 +19,10 @@ describe('NectarDetailsComponent', () => {
       ]
     })
     .compileComponents();
-
-    controller = TestBed.get(ApolloTestingController);
   }));
 
   beforeEach(() => {
+    controller = TestBed.inject(ApolloTestingController);
     fixture = TestBed.createComponent(NectarDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -35,5 +34,6 @@ describe('NectarDetailsComponent', () => {
 
   afterEach(() => {
     controller.verify();
+    fixture.destroy();
   });
 });

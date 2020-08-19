@@ -28,4 +28,8 @@ describe('HomeDashBoardComponent', () => {
   it('should compile', () => {
     expect(component).toBeTruthy();
   });
+
+  afterEach(() => {
+    fixture.destroy();
+  });
 });

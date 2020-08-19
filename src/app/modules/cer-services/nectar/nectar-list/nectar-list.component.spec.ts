@@ -22,4 +22,8 @@ describe('NectarListComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  afterEach(() => {
+    fixture.destroy();
+  });
 });

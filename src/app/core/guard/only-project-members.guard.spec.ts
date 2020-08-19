@@ -18,7 +18,10 @@ describe('OnlyProjectMembersGuard', () => {
       ]
     });
     guard = TestBed.inject(OnlyProjectMembersGuard);
-    controller = TestBed.get(ApolloTestingController);
+  });
+
+  beforeEach(() => {
+    controller = TestBed.inject(ApolloTestingController);
   });
 
   it('should be created', () => {

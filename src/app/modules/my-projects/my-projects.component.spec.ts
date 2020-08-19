@@ -27,20 +27,13 @@ describe('MyProjectsComponent', () => {
       ]
     })
     .compileComponents();
-    
-    controller = TestBed.get(ApolloTestingController);
   }));
 
   beforeEach(() => {
-    
+    controller = TestBed.inject(ApolloTestingController);
     fixture = TestBed.createComponent(MyProjectsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
-  });
-
-  afterEach(() => {
-    fixture.destroy();
-    controller.verify();
   });
 
   it('should create', () => {
@@ -50,5 +43,10 @@ describe('MyProjectsComponent', () => {
   it(`should have as title 'Projects Dashboard'`, () => {
     const app = fixture.componentInstance;
     expect(app.pageInfo.title).toEqual('Projects Dashboard');
+  });
+
+  afterEach(() => {
+    controller.verify();
+    fixture.destroy();    
   });
 });
