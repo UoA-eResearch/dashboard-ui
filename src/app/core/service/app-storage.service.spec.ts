@@ -15,17 +15,17 @@ describe('AppStorageService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should call localforage.setItem() when setItem is called', async() => {
-    const localforageSpy = spyOn(localforage, "setItem");
-    service.setItem("test", "value");
+  it('should call localforage.setItem() when setItem is called', async () => {
+    const localforageSpy = spyOn(localforage, 'setItem');
+    service.setItem('test', 'value');
     expect(localforageSpy).toHaveBeenCalled();
-    expect(localforageSpy).toHaveBeenCalledWith("test", "value");
+    expect(localforageSpy).toHaveBeenCalledWith('test', 'value');
   });
 
-  it('should call localforage.removeItem() when removeItem is called', async() => {
-    const localforageSpy = spyOn(localforage, "removeItem");
-    service.removeItem("test");
+  it('should call localforage.removeItem() when removeItem is called', async () => {
+    const localforageSpy = spyOn(localforage, 'removeItem');
+    service.removeItem('test');
     expect(localforageSpy).toHaveBeenCalled();
-    expect(localforageSpy).toHaveBeenCalledWith("test");
+    expect(localforageSpy).toHaveBeenCalledWith('test');
   });
 });

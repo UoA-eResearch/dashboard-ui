@@ -71,19 +71,19 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
           this.loading$.next(loading);
         },
         error => {
-          this.loading$.next(false);          
+          this.loading$.next(false);
           if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.personProjects = [];
           }
           else {
             console.log(JSON.stringify(error));
             this.error = error;
-          }          
+          }
         }
       );
     }
     else {
-      throw new Error("Error: User info not found, please try reloading the page.");
+      throw new Error('Error: User info not found, please try reloading the page.');
     }
   }
 

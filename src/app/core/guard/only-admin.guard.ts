@@ -18,5 +18,5 @@ export class OnlyAdminGuard implements CanActivate {
     this.router.navigate(['/error/403']);
     return false;
   }
-  
+
 }

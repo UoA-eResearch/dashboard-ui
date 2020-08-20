@@ -6,9 +6,9 @@ import { LoginService } from '@uoa/auth';
   providedIn: 'root'
 })
 export class OnlyServiceMembersGuard implements CanActivate {
-  
+
   // TO DO: check current user is a group member on the requested service
-  
+
   constructor(
     private loginService: LoginService,
     private router: Router
@@ -21,7 +21,7 @@ export class OnlyServiceMembersGuard implements CanActivate {
 
     const userInfo = await this.loginService.getUserInfo();
 
-    // TEMP for development only 
+    // TEMP for development only
     // TO DO: check actual group memberships to determine allowed users
     // groups check may be done server side...
     const allowedUsers = ['rmcc872', 'raut473'];
@@ -33,5 +33,5 @@ export class OnlyServiceMembersGuard implements CanActivate {
     this.router.navigate(['/error/403']);
     return Promise.resolve(false);
   }
-  
+
 }

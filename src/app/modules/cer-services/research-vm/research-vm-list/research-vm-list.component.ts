@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class ResearchVmListComponent implements OnInit {
 
   // TO DO: idea is for this component to show a (paginated?) list of ALL CeR research vms
-  // which will be admin-only 
+  // which will be admin-only
 
   constructor() { }
 

@@ -51,7 +51,7 @@ export class DropboxDetailsComponent implements OnInit, OnDestroy {
   ) {
     this.paramsSubscription = this.route.params.subscribe(
       params => {
-        this.id = parseInt(params['id']);
+        this.id = parseInt(params.id, 10);
       }
     );
   }
@@ -75,14 +75,14 @@ export class DropboxDetailsComponent implements OnInit, OnDestroy {
           this.loading$.next(loading);
         },
         error => {
-          this.loading$.next(false);          
+          this.loading$.next(false);
           if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.router.navigate(['/notfound']);
           }
           else {
-            console.debug(JSON.stringify(error));
+            console.log(JSON.stringify(error));
             this.error = error;
-          }          
+          }
         }
       );
     }

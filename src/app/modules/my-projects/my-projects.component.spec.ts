@@ -47,6 +47,6 @@ describe('MyProjectsComponent', () => {
 
   afterEach(() => {
     controller.verify();
-    fixture.destroy();    
+    fixture.destroy();
   });
 });

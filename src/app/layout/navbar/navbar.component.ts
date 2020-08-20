@@ -12,16 +12,16 @@ export class NavbarComponent implements OnInit {
     { path: '/my-projects', label: 'My Projects' },
     { path: '/my-services', label: 'My Services' },
     { path: '/help', label: 'Help' },
-  ]
+  ];
 
   constructor(public loginService: LoginService, private router: Router) { }
-  
+
   async ngOnInit() {
     try {
       await this.loginService.isAuthenticated();
-    } catch(error) {
+    } catch (error) {
       return console.log(error.message);
-    };
+    }
   }
 
   async login() {

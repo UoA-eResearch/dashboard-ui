@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 })
 export class MyProjectsListComponent {
 
-  @Input() projects: Array<Object>;
+  @Input() projects: Array<object>;
 
   constructor(private router: Router) { }
 

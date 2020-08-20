@@ -53,8 +53,8 @@ export class MyServicesComponent implements OnInit, OnDestroy {
     imageUrl: 'https://via.placeholder.com/1680x220'
   };
   userInfo: UserInfoDto;
-  personServices: Object;
-  hasNoServices: boolean = false;
+  personServices: object;
+  hasNoServices = false;
   loading$ = new Subject<boolean>();
   error: any;
 
@@ -83,22 +83,22 @@ export class MyServicesComponent implements OnInit, OnDestroy {
           this.loading$.next(loading);
         },
         error => {
-          this.loading$.next(false);          
+          this.loading$.next(false);
           if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.personServices = [];
             this.hasNoServices = true;
           }
           else {
-            console.debug(JSON.stringify(error));
+            console.log(JSON.stringify(error));
             this.error = error;
-          }          
+          }
         }
       );
     }
   }
 
   getAllServices(projects) {
-    let services = {
+    const services = {
       dropbox: [],
       nectar: [],
       research_drive: [],
@@ -106,17 +106,17 @@ export class MyServicesComponent implements OnInit, OnDestroy {
       vm: []
     };
 
-    for (let i = 0; i < projects.length; i++) {
-      services.dropbox = services.dropbox.concat(projects[i].project.services?.dropbox);
-      services.nectar = services.nectar.concat(projects[i].project.services?.nectar);
-      services.research_drive = services.research_drive.concat(projects[i].project.services?.research_drive);
-      services.vis = services.vis.concat(projects[i].project.services?.vis);
-      services.vm = services.vm.concat(projects[i].project.services?.vm);      
+    for (const project of projects) {
+      services.dropbox = services.dropbox.concat(project.project.services?.dropbox);
+      services.nectar = services.nectar.concat(project.project.services?.nectar);
+      services.research_drive = services.research_drive.concat(project.project.services?.research_drive);
+      services.vis = services.vis.concat(project.project.services?.vis);
+      services.vm = services.vm.concat(project.project.services?.vm);
     }
 
     // check if there are any services
-    this.hasNoServices = Object.keys(services).every(function(key) {
-      return services[key].length === 0
+    this.hasNoServices = Object.keys(services).every((key) => {
+      return services[key].length === 0;
     });
 
     return services;

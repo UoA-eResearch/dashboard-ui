@@ -33,7 +33,7 @@ export class OnlyProjectMembersGuard implements CanActivate {
   ) {}
 
   async canActivate(
-    next: ActivatedRouteSnapshot, 
+    next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
     ): Promise<boolean | UrlTree> {
     const userInfo = await this.loginService.getUserInfo();
@@ -46,9 +46,9 @@ export class OnlyProjectMembersGuard implements CanActivate {
     }).toPromise();
 
     const members = result.data.project.members;
-    for (let i = 0; i < members.length; i++) {
-      for (let j = 0; j < members[i].person?.identities.length; j++) {
-        if (members[i].person?.identities[j].username === userInfo.upi) {
+    for (const member of members) {
+      for (const identity of member.person?.identities) {
+        if (identity.username === userInfo.upi) {
           return Promise.resolve(true);
         }
       }
@@ -57,5 +57,5 @@ export class OnlyProjectMembersGuard implements CanActivate {
     this.router.navigate(['/error/403']);
     return Promise.resolve(false);
   }
-  
+
 }

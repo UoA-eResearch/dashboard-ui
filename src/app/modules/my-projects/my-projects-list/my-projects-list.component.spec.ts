@@ -6,67 +6,67 @@ describe('MyProjectsListComponent', () => {
   let component: MyProjectsListComponent;
   let fixture: ComponentFixture<MyProjectsListComponent>;
   const PROJECTS_MOCK = [{
-    "project": {
-      "id": 1,
-      "title": "Project 1 Title",
-      "start_date": "2020-06-27",
-      "end_date": "2020-09-27",
-      "description": "Project 1 Description",
-      "members": [{
-        "role": {
-          "name": "Project Owner",
-          "__typename": "Role"
+    project: {
+      id: 1,
+      title: 'Project 1 Title',
+      start_date: '2020-06-27',
+      end_date: '2020-09-27',
+      description: 'Project 1 Description',
+      members: [{
+        role: {
+          name: 'Project Owner',
+          __typename: 'Role'
         },
-        "person": {
-          "full_name": "Mickey Mouse",
-          "__typename": "Person"
+        person: {
+          full_name: 'Mickey Mouse',
+          __typename: 'Person'
         },
-        "__typename": "ProjectMember"
+        __typename: 'ProjectMember'
       }, {
-        "role": {
-          "name": "Primary Adviser",
-          "__typename": "Role"
+        role: {
+          name: 'Primary Adviser',
+          __typename: 'Role'
         },
-        "person": {
-          "full_name": "Minnie Mouse",
-          "__typename": "Person"
+        person: {
+          full_name: 'Minnie Mouse',
+          __typename: 'Person'
         },
-        "__typename": "ProjectMember"
+        __typename: 'ProjectMember'
       }],
-      "__typename": "Project"
+      __typename: 'Project'
     },
-    "__typename": "ProjectOfPerson"
+    __typename: 'ProjectOfPerson'
   }, {
-    "project": {
-      "id": 2,
-      "title": "Project 2 Title",
-      "start_date": "2020-07-27",
-      "end_date": "2020-08-27",
-      "description": "Project 2 Description",
-      "members": [{
-        "role": {
-          "name": "Project Owner",
-          "__typename": "Role"
+    project: {
+      id: 2,
+      title: 'Project 2 Title',
+      start_date: '2020-07-27',
+      end_date: '2020-08-27',
+      description: 'Project 2 Description',
+      members: [{
+        role: {
+          name: 'Project Owner',
+          __typename: 'Role'
         },
-        "person": {
-          "full_name": "Mickey Mouse",
-          "__typename": "Person"
+        person: {
+          full_name: 'Mickey Mouse',
+          __typename: 'Person'
         },
-        "__typename": "ProjectMember"
+        __typename: 'ProjectMember'
       }, {
-        "role": {
-          "name": "Primary Adviser",
-          "__typename": "Role"
+        role: {
+          name: 'Primary Adviser',
+          __typename: 'Role'
         },
-        "person": {
-          "full_name": "Minnie Mouse",
-          "__typename": "Person"
+        person: {
+          full_name: 'Minnie Mouse',
+          __typename: 'Person'
         },
-        "__typename": "ProjectMember"
+        __typename: 'ProjectMember'
       }],
-      "__typename": "Project"
+      __typename: 'Project'
     },
-    "__typename": "ProjectOfPerson"
+    __typename: 'ProjectOfPerson'
   }];
 
   beforeEach(async(() => {
