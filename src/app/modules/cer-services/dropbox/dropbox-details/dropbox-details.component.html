@@ -1,4 +1,62 @@
-<div class="dropbox-content">
-  <h1>Dropbox Details</h1>
-  <p>Dropbox: {{dropbox | json}}</p>
+<div class="dropbox-container">
+  <div class="dropbox-content">
+    <div *ngIf="(loading$ | async)">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-card *ngIf="dropbox && !(loading$ | async)">
+      <div fxLayout="row wrap">
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/dropbox.svg">
+        <mat-card-title>{{dropbox.name}}</mat-card-title>
+      </div>
+      <mat-card-subtitle>Dropbox | Manage</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card *ngIf="dropbox && !(loading$ | async)">
+      <mat-card-content>
+        <h3>Name:</h3>
+        <h4>{{dropbox.name}}</h4>
+        <h3>Team Folder Id:</h3>
+        <h4>{{dropbox.team_folder_id_dbx}}</h4>
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngIf="dropbox && !(loading$ | async)">
+      <div *ngFor="let project of dropbox.projects">
+        <mat-card>
+          <h3>Projects:</h3>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <mat-list role="list" *ngIf="dropbox.projects.length > 0; else noProjects">
+              <mat-list-item *ngFor="let project of dropbox.projects" role="listitem">
+                <h3 matLine class="project-title">{{project.project.title}}</h3>
+                <p matLine>Project Code: <strong>{{project.code}}</strong></p>
+                <h5 matLine>{{project.project.start_date | date}} - {{project.project.end_date | date}}</h5>
+                <button mat-flat-button color="accent" routerLink="/project/{{project.project.id}}">View</button>
+                <mat-divider></mat-divider>
+              </mat-list-item>
+              
+            </mat-list>
+
+            <ng-template #noProjects>
+              <div *ngIf="!(loading$ | async) && !error">
+                <p>There are no projects associated with this Dropbox.</p>
+              </div>
+            </ng-template>
+
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+
+    <div *ngIf="!(loading$ | async)" class="dropbox-link" >
+      <a href="https://www.dropbox.com/" fxLayout="column">
+        <img mat-card-avatar src="assets/imgs/dropbox.svg" alt="dropbox-icon" fxFlexAlign="center">
+        <p fxFlexAlign="center">visit dropbox</p>
+      </a>
+    </div>
+    
+  </div>
 </div>
+
