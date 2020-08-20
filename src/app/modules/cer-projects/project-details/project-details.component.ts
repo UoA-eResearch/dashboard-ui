@@ -1,7 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { Subscription, Subject, Observable, throwError } from 'rxjs';
+import { Subscription, Subject } from 'rxjs';
 import { LoginService, UserInfoDto } from '@uoa/auth';
-import { PageInfo } from '@data/type/PageInfo';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { ActivatedRoute } from '@angular/router';
@@ -72,17 +71,11 @@ query Project($id: Int!) {
 }`;
 
 @Component({
-  selector: 'app-project',
-  templateUrl: './project.component.html',
-  styleUrls: ['./project.component.scss']
+  selector: 'app-project-details',
+  templateUrl: './project-details.component.html',
+  styleUrls: ['./project-details.component.scss']
 })
-export class ProjectComponent implements OnInit, OnDestroy {
-  pageInfo: PageInfo = {
-    title: 'Projects Dashboard',
-    description: `View and manage your eResearch projects, project members,
-                  and project-related services.`,
-    imageUrl: 'https://via.placeholder.com/1680x220'
-  };
+export class ProjectDetailsComponent implements OnInit, OnDestroy {
   userInfo: UserInfoDto;
   id;
   project;

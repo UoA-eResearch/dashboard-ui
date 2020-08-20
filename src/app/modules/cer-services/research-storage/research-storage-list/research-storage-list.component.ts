@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResearchStorageListComponent implements OnInit {
 
+  // TO DO: idea is for this component to show a (paginated?) list of ALL CeR research storage drives
+  // which will be admin-only 
+
   constructor() { }
 
   ngOnInit(): void {

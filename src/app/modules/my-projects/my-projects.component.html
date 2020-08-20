@@ -34,7 +34,7 @@
       </div>
 
       <div *ngIf="!(loading$ | async) && personProjects?.projects?.length > 0; else noProjects">
-        <app-project-list [projects]="personProjects.projects"></app-project-list>
+        <app-my-projects-list [projects]="personProjects.projects"></app-my-projects-list>
       </div>
       <ng-template #noProjects>
         <div *ngIf="!(loading$ | async) && !error">

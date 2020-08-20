@@ -2,9 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
 import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
-import { ProjectComponent } from '@modules/my-projects/project/project.component';
 import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
-import { OnlyProjectMembersGuard } from '@app/guard/only-project-members.guard';
 
 
 const routes: Routes = [
@@ -24,14 +22,14 @@ const routes: Routes = [
         loadChildren: () => import('@modules/my-projects/my-projects.module').then((m) => m.MyProjectsModule)
       },
       {
-        path: 'my-projects/:id',
-        canActivate: [AuthGuard, OnlyProjectMembersGuard],
-        component: ProjectComponent
-      },
-      {
         path: 'my-services',
         canActivate: [AuthGuard],
         loadChildren: () => import('@modules/my-services/my-services.module').then((m) => m.MyServicesModule)
+      },
+      {
+        path: 'project',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('@modules/cer-projects/cer-projects.module').then((m) => m.CerProjectsModule)
       },
       {
         path: 'service',
