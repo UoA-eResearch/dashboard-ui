@@ -6,7 +6,6 @@ import { CoreModule } from '@app/core.module';
 import { MyProjectsComponent } from './my-projects.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
-import { ProjectComponent } from './project/project.component';
 import { MyProjectsListComponent } from './my-projects-list/my-projects-list.component';
 
 describe('MyProjectsComponent', () => {
@@ -16,7 +15,7 @@ describe('MyProjectsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MyProjectsComponent, ProjectComponent, MyProjectsListComponent],
+      declarations: [MyProjectsComponent, MyProjectsListComponent],
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
