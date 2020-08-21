@@ -1,5 +1,61 @@
-<div class="research-storage-content">
-  <h1>Research Storage Details</h1>
-  <p>Research Storage: {{researchStorage | json}}</p>
+<div class="research-storage-container">
+  <div class="research-storage-content">
+    <div *ngIf="(loading$ | async)">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-card *ngIf="researchStorage && !(loading$ | async)">
+      <div fxLayout="row wrap">
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/research-storage.jpg">
+        <mat-card-title>{{researchStorage.name}}</mat-card-title>
+      </div>
+      <mat-card-subtitle>Research Storage | Manage</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card *ngIf="researchStorage && !(loading$ | async)">
+      <mat-card-content>
+        <h3>Name:</h3>
+        <h4>{{researchStorage.name}}</h4>
+        <h3>Created Date:</h3>
+        <h4>{{researchStorage.date | date}}</h4>
+        <h3>Drive Specs:</h3>
+        <p>Allocated GB: <b>{{researchStorage.allocated_gb}}</b></p>
+        <p>Free GB: <b>{{researchStorage.free_gb}}</b></p>
+        <p>Used GB: <b>{{researchStorage.used_gb}}</b></p>
+        <p>Percentage Used: <b>{{researchStorage.percentage_used}}%</b></p>
+        <p>Number of Files: <b>{{researchStorage.num_files}}</b></p>
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngIf="researchStorage && !(loading$ | async)">
+      <div>
+        <mat-card>
+          <h3>Projects:</h3>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <mat-list role="list" *ngIf="researchStorage.projects.length > 0; else noProjects">
+              <mat-list-item *ngFor="let project of researchStorage.projects" role="listitem">
+                <h3 matLine class="project-title">{{project.project.title}}</h3>
+                <p matLine>Project Code: <strong>{{project.code}}</strong></p>
+                <h5 matLine>{{project.project.start_date | date}} - {{project.project.end_date | date}}</h5>
+                <button mat-flat-button color="accent" routerLink="/project/{{project.project.id}}">View</button>
+                <mat-divider></mat-divider>
+              </mat-list-item>
+              
+            </mat-list>
+
+            <ng-template #noProjects>
+              <div *ngIf="!(loading$ | async) && !error">
+                <p>There are no projects associated with this research storage drive.</p>
+              </div>
+            </ng-template>
+
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+    
+  </div>
 </div>
 

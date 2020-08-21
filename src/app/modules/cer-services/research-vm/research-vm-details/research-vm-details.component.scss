@@ -1,0 +1,25 @@
+@import './../../../../../styles';
+
+.mat-card {
+  margin-bottom: 2em;
+}
+
+.mat-card-title {
+  color: $color-pink;
+  line-height: 1.2em;
+  margin-top: 0px !important;
+}
+
+.mat-card-subtitle {
+  color: $color-primary;
+  margin-top: 0px !important;
+}
+
+.avatar-image {
+  background-size: cover;
+  margin-right: 5px;
+}
+
+.project-title {
+  padding-bottom: 5px !important;
+}

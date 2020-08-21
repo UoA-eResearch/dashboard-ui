@@ -22,7 +22,7 @@
     </mat-card>
 
     <div *ngIf="dropbox && !(loading$ | async)">
-      <div *ngFor="let project of dropbox.projects">
+      <div>
         <mat-card>
           <h3>Projects:</h3>
           <mat-divider></mat-divider>

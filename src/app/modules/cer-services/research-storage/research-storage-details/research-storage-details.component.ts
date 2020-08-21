@@ -26,6 +26,8 @@ query ResearchStorage($id: Int!) {
       project {
         id
         title
+        start_date
+        end_date
       }
     }
   }
