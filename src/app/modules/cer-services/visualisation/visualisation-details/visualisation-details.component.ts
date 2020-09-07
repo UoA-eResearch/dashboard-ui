@@ -74,7 +74,6 @@ export class VisualisationDetailsComponent implements OnInit, OnDestroy {
       .valueChanges
       .subscribe(
         ({ data, loading }) => {
-          console.log(data);
           this.visualisation = data.visualisation;
           this.loading$.next(loading);
         },

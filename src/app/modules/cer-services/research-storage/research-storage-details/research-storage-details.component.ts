@@ -76,7 +76,6 @@ export class ResearchStorageDetailsComponent implements OnInit, OnDestroy {
       .valueChanges
       .subscribe(
         ({ data, loading }) => {
-          console.log(data);
           this.researchStorage = data.researchstorage;
           this.loading$.next(loading);
         },

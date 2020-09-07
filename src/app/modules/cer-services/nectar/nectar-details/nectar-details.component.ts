@@ -88,7 +88,6 @@ export class NectarDetailsComponent implements OnInit, OnDestroy {
       .valueChanges
       .subscribe(
         ({ data, loading }) => {
-          console.log(data);
           this.nectar = data.nectar;
           this.loading$.next(loading);
         },

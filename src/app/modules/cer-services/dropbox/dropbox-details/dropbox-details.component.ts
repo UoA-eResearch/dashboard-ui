@@ -72,7 +72,6 @@ export class DropboxDetailsComponent implements OnInit, OnDestroy {
       .valueChanges
       .subscribe(
         ({ data, loading }) => {
-          console.log(data);
           this.dropbox = data.dropbox;
           this.loading$.next(loading);
         },
