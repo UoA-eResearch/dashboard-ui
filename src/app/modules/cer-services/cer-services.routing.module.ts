@@ -4,7 +4,6 @@ import { CerServicesComponent } from './cer-services.component';
 import { DropboxListComponent } from './dropbox/dropbox-list/dropbox-list.component';
 import { DropboxDetailsComponent } from './dropbox/dropbox-details/dropbox-details.component';
 import { OnlyServiceMembersGuard } from '@app/guard/only-service-members.guard';
-import { OnlyAdminGuard } from '@app/guard/only-admin.guard';
 import { NectarListComponent } from './nectar/nectar-list/nectar-list.component';
 import { NectarDetailsComponent } from './nectar/nectar-details/nectar-details.component';
 import { ResearchStorageListComponent } from './research-storage/research-storage-list/research-storage-list.component';
@@ -22,7 +21,6 @@ const routes: Routes = [
     children: [
       {
         path: 'dropbox',
-        canActivate: [OnlyAdminGuard],
         component: DropboxListComponent
       },
       {
@@ -32,7 +30,6 @@ const routes: Routes = [
       },
       {
         path: 'nectar',
-        canActivate: [OnlyAdminGuard],
         component: NectarListComponent
       },
       {
@@ -42,7 +39,6 @@ const routes: Routes = [
       },
       {
         path: 'research-storage',
-        canActivate: [OnlyAdminGuard],
         component: ResearchStorageListComponent
       },
       {
@@ -52,7 +48,6 @@ const routes: Routes = [
       },
       {
         path: 'research-vm',
-        canActivate: [OnlyAdminGuard],
         component: ResearchVmListComponent
       },
       {
@@ -62,7 +57,6 @@ const routes: Routes = [
       },
       {
         path: 'visualisation',
-        canActivate: [OnlyAdminGuard],
         component: VisualisationListComponent
       },
       {
