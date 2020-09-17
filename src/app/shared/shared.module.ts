@@ -9,13 +9,15 @@ import { ErrorPagesModule } from '@uoa/error-pages';
 import { HeaderComponent } from './header/header.component';
 import { FaqsPanelComponent } from './faqs-panel/faqs-panel.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { GroupMemberListComponent } from './group-member-list/group-member-list.component';
 
 
 @NgModule({
   declarations: [
     HeaderComponent,
     FaqsPanelComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GroupMemberListComponent
   ],
   imports: [
     CommonModule,
@@ -34,7 +36,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     ErrorPagesModule,
     HeaderComponent,
     FaqsPanelComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    GroupMemberListComponent
   ]
 })
 export class SharedModule { }
