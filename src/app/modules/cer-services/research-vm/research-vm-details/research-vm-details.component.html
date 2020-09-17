@@ -14,24 +14,59 @@
 
     <mat-card *ngIf="researchVm && !(loading$ | async)">
       <mat-card-content>
-        <h3>Name:</h3>
-        <h4>{{researchVm.name}}</h4>
-        <h3>Created Date:</h3>
-        <h4>{{researchVm.date | date}}</h4>
-        <h3>VM Specs:</h3>
-        <p>OS: <b>{{researchVm.os}}</b></p>
-        <p>CPUs: <b>{{researchVm.cpus}}</b></p>
-        <p>Memory (GB): <b>{{researchVm.memory_gb}}</b></p>
-        <p>Total Disk (GB): <b>{{researchVm.total_disk_gb}}</b></p>
-        <p>Host Name: <b>{{researchVm.host}}</b></p>
-        <p>Unique Id: <b>{{researchVm.uuid}}</b></p>
+        <mat-tab-group dynamicHeight animationDuration="0ms">
+          <mat-tab label="VM Specifications">
+            <ng-template matTabContent>
+              <h3>Created Date</h3>
+              <p>{{researchVm.date | date}}</p>
+              <mat-divider></mat-divider>
+              <h3>OS</h3>
+              <p>{{researchVm.os}}</p>
+              <mat-divider></mat-divider>
+              <h3>CPUs</h3>
+              <p>{{researchVm.cpus}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Memory (GB)</h3>
+              <p>{{researchVm.memory_gb}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Total Disk (GB)</h3>
+              <p>{{researchVm.total_disk_gb}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Host Name</h3>
+              <p>{{researchVm.host}}</p>
+              <mat-divider></mat-divider>
+              <h3>Unique Id</h3>
+              <p>{{researchVm.uuid}}</p>
+              <mat-divider></mat-divider>
+              <h3>State</h3>
+              <p>{{researchVm.state}}</p>
+            </ng-template>
+          </mat-tab>
+
+          <mat-tab label="Admins">
+            <ng-template matTabContent>
+              <app-group-member-list [groupId]="researchVm.groups.admin_group.replace('.eresearch', '')">
+              </app-group-member-list>
+            </ng-template>
+          </mat-tab>
+
+          <mat-tab label="Users">
+            <ng-template matTabContent>
+              <app-group-member-list [groupId]="researchVm.groups.user_group.replace('.eresearch', '')">
+              </app-group-member-list>
+            </ng-template>
+          </mat-tab>
+        </mat-tab-group>
+
+
+
       </mat-card-content>
     </mat-card>
 
     <div *ngIf="researchVm && !(loading$ | async)">
       <div>
         <mat-card>
-          <h3>Projects:</h3>
+          <h3>Related Projects:</h3>
           <mat-divider></mat-divider>
           <mat-card-content>
             <mat-list role="list" *ngIf="researchVm.projects.length > 0; else noProjects">

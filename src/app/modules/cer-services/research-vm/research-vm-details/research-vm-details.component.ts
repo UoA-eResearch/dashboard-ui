@@ -20,6 +20,11 @@ query ResearchVm($id: Int!) {
     state
     total_disk_gb
     uuid
+    groups {
+      admin_group
+      rw_group
+      user_group
+    }
     projects {
       code
       first_day
