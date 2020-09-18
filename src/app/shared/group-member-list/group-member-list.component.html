@@ -4,12 +4,17 @@
   </div>
 
   <mat-list role="list" *ngIf="groupMembers && !(loading$ | async)">
-    <mat-list-item *ngFor="let member of groupMembers.users" role="listitem">
+    <div *ngFor="let group of groupMembers">
+      <mat-list-item *ngFor="let member of group.users" role="listitem">
       <!-- <img matListAvatar class="avatar-image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="avatar"> TODO Use person icon-->
       <h3 matLine>{{member.name}}</h3>
       <p matLine>{{member.username}}</p>
+      <mat-chip-list>
+        <mat-chip>{{getMemberType(group.groupname)}}</mat-chip>
+      </mat-chip-list>
       <mat-divider></mat-divider>
     </mat-list-item>
+    </div>
   </mat-list>
 </div>
 

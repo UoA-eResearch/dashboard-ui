@@ -5,9 +5,10 @@ import { Subject, Subscription } from 'rxjs';
 
 
 const GET_GROUP_MEMBERS = gql`
-query GroupMembers($id: String!) {
-  groupmembers(id: $id) {
+query GroupMembers($groupnames: [String]!) {
+  groupmembers(groupnames: $groupnames) {
     total
+    groupname
     users {
       username
       name
@@ -22,11 +23,12 @@ query GroupMembers($id: String!) {
 })
 export class GroupMemberListComponent implements OnInit {
   
-  @Input() groupId: string;
+  @Input() groups: object;
+  @Input() groupLabels;
+  groupsLabelsMapping = {};
   loading$ = new Subject<boolean>();
   groupMembers;
   error;
-  cerGroupBaseName = 'eresearch.auckland.ac.nz:'
 
   private querySubscription: Subscription;
 
@@ -40,7 +42,7 @@ export class GroupMemberListComponent implements OnInit {
     .watchQuery<any>({
       query: GET_GROUP_MEMBERS,
       variables: {
-        id: this.cerGroupBaseName + this.groupId
+        groupnames: this.groupsToArray(this.groups),
       },
     })
     .valueChanges
@@ -55,6 +57,28 @@ export class GroupMemberListComponent implements OnInit {
         this.error = error;
       }
     );
+  }
+
+  groupsToArray(groups: object): string[] {
+    let groupArray: string[] = [];
+    for (var group in groups) {
+      if (group !== "__typename" && groups[group] !== "") {
+        // clean up group name (used for lookup to get member type):
+        groups[group] = groups[group].replace('.eresearch', '');
+        // push cleaned group name to array:
+        groupArray.push(groups[group]);
+      }
+    }
+    return groupArray;
+  }
+
+  getKeyByValue(object: object, value: any) {
+    return Object.keys(object).find(key => object[key] === value);
+  }
+
+  getMemberType(groupname: string) {
+    const groupLabel = this.getKeyByValue(this.groups, groupname)
+    return this.groupLabels[groupLabel];
   }
 
   ngOnDestroy(): void {

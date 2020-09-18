@@ -19,6 +19,11 @@ query ResearchStorage($id: Int!) {
     num_files
     percentage_used
     used_gb
+    groups {
+      adm_group
+      ro_group
+      rw_group
+    }
     projects {
       code
       first_day
@@ -33,6 +38,12 @@ query ResearchStorage($id: Int!) {
   }
 }`;
 
+enum MemberType {
+  adm_group = "Admin",
+  ro_group = "Read Write",
+  rw_group = "Read Only",
+  t_group = "T",
+}
 
 @Component({
   selector: 'app-research-storage-details',
@@ -45,6 +56,7 @@ export class ResearchStorageDetailsComponent implements OnInit, OnDestroy {
   researchStorage;
   loading$ = new Subject<boolean>();
   error;
+  memberTypes = MemberType;
 
   private querySubscription: Subscription;
   private paramsSubscription: Subscription;
@@ -81,7 +93,10 @@ export class ResearchStorageDetailsComponent implements OnInit, OnDestroy {
         },
         error => {
           this.loading$.next(false);
-          if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          if (error.message.includes('Not Authorised!')) {
+            this.router.navigate(['/error/403']);
+          }
+          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.router.navigate(['/notfound']);
           }
           else {

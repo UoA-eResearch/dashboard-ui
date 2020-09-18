@@ -14,16 +14,52 @@
 
     <mat-card *ngIf="researchStorage && !(loading$ | async)">
       <mat-card-content>
-        <h3>Name:</h3>
-        <h4>{{researchStorage.name}}</h4>
-        <h3>Created Date:</h3>
-        <h4>{{researchStorage.date | date}}</h4>
-        <h3>Drive Specs:</h3>
-        <p>Allocated GB: <b>{{researchStorage.allocated_gb}}</b></p>
-        <p>Free GB: <b>{{researchStorage.free_gb}}</b></p>
-        <p>Used GB: <b>{{researchStorage.used_gb}}</b></p>
-        <p>Percentage Used: <b>{{researchStorage.percentage_used}}%</b></p>
-        <p>Number of Files: <b>{{researchStorage.num_files}}</b></p>
+        <mat-tab-group dynamicHeight animationDuration="0ms">
+
+          <mat-tab label="Drive Specifications">
+            <ng-template matTabContent>
+              <h3>Created Date</h3>
+              <p>{{researchStorage.date | date}}</p>
+              <mat-divider></mat-divider>
+              <h3>Allocated GB</h3>
+              <p>{{researchStorage.allocated_gb}}</p>
+              <mat-divider></mat-divider>
+              <h3>Free GB</h3>
+              <p>{{researchStorage.free_gb}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Used GB</h3>
+              <p>{{researchStorage.used_gb}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Percentage Used</h3>
+              <p>{{researchStorage.percentage_used}}%</p>              
+              <mat-divider></mat-divider>
+              <h3>Number of Files</h3>
+              <p>{{researchStorage.num_files}}</p>
+            </ng-template>
+          </mat-tab>
+
+          <mat-tab label="Members">
+            <ng-template matTabContent>
+              
+              <!-- <app-group-member-list [groupLabel]="memberTypes.Admin" [groupId]="researchStorage.groups.adm_group.replace('.eresearch', '')">
+              </app-group-member-list>
+
+              <app-group-member-list [groupLabel]="memberTypes.ReadWrite" [groupId]="researchStorage.groups.rw_group.replace('.eresearch', '')">
+              </app-group-member-list>
+
+              <app-group-member-list [groupLabel]="memberTypes.ReadOnly" [groupId]="researchStorage.groups.ro_group.replace('.eresearch', '')">
+              </app-group-member-list>
+
+              <app-group-member-list [groupLabel]="memberTypes.T" [groupId]="researchStorage.groups.t_group.replace('.eresearch', '')">
+              </app-group-member-list> -->
+
+              <app-group-member-list [groupLabels]="memberTypes" [groups]="researchStorage.groups">
+              </app-group-member-list>
+
+            </ng-template>
+          </mat-tab>
+
+        </mat-tab-group>
       </mat-card-content>
     </mat-card>
 

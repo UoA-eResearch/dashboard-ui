@@ -39,6 +39,11 @@ query ResearchVm($id: Int!) {
   }
 }`;
 
+enum MemberType {
+  admin_group = "Admin",
+  rw_group = "Read Write",
+  user_group = "User",
+}
 
 @Component({
   selector: 'app-research-vm-details',
@@ -51,6 +56,7 @@ export class ResearchVmDetailsComponent implements OnInit, OnDestroy {
   researchVm;
   loading$ = new Subject<boolean>();
   error;
+  memberTypes = MemberType;
 
   private querySubscription: Subscription;
   private paramsSubscription: Subscription;
@@ -82,13 +88,15 @@ export class ResearchVmDetailsComponent implements OnInit, OnDestroy {
       .valueChanges
       .subscribe(
         ({ data, loading }) => {
-          console.log(data);
           this.researchVm = data.researchvm;
           this.loading$.next(loading);
         },
         error => {
           this.loading$.next(false);
-          if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          if (error.message.includes('Not Authorised!')) {
+            this.router.navigate(['/error/403']);
+          }
+          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.router.navigate(['/notfound']);
           }
           else {
