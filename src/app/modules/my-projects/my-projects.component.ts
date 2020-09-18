@@ -4,6 +4,7 @@ import { LoginService, UserInfoDto } from '@uoa/auth';
 import { PageInfo } from '@data/type/PageInfo';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Router } from '@angular/router';
 
 
 const GET_PERSON_PROJECTS = gql`
@@ -50,7 +51,8 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
 
   constructor(
     private loginService: LoginService,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -72,7 +74,10 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
         },
         error => {
           this.loading$.next(false);
-          if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          if (error.message.includes('Not Authorised!')) {
+            this.router.navigate(['/error/403']);
+          }
+          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.personProjects = [];
           }
           else {

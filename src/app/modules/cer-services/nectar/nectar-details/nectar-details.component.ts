@@ -93,7 +93,10 @@ export class NectarDetailsComponent implements OnInit, OnDestroy {
         },
         error => {
           this.loading$.next(false);
-          if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          if (error.message.includes('Not Authorised!')) {
+            this.router.navigate(['/error/403']);
+          }
+          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.router.navigate(['/notfound']);
           }
           else {

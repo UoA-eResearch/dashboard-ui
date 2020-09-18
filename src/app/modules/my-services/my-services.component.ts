@@ -4,6 +4,7 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { UserInfoDto, LoginService } from '@uoa/auth';
 import { Subject, Subscription } from 'rxjs';
+import { Router } from '@angular/router';
 
 
 const GET_PERSON_SERVICES = gql`
@@ -62,7 +63,8 @@ export class MyServicesComponent implements OnInit, OnDestroy {
 
   constructor(
     private loginService: LoginService,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private router: Router
   ) { }
 
   async ngOnInit(): Promise<void> {
@@ -84,7 +86,10 @@ export class MyServicesComponent implements OnInit, OnDestroy {
         },
         error => {
           this.loading$.next(false);
-          if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          if (error.message.includes('Not Authorised!')) {
+            this.router.navigate(['/error/403']);
+          }
+          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.personServices = [];
             this.hasNoServices = true;
           }

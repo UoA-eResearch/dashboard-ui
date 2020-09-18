@@ -120,7 +120,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
           if (error.message.includes('Not Authorised!')) {
             this.router.navigate(['/error/403']);
           }
-          if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
             this.project = [];
           }
           else {
