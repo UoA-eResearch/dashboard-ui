@@ -1,10 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Subject, Subscription } from 'rxjs';
+import { Observable, Subject, Subscription } from 'rxjs';
+import { pluck, shareReplay, tap } from 'rxjs/operators';
 
 
-const GET_GROUP_MEMBERS = gql`
+export const GET_GROUP_MEMBERS = gql`
 query GroupMembers($groupnames: [String]!) {
   groupmembers(groupnames: $groupnames) {
     total
@@ -25,38 +26,33 @@ export class GroupMemberListComponent implements OnInit {
   
   @Input() groups: object;
   @Input() groupLabels;
-  groupsLabelsMapping = {};
-  loading$ = new Subject<boolean>();
-  groupMembers;
-  error;
 
-  private querySubscription: Subscription;
+  loading$: Observable<boolean>;
+  error$: Observable<any>;
+  groupMembers$: Observable<any>;
 
   constructor(
     private apollo: Apollo,
   ) { }
 
-  async ngOnInit() {
-    this.loading$.next(true);
-    this.querySubscription = this.apollo
-    .watchQuery<any>({
+  ngOnInit() {
+    const source$ = this.getGroupMembers();
+
+    this.loading$ = source$.pipe(pluck('loading'));
+    // this.loading$.subscribe(loading => console.log('IsLoading: ' + loading));
+    this.error$ = source$.pipe(pluck('errors'));
+    this.groupMembers$ = source$.pipe(pluck('data', 'groupmembers'));
+  }
+
+  getGroupMembers() {
+    return this.apollo.watchQuery({
       query: GET_GROUP_MEMBERS,
       variables: {
         groupnames: this.groupsToArray(this.groups),
       },
     })
     .valueChanges
-    .subscribe(
-      ({ data, loading }) => {
-        this.groupMembers = data.groupmembers;
-        this.loading$.next(loading);
-      },
-      error => {
-        this.loading$.next(false);
-        console.log(JSON.stringify(error));
-        this.error = error;
-      }
-    );
+    .pipe(shareReplay(1));
   }
 
   groupsToArray(groups: object): string[] {
@@ -82,9 +78,6 @@ export class GroupMemberListComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
-    if (this.querySubscription) {
-      this.querySubscription.unsubscribe();
-    }
   }
 
 }
