@@ -5,7 +5,7 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { ActivatedRoute, Router } from '@angular/router';
 
-const GET_PROJECT = gql`
+export const GET_PROJECT = gql`
 query Project($id: Int!) {
   project(id: $id) {
     id

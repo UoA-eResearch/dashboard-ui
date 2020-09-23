@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import gql from 'graphql-tag';
 
 
-const GET_VISUALISATION = gql`
+export const GET_VISUALISATION = gql`
 query Visualisation($id: Int!) {
   visualisation(id: $id) {
     id

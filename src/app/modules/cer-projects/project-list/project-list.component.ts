@@ -5,7 +5,7 @@ import gql from 'graphql-tag';
 import { Subject, Subscription } from 'rxjs';
 
 
-const GET_ALL_PROJECTS = gql`
+export const GET_ALL_PROJECTS = gql`
 query Projects {
   projects {
     id

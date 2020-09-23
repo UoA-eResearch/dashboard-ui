@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import gql from 'graphql-tag';
 
 
-const GET_NECTAR = gql`
+export const GET_NECTAR = gql`
 query Nectar($id: Int!) {
   nectar(id: $id) {
     id

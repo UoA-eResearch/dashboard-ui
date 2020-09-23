@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import gql from 'graphql-tag';
 
 
-const GET_RESEARCH_STORAGE = gql`
+export const GET_RESEARCH_STORAGE = gql`
 query ResearchStorage($id: Int!) {
   researchstorage(id: $id) {
     id

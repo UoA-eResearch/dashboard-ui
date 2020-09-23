@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import gql from 'graphql-tag';
 
 
-const GET_DROPBOX = gql`
+export const GET_DROPBOX = gql`
 query Dropbox($id: Int!) {
   dropbox(id: $id) {
     id

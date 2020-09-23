@@ -7,7 +7,7 @@ import { Subject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
 
 
-const GET_PERSON_SERVICES = gql`
+export const GET_PERSON_SERVICES = gql`
 query Person($username: String!) {
   user(username: $username) {
     projects {

@@ -6,7 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import gql from 'graphql-tag';
 
 
-const GET_VM = gql`
+export const GET_VM = gql`
 query ResearchVm($id: Int!) {
   researchvm(id: $id) {
     id

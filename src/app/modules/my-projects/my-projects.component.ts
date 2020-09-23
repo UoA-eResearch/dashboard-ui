@@ -7,7 +7,7 @@ import gql from 'graphql-tag';
 import { Router } from '@angular/router';
 
 
-const GET_PERSON_PROJECTS = gql`
+export const GET_PERSON_PROJECTS = gql`
 query Person($username: String!) {
   user(username: $username) {
     projects {
