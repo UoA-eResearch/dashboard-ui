@@ -1,11 +1,24 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
+import { ApolloTestingController, ApolloTestingModule, TestOperation } from 'apollo-angular/testing';
 import { GroupMemberListComponent, GET_GROUP_MEMBERS } from './group-member-list.component';
 
 describe('GroupMemberListComponent', () => {
   let component: GroupMemberListComponent;
   let fixture: ComponentFixture<GroupMemberListComponent>;
   let controller: ApolloTestingController;
+
+  const MOCK_RESPONSE = {
+    data: {
+      groupmembers: [{
+        total: 1,
+        groupname: 'rvmf00001_vmuser',
+        users: [{
+          username: 'test123',
+          name: 'test'
+        }]
+      }],
+    },
+  }
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -44,32 +57,18 @@ describe('GroupMemberListComponent', () => {
   });
 
   it('should get group members', () => {
-    const MOCK_RESPONSE = {
-      data: {
-        groupmembers: [{
-          total: 1,
-          groupname: 'rvmf00001_vmuser',
-          users: [{
-            username: 'test123',
-            name: 'test'
-          }]
-        }],
-      },
-    }
-
     component.getGroupMembers().subscribe(result => {
-      expect(result.data['groupmembers'][0].total).toBe(1);
-      expect(result.data['groupmembers'][0].groupname).toBe('rvmf00001_vmuser');
-      expect(result.data['groupmembers'][0].users[0].username).toBe('test123');
+      expect(result).toEqual(jasmine.objectContaining(MOCK_RESPONSE));
     });
 
     const op = controller.expectOne(GET_GROUP_MEMBERS);
     expect(op.operation.variables.groupnames).toEqual(['rvmf00001_vmuser']);
     op.flush(MOCK_RESPONSE);
+    
+    controller.verify();
   });
 
   afterEach(() => {
-    //controller.verify(); // TO DO: Fix open operation error
     fixture.destroy();
   });
 });
