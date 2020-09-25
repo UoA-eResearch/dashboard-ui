@@ -54,7 +54,8 @@ pipeline {
                     usernamePassword(credentialsId: 'Automation-Test-Account', passwordVariable: 'TEST_ACCT_PASSWORD', usernameVariable: 'TEST_ACCT_USERNAME')
                 ]) {
                     echo 'Running e2e tests'
-                    sh 'npm run e2e'
+                    sh 'npx webdriver-manager update --versions.chrome=$(google-chrome --version | grep -ioE "[0-9.]{10,20}")'
+                    sh 'npm run e2e-ci'
                 }
 
                 echo 'Testing complete'
