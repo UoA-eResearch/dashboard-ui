@@ -49,6 +49,10 @@ To use Browserstack you must set the Browserstack username and access key in you
 Once you have the credentials set up, run the e2e tests on Browserstack using the following command (replace baseUrl with whatever instance of the app you want to test against):
 `"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-remote.js --baseUrl "https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/"`
 
+You can also run Browserstack automation using browserstack-local which allows you to run BrowserStack against local hosts. Run npm start to start the app on localhost, then in a new console, run browserstack with the following command:
+`"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-local.js`
+
+
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
