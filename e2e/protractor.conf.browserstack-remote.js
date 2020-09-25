@@ -13,7 +13,7 @@ exports.config = {
   },
   baseUrl: '<overridden - pass in cli>',
   params: {
-    loginUrl: "iam.test.auckland.ac.nz/profile/SAML2/Redirect/SSO",
+    loginUrl: 'iam.test.auckland.ac.nz/profile/SAML2/Redirect/SSO',
     credentials: {
       username: process.env.TEST_ACCT_USERNAME,
       password: process.env.TEST_ACCT_PASSWORD
@@ -31,7 +31,7 @@ exports.config = {
     /*
     * Steps to perform user login prior to all tests
     */
-    browser.get(browser.baseUrl);
+    browser.driver.get(browser.baseUrl);
     browser.findElement(by.className('signin-button')).click();
 
     // wait for UoA SSO login page to load, then submit credentials
@@ -59,26 +59,30 @@ exports.config = {
     'browserstack.key': process.env.BROWSERSTACK_CREDENTIALS_KEY,
     'project': 'eResearchDashboard',
     'build': 'Production',
-    'browserstack.debug': true,
+    'browserstack.debug': false,
     'browserstack.video': true,
     'acceptSslCerts': true
   },
-  multiCapabilities: [{
-    'browserName': 'Chrome',
-    'os': 'Windows',
-    'os_version': '10',
-    'resolution': '1920x1080'
-  }, {
-    'browserName': 'Firefox',
-    'os': 'Windows',
-    'os_version': '10',
-    'resolution': '1920x1080'
-  }, {
-    'browserName': 'Safari',
-    'os': 'OS X',
-    'os_version': 'Mojave',
-    'resolution': '1600x1200'
-  }]
+  multiCapabilities: [
+    {
+      'browserName': 'Chrome',
+      'os': 'Windows',
+      'os_version': '10',
+      'resolution': '1280x1024'
+    }, 
+    {
+      'browserName': 'Firefox',
+      'os': 'Windows',
+      'os_version': '10',
+      'resolution': '1280x1024'
+    }
+    // {
+    //   'browserName': 'Safari',
+    //   'os': 'OS X',
+    //   'os_version': 'Catalina',
+    //   'resolution': '1280x1024'
+    // }
+  ]
 };
 
 // Code to support common capabilities

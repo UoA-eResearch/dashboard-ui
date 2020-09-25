@@ -33,15 +33,21 @@ describe('App Home Page Tests', () => {
     expect(page.getHomeDashboardTitleText()).toEqual('Access eResearch Services:');
   });
 
-  it('should display the logged in users full name', async () => {
+  it('should display the logged in users full name', () => {
     expect(page.getUserName()).toEqual('Research Hub Automation Test Account');
-  })
+  });
+
+  it('should disply the user profile menu', () => {
+    expect(page.getUserMenu()).toBeTrue;
+  });
 
   afterEach(async () => {
+    // commented for now - causing error in jenkins (there is a severe error but it's comes from
+    // the SSO page?). Also causes error in browserstack because the driver for Firefox 
+    // can't get the console logs
+    
     // Assert that there are no errors emitted from the browser
-    const logs = await browser.manage().logs().get(logging.Type.BROWSER);
-
-    // commented for now - causing error in jenkins
+    // const logs = await browser.manage().logs().get(logging.Type.BROWSER);    
     // expect(logs).not.toContain(jasmine.objectContaining({
     //   level: logging.Level.SEVERE,
     // } as logging.Entry));

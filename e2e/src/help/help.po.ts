@@ -1,5 +1,5 @@
-import { browser, by, element, WebElement } from 'protractor';
-import { PrivateKeyInput } from 'crypto';
+import { browser } from 'protractor';
+import { _$ } from './../utils';
 
 export class HelpPage {
   navigateTo(): Promise<unknown> {
@@ -7,14 +7,14 @@ export class HelpPage {
   }
 
   getTitleText(): Promise<string> {
-    return element(by.css('app-header h1')).getText() as Promise<string>;
+    return _$('app-header h1').getText() as Promise<string>;
   }
 
   getHelpContainer(): Promise<boolean> {
-    return element(by.className('help-container')).isDisplayed() as Promise<boolean>;
+    return _$('.help-container').isDisplayed() as Promise<boolean>;
   }
 
   getFaqsComponent(): Promise<boolean> {
-    return element(by.className('app-faqs-panel')).isDisplayed() as Promise<boolean>;
+    return _$('.app-faqs-panel').isDisplayed() as Promise<boolean>;
   }
 }

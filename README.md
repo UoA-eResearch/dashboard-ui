@@ -47,7 +47,7 @@ During the CI/CD process (see below), the credentials must be available in the J
 [Browserstack]() allows you to run automated Selenium testing on a range of different desktop and mobile browsers. The configuration for running our e2e tests on Browserstack is here: [Browserstack Config](e2e/protractor.conf.browserstack-remote.js).
 To use Browserstack you must set the Browserstack username and access key in your environment variables. Get the username and access key by logging into Browserstack with the Developer uoaeresearch google account. 
 Once you have the credentials set up, run the e2e tests on Browserstack using the following command (replace baseUrl with whatever instance of the app you want to test against):
-`"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-remote.js --baseUrl https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/`
+`"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-remote.js --baseUrl "https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/"`
 
 ## Further help
 
