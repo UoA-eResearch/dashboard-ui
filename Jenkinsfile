@@ -146,7 +146,7 @@ pipeline {
 
         stage('BrowserStack e2e Tests') {
             steps {
-                echo 'Deployed to ' + env.BRANCH_NAME + ' launching BrowserStack e2e Tests'
+                echo 'Deployed to ' + env.BRANCH_NAME + ', launching BrowserStack e2e Tests'
                 slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🚀 Deploy successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>).\n 📹 Launching BrowserStack e2e tests. <https://automate.browserstack.com/dashboard|Watch Videos>")
 
                 script {
@@ -159,7 +159,13 @@ pipeline {
                     echo "eResearch Dashboard URL: ${dashboardUrl}"
 
                     try {
-                        sh "./node_modules/.bin/protractor e2e/protractor.conf.browserstack-remote --baseUrl=${dashboardUrl}"
+                        // Set Browserstack account credentials as env vars
+                        withCredentials([
+                            usernamePassword(credentialsId: 'Browserstack-Credentials', passwordVariable: 'BROWSERSTACK_CREDENTIALS_KEY', usernameVariable: 'BROWSERSTACK_CREDENTIALS_USER'),
+                            usernamePassword(credentialsId: 'Automation-Test-Account', passwordVariable: 'TEST_ACCT_PASSWORD', usernameVariable: 'TEST_ACCT_USERNAME')
+                        ]) {
+                            sh "./node_modules/.bin/protractor e2e/protractor.conf.browserstack-remote --baseUrl=${dashboardUrl}"
+                        }
                     } catch(exc) {
                         echo 'BrowserStack e2e tests failed'
                         slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#f2ae3f", message: "🙅‍♀️🙅🙅‍♂️ One or more BrowserStack e2e tests failed. Consider reverting to an earlier deploy")
