@@ -27,7 +27,7 @@ exports.config = {
     });
     jasmine.getEnv().addReporter(new SpecReporter({ spec: { displayStacktrace: StacktraceOption.PRETTY } }));
 
-    const { browser, by } = require('protractor');
+    const { browser, element, by, ExpectedConditions } = require('protractor');
     browser.driver.manage().window().maximize();
     
     /*
@@ -41,10 +41,14 @@ exports.config = {
       const url = await browser.driver.getCurrentUrl();
       return url.includes(browser.params.loginUrl);
     }, 10000).then(function() {
+      browser.waitForAngularEnabled(false); // required for fixing safari errors
+      browser.driver.wait(ExpectedConditions.visibilityOf(element(by.id('username'))), 15000);
       browser.driver.findElement(by.id('username')).sendKeys(browser.params.credentials.username);
       browser.driver.findElement(by.id('password')).sendKeys(browser.params.credentials.password);
       browser.driver.findElement(by.className('login-button')).click();
     });
+
+    browser.waitForAngularEnabled(true);
     
     // wait for the login to complete and return to the base url
     return browser.driver.wait(async function() {
@@ -78,13 +82,13 @@ exports.config = {
       'os': 'Windows',
       'os_version': '10',
       'resolution': '1280x1024'
+    },
+    {
+      'browserName': 'Safari',
+      'os': 'OS X',
+      'os_version': 'Catalina',
+      'resolution': '1280x1024'
     }
-    // {
-    //   'browserName': 'Safari',
-    //   'os': 'OS X',
-    //   'os_version': 'Catalina',
-    //   'resolution': '1280x1024'
-    // }
   ]
 };
 
