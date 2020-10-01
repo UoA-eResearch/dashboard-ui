@@ -143,16 +143,40 @@ pipeline {
                 }
             }
         }
+
+        stage('BrowserStack e2e Tests') {
+            steps {
+                echo 'Deployed to ' + env.BRANCH_NAME + ' launching BrowserStack e2e Tests'
+                slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🚀 Deploy successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>).\n 📹 Launching BrowserStack e2e tests. <https://automate.browserstack.com/dashboard|Watch Videos>")
+
+                script {
+                    def dashboardUrl = (
+                        env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.amazon.auckland.ac.nz/' : 
+                        env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.test.amazon.auckland.ac.nz/' : 
+                        'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/'
+                    )
+
+                    echo "eResearch Dashboard URL: ${dashboardUrl}"
+
+                    try {
+                        sh "./node_modules/.bin/protractor e2e/protractor.conf.browserstack-remote --baseUrl=${dashboardUrl}"
+                    } catch(exc) {
+                        echo 'BrowserStack e2e tests failed'
+                        slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#f2ae3f", message: "🙅‍♀️🙅🙅‍♂️ One or more BrowserStack e2e tests failed. Consider reverting to an earlier deploy")
+                    }
+                }
+            }
+        }
     }
     
     post {
         success {
             echo "Jenkins job ran successfully. Deployed to ${env.BRANCH_NAME}"
-            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, message: "Build successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🙆‍♀️🙆🙆‍♂️ All BrowserStack e2e tests passed")
         }
         failure {
             echo 'Jenkins job failed :('
-            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, message: "Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
+            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#FF9FA1", message: "🌩 Build failed - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
         }
     }
 }
