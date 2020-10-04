@@ -13,6 +13,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
+import {MatSelectModule} from '@angular/material/select';
 
 
 const modules: any[] = [
@@ -28,7 +29,8 @@ const modules: any[] = [
   MatProgressSpinnerModule,
   MatChipsModule,
   MatTooltipModule,
-  MatTabsModule
+  MatTabsModule,
+  MatSelectModule
 ];
 
 @NgModule({
