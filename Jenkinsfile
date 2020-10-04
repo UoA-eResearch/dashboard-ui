@@ -166,9 +166,12 @@ pipeline {
                         ]) {
                             sh "./node_modules/.bin/protractor e2e/protractor.conf.browserstack-remote --baseUrl=${dashboardUrl}"
                         }
+
+                        slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🙆‍♀️🙆🙆‍♂️ All BrowserStack e2e tests passed")
+
                     } catch(exc) {
-                        echo 'BrowserStack e2e tests failed'
                         slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#f2ae3f", message: "🙅‍♀️🙅🙅‍♂️ One or more BrowserStack e2e tests failed. Consider reverting to an earlier deploy")
+                        error 'BrowserStack e2e tests failed'
                     }
                 }
             }
@@ -178,7 +181,7 @@ pipeline {
     post {
         success {
             echo "Jenkins job ran successfully. Deployed to ${env.BRANCH_NAME}"
-            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🙆‍♀️🙆🙆‍♂️ All BrowserStack e2e tests passed")
+            slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🌞Build successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
         }
         failure {
             echo 'Jenkins job failed :('
