@@ -113,3 +113,19 @@ span {
   background-position: center;
   width: 100%;
 }
+
+snack-bar-container.success {
+  background-color: rgb(1, 129, 147, 0.9);
+}
+
+snack-bar-container.error {
+  background-color: rgb(255, 61, 108, 0.9);
+}
+
+snack-bar-container.notification {
+  color:white;
+}
+
+snack-bar-container > simple-snack-bar > div > button > span {
+  color:white;
+}

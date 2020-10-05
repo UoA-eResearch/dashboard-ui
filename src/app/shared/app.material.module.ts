@@ -14,6 +14,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatTooltipModule} from '@angular/material/tooltip';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 const modules: any[] = [
@@ -30,7 +31,8 @@ const modules: any[] = [
   MatChipsModule,
   MatTooltipModule,
   MatTabsModule,
-  MatSelectModule
+  MatSelectModule,
+  MatSnackBarModule
 ];
 
 @NgModule({

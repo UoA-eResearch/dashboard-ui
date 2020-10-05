@@ -38,6 +38,6 @@ import { GroupMemberListComponent } from './group-member-list/group-member-list.
     FaqsPanelComponent,
     PageNotFoundComponent,
     GroupMemberListComponent
-  ]
+  ],
 })
 export class SharedModule { }
