@@ -5,6 +5,7 @@ import { PageInfo } from '@data/type/PageInfo';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Router } from '@angular/router';
+import { NotificationService } from '@app/service/notification.service';
 
 
 export const GET_PERSON_PROJECTS = gql`
@@ -46,50 +47,54 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
   personProjects: any;
   loading$ = new Subject<boolean>();
   error: any;
-
   private querySubscription: Subscription;
 
   constructor(
     private loginService: LoginService,
     private apollo: Apollo,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService
   ) {}
 
   async ngOnInit() {
     this.userInfo = await this.loginService.getUserInfo();
-    this.loading$.next(true);
     if (this.userInfo) {
-      this.querySubscription = this.apollo
-      .watchQuery<any>({
-        query: GET_PERSON_PROJECTS,
-        variables: {
-          username: this.userInfo.upi,
-        },
-      })
-      .valueChanges
-      .subscribe(
-        ({ data, loading }) => {
-          this.personProjects = data.user;
-          this.loading$.next(loading);
-        },
-        error => {
-          this.loading$.next(false);
-          if (error.message.includes('Not Authorised!')) {
-            this.router.navigate(['/error/403']);
-          }
-          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
-            this.personProjects = [];
-          }
-          else {
-            console.log(JSON.stringify(error));
-            this.error = error;
-          }
+      this.getMyProjects();
+    } else {
+      const errorMessage = 'User info not found, please check you are logged in and/or try reloading the page.';
+      this.notificationService.error(errorMessage);
+    }
+  }
+
+  getMyProjects() {
+    this.loading$.next(true);
+    this.querySubscription = this.apollo
+    .watchQuery<any>({
+      query: GET_PERSON_PROJECTS,
+      variables: {
+        username: this.userInfo.upi,
+      },
+    })
+    .valueChanges
+    .subscribe(
+      ({ data, loading }) => {
+        this.personProjects = data.user;
+        this.loading$.next(loading);
+      },
+      error => {
+        this.loading$.next(false);
+        if (error.message.includes('Not Authorised!')) {
+          this.router.navigate(['/error/403']);
         }
-      );
-    }
-    else {
-      throw new Error('Error: User info not found, please try reloading the page.');
-    }
+        else if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          this.personProjects = [];
+        }
+        else {
+          console.log(JSON.stringify(error));
+          this.error = error;
+        }
+      }
+    );
   }
 
   ngOnDestroy(): void {

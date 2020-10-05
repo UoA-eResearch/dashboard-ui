@@ -5,6 +5,7 @@ import gql from 'graphql-tag';
 import { UserInfoDto, LoginService } from '@uoa/auth';
 import { Subject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { NotificationService } from '@app/service/notification.service';
 
 
 export const GET_PERSON_SERVICES = gql`
@@ -64,42 +65,50 @@ export class MyServicesComponent implements OnInit, OnDestroy {
   constructor(
     private loginService: LoginService,
     private apollo: Apollo,
-    private router: Router
+    private router: Router,
+    private notificationService: NotificationService,
   ) { }
 
   async ngOnInit(): Promise<void> {
     this.userInfo = await this.loginService.getUserInfo();
-    this.loading$.next(true);
     if (this.userInfo) {
-      this.querySubscription = this.apollo
-      .watchQuery<any>({
-        query: GET_PERSON_SERVICES,
-        variables: {
-          username: this.userInfo.upi,
-        },
-      })
-      .valueChanges
-      .subscribe(
-        ({ data, loading }) => {
-          this.personServices = this.getAllServices(data.user.projects);
-          this.loading$.next(loading);
-        },
-        error => {
-          this.loading$.next(false);
-          if (error.message.includes('Not Authorised!')) {
-            this.router.navigate(['/error/403']);
-          }
-          else if (error.message === 'GraphQL error: 404: NOT FOUND') {
-            this.personServices = [];
-            this.hasNoServices = true;
-          }
-          else {
-            console.log(JSON.stringify(error));
-            this.error = error;
-          }
-        }
-      );
+      this.getMyServices();
+    } else {
+      const errorMessage = 'User info not found, please check you are logged in and/or try reloading the page.';
+      this.notificationService.error(errorMessage);
     }
+  }
+
+  getMyServices() {
+    this.loading$.next(true);
+    this.querySubscription = this.apollo
+    .watchQuery<any>({
+      query: GET_PERSON_SERVICES,
+      variables: {
+        username: this.userInfo.upi,
+      },
+    })
+    .valueChanges
+    .subscribe(
+      ({ data, loading }) => {
+        this.personServices = this.getAllServices(data.user.projects);
+        this.loading$.next(loading);
+      },
+      error => {
+        this.loading$.next(false);
+        if (error.message.includes('Not Authorised!')) {
+          this.router.navigate(['/error/403']);
+        }
+        else if (error.message === 'GraphQL error: 404: NOT FOUND') {
+          this.personServices = [];
+          this.hasNoServices = true;
+        }
+        else {
+          console.log(JSON.stringify(error));
+          this.error = error;
+        }
+      }
+    );
   }
 
   getAllServices(projects) {
