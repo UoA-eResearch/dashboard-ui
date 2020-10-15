@@ -3,7 +3,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { CerServicesComponent } from './cer-services.component';
 import { DropboxListComponent } from './dropbox/dropbox-list/dropbox-list.component';
 import { DropboxDetailsComponent } from './dropbox/dropbox-details/dropbox-details.component';
-import { OnlyServiceMembersGuard } from '@app/guard/only-service-members.guard';
 import { NectarListComponent } from './nectar/nectar-list/nectar-list.component';
 import { NectarDetailsComponent } from './nectar/nectar-details/nectar-details.component';
 import { ResearchStorageListComponent } from './research-storage/research-storage-list/research-storage-list.component';
@@ -25,7 +24,6 @@ const routes: Routes = [
       },
       {
         path: 'dropbox/:id',
-        canActivate: [OnlyServiceMembersGuard],
         component: DropboxDetailsComponent
       },
       {
@@ -34,7 +32,6 @@ const routes: Routes = [
       },
       {
         path: 'nectar/:id',
-        canActivate: [OnlyServiceMembersGuard],
         component: NectarDetailsComponent
       },
       {
@@ -43,7 +40,6 @@ const routes: Routes = [
       },
       {
         path: 'research-storage/:id',
-        canActivate: [OnlyServiceMembersGuard],
         component: ResearchStorageDetailsComponent
       },
       {
@@ -52,7 +48,6 @@ const routes: Routes = [
       },
       {
         path: 'research-vm/:id',
-        canActivate: [OnlyServiceMembersGuard],
         component: ResearchVmDetailsComponent
       },
       {
@@ -61,7 +56,6 @@ const routes: Routes = [
       },
       {
         path: 'visualisation/:id',
-        canActivate: [OnlyServiceMembersGuard],
         component: VisualisationDetailsComponent
       }
     ]
