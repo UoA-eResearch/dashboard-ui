@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Observable, Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, Subscription } from 'rxjs';
 import { pluck, shareReplay, tap } from 'rxjs/operators';
 
 
@@ -27,32 +28,46 @@ export class GroupMemberListComponent implements OnInit {
   @Input() groups: object;
   @Input() groupLabels;
 
-  loading$: Observable<boolean>;
-  error$: Observable<any>;
-  groupMembers$: Observable<any>;
+  loading$ = new BehaviorSubject(true);
+  error: any;
+  groupMembers: any;
+
+  private querySubscription: Subscription;
 
   constructor(
     private apollo: Apollo,
+    private router: Router,
   ) { }
 
   ngOnInit() {
-    const source$ = this.getGroupMembers();
-
-    this.loading$ = source$.pipe(pluck('loading'));
-    // this.loading$.subscribe(loading => console.log('IsLoading: ' + loading));
-    this.error$ = source$.pipe(pluck('errors'));
-    this.groupMembers$ = source$.pipe(pluck('data', 'groupmembers'));
+    this.getGroupMembers();
   }
 
   getGroupMembers() {
-    return this.apollo.watchQuery({
+    this.querySubscription = this.apollo
+    .watchQuery<any>({
       query: GET_GROUP_MEMBERS,
       variables: {
         groupnames: this.groupsToArray(this.groups),
       },
     })
     .valueChanges
-    .pipe(shareReplay(1));
+    .subscribe(
+      ({ data, loading }) => {
+        this.groupMembers = data.groupmembers;
+        this.loading$.next(loading);
+      },
+      error => {
+        this.loading$.next(false);
+        if (error.message.includes('Not Authorised!')) {
+          this.router.navigate(['/error/403']);
+        }
+        else {
+          console.log(JSON.stringify(error));
+          this.error = error;
+        }
+      }
+    );
   }
 
   groupsToArray(groups: object): string[] {
@@ -78,6 +93,9 @@ export class GroupMemberListComponent implements OnInit {
   }
 
   ngOnDestroy(): void {
+    if (this.querySubscription) {
+      this.querySubscription.unsubscribe();
+    }
   }
 
 }

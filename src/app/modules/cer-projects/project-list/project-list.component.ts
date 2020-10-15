@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { Subject, Subscription } from 'rxjs';
+import { BehaviorSubject, Subscription } from 'rxjs';
 
 
 export const GET_ALL_PROJECTS = gql`
@@ -25,7 +25,7 @@ export class ProjectListComponent {
   // TO DO: list should be paginated
 
   projects: any;
-  loading$ = new Subject<boolean>();
+  loading$ = new BehaviorSubject(true);
   error: any;
 
   private querySubscription: Subscription;
@@ -36,7 +36,6 @@ export class ProjectListComponent {
   ) {}
 
   async ngOnInit() {
-    this.loading$.next(true);
     this.querySubscription = this.apollo
     .watchQuery<any>({
       query: GET_ALL_PROJECTS,

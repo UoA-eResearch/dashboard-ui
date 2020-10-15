@@ -69,7 +69,7 @@ export class MyServicesComponent implements OnInit, OnDestroy {
     private notificationService: NotificationService,
   ) { }
 
-  async ngOnInit(): Promise<void> {
+  async ngOnInit() {
     this.userInfo = await this.loginService.getUserInfo();
     if (this.userInfo) {
       this.getMyServices();

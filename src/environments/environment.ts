@@ -19,7 +19,7 @@ export const environment = {
     whoNeedBearerToken: [{ url: 'apigw.sandbox.amazon.auckland.ac.nz', optional: false }],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/cer-dashboard-graphql'
+  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/cer-dashboard-graphql',
 };
 
 /*

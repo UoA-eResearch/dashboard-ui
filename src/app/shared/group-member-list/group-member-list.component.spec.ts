@@ -1,4 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { SharedModule } from '@shared/shared.module';
 import { ApolloTestingController, ApolloTestingModule, TestOperation } from 'apollo-angular/testing';
 import { GroupMemberListComponent, GET_GROUP_MEMBERS } from './group-member-list.component';
 
@@ -24,7 +26,9 @@ describe('GroupMemberListComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ GroupMemberListComponent ],
       imports: [
-        ApolloTestingModule
+        SharedModule,
+        ApolloTestingModule,
+        RouterTestingModule,
       ]
     })
     .compileComponents();
@@ -57,10 +61,6 @@ describe('GroupMemberListComponent', () => {
   });
 
   it('should get group members', () => {
-    component.getGroupMembers().subscribe(result => {
-      expect(result).toEqual(jasmine.objectContaining(MOCK_RESPONSE));
-    });
-
     const op = controller.expectOne(GET_GROUP_MEMBERS);
     expect(op.operation.variables.groupnames).toEqual(['rvmf00001_vmuser']);
     op.flush(MOCK_RESPONSE);
