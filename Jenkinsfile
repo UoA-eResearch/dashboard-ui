@@ -26,13 +26,12 @@ pipeline {
         
         stage('Build') {
             stages {
-                echo "Installing dashboard-ui dependencies."
-
                 stage("Create new node_modules/ cache") {
                     when {
                         changeset "package.json"
                     }
                     steps {
+                        echo "Installing dashboard-ui dependencies."
                         sh "npm install"
                         sh "tar cvfz ./node_modules.tar.gz node_modules" // Cache new node_modules/ folder
                         archiveArtifacts artifacts: "node_modules.tar.gz", onlyIfSuccessful: true
@@ -46,6 +45,7 @@ pipeline {
                         }
                     }
                     steps {
+                        echo "Loading dashboard-ui dependencies from cache."
                         copyArtifacts filter: "node_modules.tar.gz", fingerprintArtifacts: true, optional: true, projectName: "Centre for eResearch (CeR)/dashboard-ui-pipeline/${env.BRANCH_NAME}" , selector: lastWithArtifacts()
                         sh "tar xf ./node_modules.tar.gz" // Unzip cached node_modules/ folder
                         sh "npm install"
