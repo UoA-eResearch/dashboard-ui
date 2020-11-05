@@ -25,8 +25,9 @@ pipeline {
         }
         
         stage('Build') {
-            steps {
+            stages {
                 echo "Installing dashboard-ui dependencies."
+
                 stage("Create new node_modules/ cache") {
                     when {
                         changeset "package.json"
@@ -37,6 +38,7 @@ pipeline {
                         archiveArtifacts artifacts: "node_modules.tar.gz", onlyIfSuccessful: true
                     }
                 }
+
                 stage('Load node_modules/ cache') {
                     when {
                         not {
@@ -50,20 +52,24 @@ pipeline {
                     }
                 }
 
-                echo "Building dashboard-ui project. Build number: ${env.BUILD_NUMBER}"
-                script {
-                    def build = (env.BRANCH_NAME == 'prod') ? 'production' : env.BRANCH_NAME
-                    echo "Build = ${build}"
-                    sh "node --version"
-                    sh "npm --version"
+                stage('Building dashboard-ui project.') {
+                    steps {
+                        script {
+                            echo "Building dashboard-ui project. Build number: ${env.BUILD_NUMBER}"
+                            def build = (env.BRANCH_NAME == 'prod') ? 'production' : env.BRANCH_NAME
+                            echo "Build = ${build}"
+                            sh "node --version"
+                            sh "npm --version"
 
-                    echo "Replacing Version Number in the app..."
-                    sh "sed -i 's/VERSION_WILL_BE_REPLACED_BY_CICD/#${env.BUILD_NUMBER}/g' src/environments/environment.${env.BRANCH_NAME}.ts"
+                            echo "Replacing Version Number in the app..."
+                            sh "sed -i 's/VERSION_WILL_BE_REPLACED_BY_CICD/#${env.BUILD_NUMBER}/g' src/environments/environment.${env.BRANCH_NAME}.ts"
 
-                    echo "Building the app..."
-                    sh "npm run build -- --configuration=${build}"
-                    echo "Build complete"
-                }
+                            echo "Building the app..."
+                            sh "npm run build -- --configuration=${build}"
+                            echo "Build complete"
+                        }
+                    }
+                }                
             }
         }
         
