@@ -33,7 +33,7 @@ pipeline {
                     steps {
                         echo "Installing dashboard-ui dependencies."
                         sh "npm install"
-                        sh "tar cvfz ./node_modules.tar.gz node_modules" // Cache new node_modules/ folder
+                        sh "tar cfz ./node_modules.tar.gz node_modules" // Cache new node_modules/ folder
                         archiveArtifacts artifacts: "node_modules.tar.gz", onlyIfSuccessful: true
                     }
                 }
