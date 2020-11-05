@@ -5,6 +5,7 @@ tagSet = '''TagSet=[\
 {Key=BusinessService,Value="Faculty of Science"},\
 {Key=Department,Value="Centre for eResearch"},\
 {Key=ProjectCode,Value="N/A"},\
+{Key=Faculty,Value="Science"},\
 {Key=WikiLink,Value="N/A"},\
 {Key=Application,Value="CeR Research Dashboard"},\
 {Key=CostCentre,Value="N/A"}]'''
@@ -25,13 +26,37 @@ pipeline {
         
         stage('Build') {
             steps {
+                echo "Installing dashboard-ui dependencies."
+                stage("Create new node_modules/ cache") {
+                    when {
+                        changeset "package.json"
+                    }
+                    steps {
+                        sh "npm install"
+                        sh "tar cvfz ./node_modules.tar.gz node_modules" // Cache new node_modules/ folder
+                        archiveArtifacts artifacts: "node_modules.tar.gz", onlyIfSuccessful: true
+                    }
+                }
+                stage('Load node_modules/ cache') {
+                    when {
+                        not {
+                            changeset "package.json"
+                        }
+                    }
+                    steps {
+                        copyArtifacts filter: "node_modules.tar.gz", fingerprintArtifacts: true, optional: true, projectName: "Centre for eResearch (CeR)/dashboard-ui-pipeline/${env.BRANCH_NAME}" , selector: lastWithArtifacts()
+                        sh "tar xf ./node_modules.tar.gz" // Unzip cached node_modules/ folder
+                        sh "npm install"
+                    }
+                }
+
                 echo "Building dashboard-ui project. Build number: ${env.BUILD_NUMBER}"
                 script {
                     def build = (env.BRANCH_NAME == 'prod') ? 'production' : env.BRANCH_NAME
                     echo "Build = ${build}"
                     sh "node --version"
                     sh "npm --version"
-                    sh "npm install"
+
                     echo "Replacing Version Number in the app..."
                     sh "sed -i 's/VERSION_WILL_BE_REPLACED_BY_CICD/#${env.BUILD_NUMBER}/g' src/environments/environment.${env.BRANCH_NAME}.ts"
 
