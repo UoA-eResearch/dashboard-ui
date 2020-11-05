@@ -46,7 +46,7 @@ pipeline {
                     }
                     steps {
                         echo "Loading dashboard-ui dependencies from cache."
-                        copyArtifacts filter: "node_modules.tar.gz", fingerprintArtifacts: true, optional: true, projectName: "Centre for eResearch (CeR)/dashboard-ui-pipeline/${env.BRANCH_NAME}" , selector: lastWithArtifacts()
+                        copyArtifacts filter: "node_modules.tar.gz", fingerprintArtifacts: true, optional: true, projectName: env.JOB_NAME, selector: lastWithArtifacts()
                         sh "tar xf ./node_modules.tar.gz" // Unzip cached node_modules/ folder
                         sh "npm install"
                     }
