@@ -35,22 +35,24 @@ To change any of the test configurations, see [karma.conf.js](karma.conf.js).
 To run unit tests with VSCode debugging enabled, run `ng test --browsers ChromeDebug`, wait for Karma to open up Chrome and run the tests. Leave it running and then in VSCode debug tab, select 'Debug tests in Chrome' from the launch dropdown. VSCode will attach to the Karma process and you can now put in breakpoints and debug your unit tests.
 
 ## Running end-to-end tests
-[Protractor](https://www.protractortest.org/) is used for e2e testing. The e2e tests test the main routes, user interactions and page elements of this web app. This includes tests of protected pages, therefore a login step is required prior to running the tests. This login step is defined in the [configuration file](e2e/protractor.conf.js), under the `onPrepare()` function.
+[Cypress](https://www.cypress.io/) is used for e2e (integration) testing. The e2e tests test the main routes, user interactions and page elements of this web app. This includes tests of protected pages, therefore a login step is required prior to running some tests. The login and logout steps have been added as [custom commands](https://docs.cypress.io/api/cypress-api/custom-commands.html#Syntax) which are defined in the [custom commands file](cypress/support/commands.js).
 
 For running e2e tests locally, you must set the Research Hub Automation Test Account username and password (get from secret server) as environment variables.
 
-Run `set "TEST_ACCT_USERNAME=<username>" & set "TEST_ACCT_PASSWORD=<password>" && ng e2e` to set the environment variables and execute the end-to-end tests.
+Run `set "CYPRESS_TEST_ACCT_USERNAME=<username>" & set "CYPRESS_TEST_ACCT_PASSWORD=<password>" && npm run e2e` to set the environment variables and execute the end-to-end tests. To learn more about setting environment variables in Cypress, see [Environment Variables](https://docs.cypress.io/guides/guides/environment-variables.html#Setting).
+
+To see the tests in the Cypress GUI, run `npm run cypress:open`.
 
 During the CI/CD process (see below), the credentials must be available in the Jenkins server. The [Jenkinsfile](Jenkinsfile) picks up the credentials and sets them as environment variables using the withCredentials() plugin.
 
-### Running e2e tests on Browserstack
+<!-- ### Running e2e tests on Browserstack
 [Browserstack]() allows you to run automated Selenium testing on a range of different desktop and mobile browsers. The configuration for running our e2e tests on Browserstack is here: [Browserstack Config](e2e/protractor.conf.browserstack-remote.js).
 To use Browserstack you must set the Browserstack username and access key in your environment variables. Get the username and access key by logging into Browserstack with the Developer uoaeresearch google account. 
 Once you have the credentials set up, run the e2e tests on Browserstack using the following command (replace baseUrl with whatever instance of the app you want to test against):
 `"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-remote.js --baseUrl "https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/"`
 
 You can also run Browserstack automation using browserstack-local which allows you to run BrowserStack against local hosts. Run npm start to start the app on localhost, then in a new console, run browserstack with the following command:
-`"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-local.js`
+`"node_modules/.bin/protractor" e2e/protractor.conf.browserstack-local.js` -->
 
 
 ## Further help

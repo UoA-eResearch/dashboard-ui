@@ -41,7 +41,7 @@
               <div *ngIf="loginService.loggedIn$ | async as loggedIn; else signin">
 
                 <div *ngIf="loginService.userInfo$ | async as userInfo">
-                  <button class="button-menu" mat-button [matMenuTriggerFor]="userMenu">
+                  <button class="user-menu" mat-button [matMenuTriggerFor]="userMenu">
                     <mat-icon matPrefix style="margin-right: 5px;" fxHide.xs>person</mat-icon>
                     <span id="user-fullname" fxHide fxShow.gt-md>{{ userInfo?.firstName + ' ' + userInfo?.lastName }}</span>
                     <span id="user-firstname" fxHide fxShow.md>{{ userInfo?.firstName }}</span>

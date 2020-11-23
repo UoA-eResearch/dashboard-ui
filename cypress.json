@@ -1,0 +1,10 @@
+{
+  "baseUrl": "http://localhost:4200",
+  "env": {
+    "TEST_ACCT_USERNAME": "please set this in environment vars as CYPRESS_TEST_ACCT_USERNAME",
+    "TEST_ACCT_PASSWORD": "please set this in environment vars as CYPRESS_TEST_ACCT_PASSWORD"
+  },
+  "ignoreTestFiles":	"**/examples/*.spec.js",
+  "chromeWebSecurity": false,
+  "supportFile": "cypress/support/index.js"
+}

@@ -8,8 +8,10 @@
     "test": "ng test",
     "test:headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
-    "e2e": "ng e2e",
-    "e2e-ci": "ng e2e --webdriverUpdate=false"
+    "e2e": "cypress run -q --config record=false,pageLoadTimeout=10000,defaultCommandTimeout=10000",
+    "e2e-ci": "concurrently \"npm run start\" \"wait-on http-get://localhost:4200 && npm run e2e\" --kill-others --success first",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
   },
   "private": true,
   "dependencies": {
@@ -40,7 +42,7 @@
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^0.1000.6",
+    "@angular-devkit/build-angular": "^0.1100.2",
     "@angular/cli": "~10.0.6",
     "@angular/compiler-cli": "~10.0.9",
     "@angular/language-service": "~10.0.9",
@@ -49,6 +51,8 @@
     "@types/node": "^12.11.1",
     "browserstack-local": "^1.4.8",
     "codelyzer": "^6.0.0",
+    "concurrently": "^5.3.0",
+    "cypress": "^5.6.0",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
@@ -59,10 +63,10 @@
     "protractor": "~7.0.0",
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
-    "typescript": "~3.9.7"
+    "typescript": "~3.9.7",
+    "wait-on": "^5.2.0"
   },
   "browser": {
     "crypto": false
   }
-  
 }
