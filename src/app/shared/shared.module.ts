@@ -5,11 +5,14 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './app.material.module';
 import { ErrorPagesModule } from '@uoa/error-pages';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
 import { FaqsPanelComponent } from './faqs-panel/faqs-panel.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { GroupMemberListComponent } from './group-member-list/group-member-list.component';
+import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
+import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 
 
 @NgModule({
@@ -17,7 +20,9 @@ import { GroupMemberListComponent } from './group-member-list/group-member-list.
     HeaderComponent,
     FaqsPanelComponent,
     PageNotFoundComponent,
-    GroupMemberListComponent
+    GroupMemberListComponent,
+    ConfirmDialogComponent,
+    ErrorDialogComponent
   ],
   imports: [
     CommonModule,
@@ -25,7 +30,9 @@ import { GroupMemberListComponent } from './group-member-list/group-member-list.
     FlexLayoutModule,
     MaterialModule,
     LayoutModule,
-    ErrorPagesModule
+    ErrorPagesModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [
     CommonModule,
@@ -37,7 +44,11 @@ import { GroupMemberListComponent } from './group-member-list/group-member-list.
     HeaderComponent,
     FaqsPanelComponent,
     PageNotFoundComponent,
-    GroupMemberListComponent
+    GroupMemberListComponent,
+    ConfirmDialogComponent,
+    ErrorDialogComponent,
+    FormsModule,
+    ReactiveFormsModule,
   ],
 })
 export class SharedModule { }

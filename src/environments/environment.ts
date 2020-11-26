@@ -11,7 +11,7 @@ export const environment = {
     cognitoDomain: 'uoapool-sandbox',
     cognitoClientId: 'lrju6v80vse4bbaesjvnr2ff0',
     redirectUri: 'http://localhost:4200',
-    scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
+    scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test https://research.auckland.ac.nz/servicenow',
     codeChallengeMethod: 'S256',
     logoutUri: 'http://localhost:4200'
   },
@@ -20,6 +20,7 @@ export const environment = {
     whoNeedIdToken: []
   },
   dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/cer-dashboard-graphql',
+  serverlessNowUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/serverless-now/',
 };
 
 /*
