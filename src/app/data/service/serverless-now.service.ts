@@ -13,13 +13,6 @@ export class ServerlessNowService {
   constructor(private http: HttpClient) { }
 
   requestService(serviceName: string, body: any) {
-    const options = {
-      headers: {
-        "Access-Control-Allow-Origin": "*",
-        "Host": "apigw.sandbox.amazon.auckland.ac.nz",
-        "Accept-Encoding": "gzip, deflate, br",
-      }
-    }
-    return this.http.post(ServerlessNowService.hostname + ServerlessNowService.requestServiceUrl + '/' + serviceName, body, options);
+    return this.http.post(ServerlessNowService.hostname, body);
   }
 }

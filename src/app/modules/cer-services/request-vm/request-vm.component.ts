@@ -15,6 +15,7 @@ import { format } from 'date-fns'
 import { CanComponentDeactivate } from '@app/guard/confirm-deactivate.guard';
 import { ErrorDialogComponent } from '@shared/error-dialog/error-dialog.component';
 import { ConfirmDialogComponent } from '@shared/confirm-dialog/confirm-dialog.component';
+import { environment } from '@env';
 
 
 @Component({
@@ -38,7 +39,7 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
   private routeParamsSub: Subscription;
   public title = 'Request a Research Virtual Machine Consultation';
   public image = 'content/research-vm.jpg';
-
+  public ticketUrl: string = environment.servicenowUrl + 'nav_to.do?uri=u_request.do?sys_id=';
 
   private static getTimes() {
     const times = [];
@@ -168,10 +169,14 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
         comments: values.comments
       };
 
+      console.log(JSON.stringify(body));
+
       this.serverlessNowService.requestService('vm', body)
         .subscribe(
           (response) => {
             this.response = response;
+            console.log(JSON.stringify(response));
+            console.log(this.ticketUrl);
             this.stepper.selectedIndex = 1; // Navigate to second step
             this.resultsDummyHeader.nativeElement.scrollIntoView();
             // TODO: set Done step to completed so that a tick appears next to 'Done', doesn't work at the moment
