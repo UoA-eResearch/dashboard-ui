@@ -141,8 +141,8 @@ pipeline {
                     echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
                     
                     def s3BucketName = (
-                        env.BRANCH_NAME == 'prod' ? 'cer-dashboard' : 
-                        env.BRANCH_NAME == 'nonprod' ? 'cer-dashboard-nonprod' : 
+                        env.BRANCH_NAME == 'prod' ? 'eresearch.dashboard.auckland.ac.nz' : 
+                        env.BRANCH_NAME == 'nonprod' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' : 
                         'cer-dashboard-sandbox'
                     )
 
@@ -162,8 +162,8 @@ pipeline {
                     echo "Invalidating..."
 
                     def awsCloudFrontDistroId = (
-                        env.BRANCH_NAME == 'prod' ? '' : 
-                        env.BRANCH_NAME == 'nonprod' ? '' : 
+                        env.BRANCH_NAME == 'prod' ? '<cloudfront-distro-id-prod>' : 
+                        env.BRANCH_NAME == 'nonprod' ? 'E3UAIWO4LLVR7I' : 
                         'E1ULTSGYFI5SZU'
                     )
 
