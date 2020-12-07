@@ -175,38 +175,38 @@ pipeline {
             }
         }
 
-        stage('BrowserStack e2e Tests') {
-            steps {
-                echo 'Deployed to ' + env.BRANCH_NAME + ', launching BrowserStack e2e Tests'
-                slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🚀 Deploy successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>).\n 📹 Launching BrowserStack e2e tests. <https://automate.browserstack.com/dashboard|Watch Videos>")
+        // stage('BrowserStack e2e Tests') {
+        //     steps {
+        //         echo 'Deployed to ' + env.BRANCH_NAME + ', launching BrowserStack e2e Tests'
+        //         slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🚀 Deploy successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>).\n 📹 Launching BrowserStack e2e tests. <https://automate.browserstack.com/dashboard|Watch Videos>")
 
-                script {
-                    def dashboardUrl = (
-                        env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.amazon.auckland.ac.nz/' : 
-                        env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.test.amazon.auckland.ac.nz/' : 
-                        'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/'
-                    )
+        //         script {
+        //             def dashboardUrl = (
+        //                 env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.amazon.auckland.ac.nz/' : 
+        //                 env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.test.amazon.auckland.ac.nz/' : 
+        //                 'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/'
+        //             )
 
-                    echo "eResearch Dashboard URL: ${dashboardUrl}"
+        //             echo "eResearch Dashboard URL: ${dashboardUrl}"
 
-                    try {
-                        // Set Browserstack account credentials as env vars
-                        withCredentials([
-                            usernamePassword(credentialsId: 'Browserstack-Credentials', passwordVariable: 'BROWSERSTACK_CREDENTIALS_KEY', usernameVariable: 'BROWSERSTACK_CREDENTIALS_USER'),
-                            usernamePassword(credentialsId: 'Automation-Test-Account', passwordVariable: 'TEST_ACCT_PASSWORD', usernameVariable: 'TEST_ACCT_USERNAME')
-                        ]) {
-                            sh "./node_modules/.bin/protractor e2e/protractor.conf.browserstack-remote --baseUrl=${dashboardUrl}"
-                        }
+        //             try {
+        //                 // Set Browserstack account credentials as env vars
+        //                 withCredentials([
+        //                     usernamePassword(credentialsId: 'Browserstack-Credentials', passwordVariable: 'BROWSERSTACK_CREDENTIALS_KEY', usernameVariable: 'BROWSERSTACK_CREDENTIALS_USER'),
+        //                     usernamePassword(credentialsId: 'Automation-Test-Account', passwordVariable: 'TEST_ACCT_PASSWORD', usernameVariable: 'TEST_ACCT_USERNAME')
+        //                 ]) {
+        //                     sh "./node_modules/.bin/protractor e2e/protractor.conf.browserstack-remote --baseUrl=${dashboardUrl}"
+        //                 }
 
-                        slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🙆‍♀️🙆🙆‍♂️ All BrowserStack e2e tests passed")
+        //                 slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🙆‍♀️🙆🙆‍♂️ All BrowserStack e2e tests passed")
 
-                    } catch(exc) {
-                        slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#f2ae3f", message: "🙅‍♀️🙅🙅‍♂️ One or more BrowserStack e2e tests failed. Consider reverting to an earlier deploy")
-                        error 'BrowserStack e2e tests failed'
-                    }
-                }
-            }
-        }
+        //             } catch(exc) {
+        //                 slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#f2ae3f", message: "🙅‍♀️🙅🙅‍♂️ One or more BrowserStack e2e tests failed. Consider reverting to an earlier deploy")
+        //                 error 'BrowserStack e2e tests failed'
+        //             }
+        //         }
+        //     }
+        // }
     }
     
     post {
