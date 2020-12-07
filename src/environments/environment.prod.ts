@@ -14,5 +14,7 @@ export const environment = {
   privateUrlKeyWords: {
     whoNeedBearerToken: [],
   },
-  dashboardGraphQlUrl: ''
+  dashboardGraphQlUrl: '',
+  serverlessNowUrl: '',
+  servicenowUrl: '',
 };

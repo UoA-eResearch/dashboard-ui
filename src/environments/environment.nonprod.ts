@@ -15,5 +15,6 @@ export const environment = {
     whoNeedBearerToken: [],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: ''
+  dashboardGraphQlUrl: '',
+  serverlessNowUrl: '',
 };

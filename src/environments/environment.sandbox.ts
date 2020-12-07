@@ -7,7 +7,7 @@ export const environment = {
     cognitoDomain: 'uoapool-sandbox',
     cognitoClientId: 'lrju6v80vse4bbaesjvnr2ff0',
     redirectUri: 'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz',
-    scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
+    scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test https://research.auckland.ac.nz/servicenow',
     codeChallengeMethod: 'S256',
     logoutUri: 'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz'
   },
@@ -15,5 +15,7 @@ export const environment = {
     whoNeedBearerToken: [{ url: 'apigw.sandbox.amazon.auckland.ac.nz', optional: false }],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/cer-dashboard-graphql'
+  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/cer-dashboard-graphql',
+  serverlessNowUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/serverless-now/',
+  servicenowUrl: 'https://uoadev.service-now.com/',
 };

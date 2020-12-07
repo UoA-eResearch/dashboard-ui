@@ -13,6 +13,8 @@ import { VisualisationDetailsComponent } from './visualisation/visualisation-det
 import { VisualisationListComponent } from './visualisation/visualisation-list/visualisation-list.component';
 import { ResearchVmListComponent } from './research-vm/research-vm-list/research-vm-list.component';
 import { ResearchVmDetailsComponent } from './research-vm/research-vm-details/research-vm-details.component';
+import { RequestStorageComponent } from './request-storage/request-storage.component';
+import { RequestVmComponent } from './request-vm/request-vm.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ResearchVmDetailsComponent } from './research-vm/research-vm-details/re
     VisualisationDetailsComponent,
     VisualisationListComponent,
     ResearchVmListComponent,
-    ResearchVmDetailsComponent
+    ResearchVmDetailsComponent,
+    RequestStorageComponent,
+    RequestVmComponent
   ],
   imports: [
     CommonModule,
