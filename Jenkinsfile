@@ -2,13 +2,13 @@ awsProfile = ''
 slackChannel = "research-hub"
 slackCredentials = "UoA-Slack-Access-Research-Hub"
 tagSet = '''TagSet=[\
-{Key=BusinessService,Value="Faculty of Science"},\
+{Key=BusinessService,Value="eResearch Services"},\
 {Key=Department,Value="Centre for eResearch"},\
-{Key=ProjectCode,Value="N/A"},\
+{Key=ProjectCode,Value="TBC"},\
 {Key=Faculty,Value="Science"},\
-{Key=WikiLink,Value="N/A"},\
-{Key=Application,Value="CeR Research Dashboard"},\
-{Key=CostCentre,Value="N/A"}]'''
+{Key=WikiLink,Value="https://wiki.auckland.ac.nz/display/APPLCTN/eResearch+Dashboard"},\
+{Key=Application,Value="eResearch Dashboard"},\
+{Key=CostCentre,Value="TBC"}]'''
 
 
 pipeline {

@@ -7,7 +7,7 @@ export const environment = {
     cognitoDomain: 'uoapool-nonprod',
     cognitoClientId: 'tk7lcsefcv9pqtmalmp6btjda',
     redirectUri: 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz',
-    scopes: 'openid profile https://eresearch-dashboard.auckland.ac.nz/dashboard https://research.auckland.ac.nz/servicenow',
+    scopes: 'openid profile https://eresearch-dashboard.auckland.ac.nz/dashboard',
     codeChallengeMethod: 'S256',
     logoutUri: 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz'
   },
