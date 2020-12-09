@@ -5,7 +5,7 @@ export const environment = {
     cognitoAwsRegion: 'ap-southeast-2',
     cognitoUserPoolId: 'ap-southeast-2_gtuqqgIIq',
     cognitoDomain: 'uoapool-nonprod',
-    cognitoClientId: 'tk7lcsefcv9pqtmalmp6btjda',
+    cognitoClientId: '2bdqs02j8na3eko34tuuf2s0lf',
     redirectUri: 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz',
     scopes: 'openid profile https://eresearch-dashboard.auckland.ac.nz/dashboard',
     codeChallengeMethod: 'S256',
@@ -17,5 +17,5 @@ export const environment = {
   },
   dashboardGraphQlUrl: 'https://apigw.test.amazon.auckland.ac.nz/cer-dashboard-graphql',
   serverlessNowUrl: 'https://apigw.test.amazon.auckland.ac.nz/serverless-now/',
-  servicenowUrl: 'https://uoadev.service-now.com/',
+  servicenowUrl: 'https://uoatest.service-now.com/',
 };

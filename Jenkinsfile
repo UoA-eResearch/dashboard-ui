@@ -163,7 +163,7 @@ pipeline {
 
                     def awsCloudFrontDistroId = (
                         env.BRANCH_NAME == 'prod' ? '<cloudfront-distro-id-prod>' : 
-                        env.BRANCH_NAME == 'nonprod' ? 'E3UAIWO4LLVR7I' : 
+                        env.BRANCH_NAME == 'nonprod' ? 'E3GNJDU40DAKCL' : 
                         'E1ULTSGYFI5SZU'
                     )
 
@@ -183,7 +183,7 @@ pipeline {
         //         script {
         //             def dashboardUrl = (
         //                 env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.amazon.auckland.ac.nz/' : 
-        //                 env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.test.amazon.auckland.ac.nz/' : 
+        //                 env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz/' : 
         //                 'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/'
         //             )
 
