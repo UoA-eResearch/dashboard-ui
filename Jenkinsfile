@@ -127,7 +127,8 @@ pipeline {
                     
                     withCredentials([
                         usernamePassword(credentialsId: "${awsCredentialsId}", passwordVariable: 'awsPassword', usernameVariable: 'awsUsername'),
-                        string(credentialsId: "${awsTokenId}", variable: 'awsToken')
+                        string(credentialsId: "${awsTokenId}", variable: 'awsToken'),
+                        string(credentialsId: "${awsProfile}", variable: 'awsProfile')
                     ]) {
                         sh 'python3 /home/jenkins/aws_saml_login.py --idp iam.auckland.ac.nz --user $awsUsername --password $awsPassword --token $awsToken --profile $awsProfile --role devops'
                     }
