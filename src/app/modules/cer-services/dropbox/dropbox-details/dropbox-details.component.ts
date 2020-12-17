@@ -12,9 +12,7 @@ query Dropbox($id: Int!) {
     id
     name
     deleted
-    editor_group
     team_folder_id_dbx
-    viewer_group
     projects {
       code
       first_day
@@ -26,8 +24,17 @@ query Dropbox($id: Int!) {
         end_date
       }
     }
+    groups {
+      editor_group
+      viewer_group
+    }
   }
 }`;
+
+enum MemberType {
+  editor_group = "Read Write",
+  viewer_group = "Read Only",
+}
 
 
 @Component({
@@ -41,6 +48,7 @@ export class DropboxDetailsComponent implements OnInit, OnDestroy {
   dropbox;
   loading$ = new Subject<boolean>();
   error;
+  memberTypes = MemberType;
 
   private querySubscription: Subscription;
   private paramsSubscription: Subscription;
