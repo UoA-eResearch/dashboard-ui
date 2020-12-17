@@ -35,3 +35,8 @@
 .mat-chip {
   white-space: nowrap;
 }
+
+// Fix for bug in mat-tab which causes page scroll to reset when changing tabs
+.project-details {
+  min-height: 50px;
+}

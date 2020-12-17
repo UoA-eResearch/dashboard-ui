@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { GroupMemberListComponent } from './group-member-list/group-member-list.component';
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
+import { StripHtmlPipe } from './pipe/strip-html.pipe';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
     PageNotFoundComponent,
     GroupMemberListComponent,
     ConfirmDialogComponent,
-    ErrorDialogComponent
+    ErrorDialogComponent,
+    StripHtmlPipe
   ],
   imports: [
     CommonModule,
@@ -49,6 +51,7 @@ import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
     ErrorDialogComponent,
     FormsModule,
     ReactiveFormsModule,
+    StripHtmlPipe,
   ],
 })
 export class SharedModule { }

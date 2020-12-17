@@ -1,4 +1,4 @@
-<div class="project-container" fxLayout="row wrap">
+<div class="project-container">
   <div class="project-content">
     <div *ngIf="(loading$ | async)">
       <mat-spinner></mat-spinner>
@@ -15,22 +15,22 @@
           </mat-chip-list>
         </div>
         <p class="project-description">
-          {{project.description}}
+          {{project.description | stripHtml}}
         </p>
       </mat-card-content>
     </mat-card>
 
     <!-- project details -->
     <mat-card *ngIf="project && !(loading$ | async)">
-      <mat-card-content>
-        <mat-tab-group dynamicHeight animationDuration="0ms">
+      <mat-card-content class="project-details">
+        <mat-tab-group dynamicHeight>
           <mat-tab label="Project Details">
-            <ng-template matTabContent>              
+            <div class="tab-content">            
               <h3>Project Title</h3>
               <p>{{project.title}}</p>
               <mat-divider></mat-divider>
               <h3>Description</h3>
-              <p>{{project.description}}</p>
+              <p>{{project.description | stripHtml}}</p>
               <mat-divider></mat-divider>
               <h3>Estimated Project End Date</h3>
               <p>{{project.end_date | date}}</p>
@@ -40,11 +40,11 @@
               <mat-divider></mat-divider>
               <h3>CeR Id</h3>
               <p>{{project.id}}</p>
-            </ng-template>
+            </div>
           </mat-tab>
 
           <mat-tab label="Members">
-            <ng-template matTabContent>
+            <div class="tab-content">
               <mat-list role="list">
                 <mat-list-item *ngFor="let member of project.members" class="project-member" role="listitem">
                   <img matListAvatar class="avatar-image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="avatar">
@@ -61,11 +61,11 @@
                   <mat-divider></mat-divider>
                 </mat-list-item>
               </mat-list>
-            </ng-template>
+            </div>
           </mat-tab>
 
           <mat-tab label="Resources">
-            <ng-template matTabContent>
+            <div class="tab-content">
               <mat-list role="list" *ngIf="project.services.dropbox.length > 0">
                 <h3><a href="https://www.dropbox.com">Dropbox</a></h3>
                 <mat-list-item *ngFor="let dropbox of project.services.dropbox" role="listitem">
@@ -105,7 +105,7 @@
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
-
+              
               <mat-list role="list" *ngIf="project.services.vm.length > 0">
                 <h3><a href="https://research-hub.auckland.ac.nz/#/content/1">Research Virtual Machines</a></h3>
                 <mat-list-item *ngFor="let vm of project.services.vm" role="listitem">
@@ -115,11 +115,11 @@
                 </mat-list-item>
               </mat-list>
               <mat-divider></mat-divider>
-            </ng-template>
+            </div>
           </mat-tab>
 
           <mat-tab label="Research Outputs">
-            <ng-template matTabContent>
+            <div class="tab-content">
               <div *ngIf="project.research_outputs.length > 0; else noResearchOutputs">
                 <div *ngFor="let researchoutput of project.research_outputs">
                   <h3>{{researchoutput.researchoutput.type.name}}</h3>
@@ -133,14 +133,14 @@
                   </p>
                   <mat-divider></mat-divider>
                 </div>
-                
               </div>
-              <ng-template #noResearchOutputs>
+              
+              <ng-template #noResearchOutputs class="tab-content">
                 <div *ngIf="!(loading$ | async) && !error">
                   <p>No outputs from this research project have been recorded here yet.</p>
                 </div>
               </ng-template>
-            </ng-template>
+            </div>            
           </mat-tab>
 
         </mat-tab-group>
