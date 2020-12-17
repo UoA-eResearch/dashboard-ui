@@ -14,10 +14,9 @@
 
     <mat-card *ngIf="researchVm && !(loading$ | async)">
       <mat-card-content>
-        <mat-tab-group dynamicHeight animationDuration="0ms">
-          
+        <mat-tab-group dynamicHeight>
           <mat-tab label="VM Specifications">
-            <ng-template matTabContent>
+            <div class="tab-content">
               <h3>Created Date</h3>
               <p>{{researchVm.date | date}}</p>
               <mat-divider></mat-divider>
@@ -44,20 +43,15 @@
               <mat-divider></mat-divider>
               <h3>CeR Id:</h3>
               <p>{{researchVm.id}}</p>
-            </ng-template>
+            </div>
           </mat-tab>
 
           <mat-tab label="Members">
-            <ng-template matTabContent>
-              <!-- <app-group-member-list [groupId]="researchVm.groups.admin_group.replace('.eresearch', '')">
-              </app-group-member-list>
-              <app-group-member-list [groupId]="researchVm.groups.user_group.replace('.eresearch', '')">
-              </app-group-member-list> -->
+            <div class="tab-content">
               <app-group-member-list [groupLabels]="memberTypes" [groups]="researchVm.groups">
               </app-group-member-list>
-            </ng-template>
+            </div>
           </mat-tab>
-
         </mat-tab-group>
       </mat-card-content>
     </mat-card>

@@ -40,8 +40,8 @@ query ResearchStorage($id: Int!) {
 
 enum MemberType {
   adm_group = "Admin",
-  ro_group = "Read Write",
-  rw_group = "Read Only",
+  ro_group = "Read Only",
+  rw_group = "Read Write",
   t_group = "T",
 }
 
