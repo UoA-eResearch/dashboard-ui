@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ServerlessNowService {
-  private static requestServiceUrl = 'serviceRequest';
   private static hostname = environment.serverlessNowUrl;
 
   constructor(private http: HttpClient) { }
