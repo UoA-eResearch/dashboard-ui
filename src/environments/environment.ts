@@ -11,7 +11,7 @@ export const environment = {
     cognitoDomain: 'uoapool-sandbox',
     cognitoClientId: 'lrju6v80vse4bbaesjvnr2ff0',
     redirectUri: 'http://localhost:4200',
-    scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
+    scopes: 'openid profile https://eresearch-dashboard.auckland.ac.nz/dashboard',
     codeChallengeMethod: 'S256',
     logoutUri: 'http://localhost:4200'
   },

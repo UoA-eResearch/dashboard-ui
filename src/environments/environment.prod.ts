@@ -7,7 +7,7 @@ export const environment = {
     cognitoDomain: '',
     cognitoClientId: '',
     redirectUri: '',
-    scopes: 'openid profile',
+    scopes: 'openid profile, TBC',
     codeChallengeMethod: 'S256',
     logoutUri: ''
   },
