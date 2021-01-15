@@ -36,6 +36,10 @@
   white-space: nowrap;
 }
 
+.mat-divider {
+  margin-top: -3px !important;
+}
+
 // Fix for bug in mat-tab which causes page scroll to reset when changing tabs
 .project-details {
   min-height: 50px;
