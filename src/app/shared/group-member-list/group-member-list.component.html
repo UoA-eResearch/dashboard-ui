@@ -4,18 +4,16 @@
   </div>
   <div *ngIf="error">{{error.message}}</div>
   <mat-list role="list" *ngIf="groupMembers">
-    <div *ngFor="let group of groupMembers">
-      <mat-list-item *ngFor="let member of group.users" role="listitem">
+    <div *ngIf="personRoles">
+      <mat-list-item *ngFor="let personRole of personRoles | keyvalue" role="listitem">
       <!-- <img matListAvatar class="avatar-image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="avatar"> TODO Use person icon-->
-      <h3 matLine>{{member.name}}</h3>
-      <p matLine>{{member.username}}</p>
-      <mat-chip-list>
-        <mat-chip>{{getMemberType(group.groupname)}}</mat-chip>
+      <h3 matLine>{{nameLookup[personRole.key]}}</h3>
+      <p matLine>{{personRole.key}}</p>
+      <mat-chip-list *ngFor="let role of personRole.value">
+        <mat-chip>{{role}}</mat-chip>
       </mat-chip-list>
       <mat-divider></mat-divider>
     </mat-list-item>
     </div>
   </mat-list>
 </div>
-
-

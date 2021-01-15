@@ -31,6 +31,8 @@ export class GroupMemberListComponent implements OnInit {
   loading$ = new BehaviorSubject(true);
   error: any;
   groupMembers: any;
+  personRoles: any = {};
+  nameLookup: any = {};
 
   private querySubscription: Subscription;
 
@@ -55,6 +57,7 @@ export class GroupMemberListComponent implements OnInit {
     .subscribe(
       ({ data, loading }) => {
         this.groupMembers = data.groupmembers;
+        this.mergeRoles();
         this.loading$.next(loading);
       },
       error => {
@@ -90,6 +93,21 @@ export class GroupMemberListComponent implements OnInit {
   getMemberType(groupname: string) {
     const groupLabel = this.getKeyByValue(this.groups, groupname)
     return this.groupLabels[groupLabel];
+  }
+
+  mergeRoles() {
+    // People often belong to more than one group. Build an object with username as key, and combine a person's roles into an array.  
+    for (var group of this.groupMembers) {
+      if (group['users']) {
+        for (var member of group['users']) {
+          if (!this.personRoles.hasOwnProperty(member['username'])) {
+            this.personRoles[member['username']] = [];
+            this.nameLookup[member['username']] = member['name']
+          }
+          this.personRoles[member['username']].push(this.getMemberType(group['groupname']));
+        }
+      }
+    }
   }
 
   ngOnDestroy(): void {
