@@ -15,5 +15,4 @@ export class MyProjectsListComponent {
   openProject(projectId) {
     this.router.navigateByUrl(`/project/${projectId}`);
   }
-
 }

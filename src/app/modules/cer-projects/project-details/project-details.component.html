@@ -10,9 +10,7 @@
       <mat-card-subtitle>Projects | Manage</mat-card-subtitle>
       <mat-card-content>
         <div class="project-members">
-          <mat-chip-list aria-label="Project Members">
-            <mat-chip *ngFor="let member of project.members" matTooltip="{{member.role.name}}">{{member.person.full_name}}</mat-chip>
-          </mat-chip-list>
+          <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions[0]"></app-project-member-list>
         </div>
         <p class="project-description">
           {{project.description | stripHtml}}
@@ -45,22 +43,7 @@
 
           <mat-tab label="Members">
             <div class="tab-content">
-              <mat-list role="list">
-                <mat-list-item *ngFor="let member of project.members" class="project-member" role="listitem">
-                  <img matListAvatar class="avatar-image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="avatar">
-                  <h3 matLine>{{member.person.full_name}}</h3>
-                  <p matLine *ngFor="let division of member.person.divisions">
-                    {{division.division}}, {{division.divisional_role.name}}
-                    <!-- TO DO: deal with external members -->
-                  </p>
-                  <p matLine>
-                    <mat-chip-list aria-label="Project Member Roles">
-                      <mat-chip>{{member.role.name}}</mat-chip>
-                    </mat-chip-list>
-                  </p>
-                  <mat-divider></mat-divider>
-                </mat-list-item>
-              </mat-list>
+              <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions[1]"></app-project-member-list>
             </div>
           </mat-tab>
 

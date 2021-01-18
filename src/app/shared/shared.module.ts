@@ -14,6 +14,7 @@ import { GroupMemberListComponent } from './group-member-list/group-member-list.
 import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.component';
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { StripHtmlPipe } from './pipe/strip-html.pipe';
+import { ProjectMemberListComponent } from './project-member-list/project-member-list.component';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { StripHtmlPipe } from './pipe/strip-html.pipe';
     GroupMemberListComponent,
     ConfirmDialogComponent,
     ErrorDialogComponent,
-    StripHtmlPipe
+    StripHtmlPipe,
+    ProjectMemberListComponent
   ],
   imports: [
     CommonModule,
@@ -52,6 +54,7 @@ import { StripHtmlPipe } from './pipe/strip-html.pipe';
     FormsModule,
     ReactiveFormsModule,
     StripHtmlPipe,
+    ProjectMemberListComponent
   ],
 })
 export class SharedModule { }

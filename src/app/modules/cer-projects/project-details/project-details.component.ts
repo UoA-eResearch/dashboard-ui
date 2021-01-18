@@ -21,6 +21,7 @@ query Project($id: Int!) {
         name
       }
       person {
+        id
         full_name
         identities {
           username
@@ -81,6 +82,10 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   project;
   loading$ = new Subject<boolean>();
   error;
+  projectMembersListFormatOptions = [
+    "chips",
+    "detailed"
+  ];
 
   private querySubscription: Subscription;
   private paramsSubscription: Subscription;
