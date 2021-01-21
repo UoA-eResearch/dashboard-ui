@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { ProjectMembersListFormatOptions } from './project-member-list-format-options';
 
 @Component({
   selector: 'app-project-member-list',
@@ -11,12 +12,12 @@ export class ProjectMemberListComponent implements OnInit {
   personRoles: any = {};
   nameLookup: any = {};
   divisionsLookup: any = {};
+  projectMembersListFormatOptions = ProjectMembersListFormatOptions;
 
   constructor() { }
 
   ngOnInit(): void {
     this.mergeProjectMemberRoles();
-    console.log(this.projectMembers);
   }
 
   mergeProjectMemberRoles() {

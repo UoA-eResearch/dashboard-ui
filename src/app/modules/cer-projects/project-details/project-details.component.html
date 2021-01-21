@@ -10,7 +10,7 @@
       <mat-card-subtitle>Projects | Manage</mat-card-subtitle>
       <mat-card-content>
         <div class="project-members">
-          <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions[0]"></app-project-member-list>
+          <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions.Chips"></app-project-member-list>
         </div>
         <p class="project-description">
           {{project.description | stripHtml}}
@@ -43,7 +43,7 @@
 
           <mat-tab label="Members">
             <div class="tab-content">
-              <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions[1]"></app-project-member-list>
+              <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions.Detailed"></app-project-member-list>
             </div>
           </mat-tab>
 

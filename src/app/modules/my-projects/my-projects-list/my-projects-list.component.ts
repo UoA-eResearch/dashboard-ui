@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProjectMembersListFormatOptions } from '@shared/project-member-list/project-member-list-format-options';
 
 @Component({
   selector: 'app-my-projects-list',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 export class MyProjectsListComponent {
 
   @Input() projects: Array<object>;
+  projectMembersListFormatOptions = ProjectMembersListFormatOptions;
 
   constructor(private router: Router) { }
 

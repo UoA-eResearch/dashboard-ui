@@ -80,7 +80,6 @@ export class MyProjectsComponent implements OnInit, OnDestroy {
     .subscribe(
       ({ data, loading }) => {
         this.personProjects = data.user;
-        console.log(this.personProjects.projects);
         this.loading$.next(loading);
       },
       error => {

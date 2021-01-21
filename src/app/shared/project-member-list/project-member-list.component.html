@@ -1,10 +1,10 @@
-<div *ngIf="listFormat === 'chips'">
+<div *ngIf="listFormat === projectMembersListFormatOptions.Chips">
   <mat-chip-list aria-label="Project Members">
     <mat-chip *ngFor="let person of nameLookup | keyvalue" matTooltip="{{personRoles[person.key].join(', ')}}">{{person.value}}</mat-chip>
   </mat-chip-list>
 </div>
 
-<div *ngIf="listFormat === 'detailed'">
+<div *ngIf="listFormat === projectMembersListFormatOptions.Detailed">
   <mat-list role="list">
     <mat-list-item *ngFor="let person of nameLookup | keyvalue" class="project-member" role="listitem">
       <img matListAvatar class="avatar-image" src="https://material.angular.io/assets/img/examples/shiba1.jpg" alt="avatar">

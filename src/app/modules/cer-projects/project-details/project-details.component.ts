@@ -4,6 +4,7 @@ import { LoginService, UserInfoDto } from '@uoa/auth';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProjectMembersListFormatOptions } from '@shared/project-member-list/project-member-list-format-options';
 
 export const GET_PROJECT = gql`
 query Project($id: Int!) {
@@ -82,11 +83,8 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   project;
   loading$ = new Subject<boolean>();
   error;
-  projectMembersListFormatOptions = [
-    "chips",
-    "detailed"
-  ];
-
+  projectMembersListFormatOptions = ProjectMembersListFormatOptions;
+  
   private querySubscription: Subscription;
   private paramsSubscription: Subscription;
 
