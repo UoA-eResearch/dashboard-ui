@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedModule } from '@shared/shared.module';
 import { NectarListComponent } from './nectar-list.component';
 
 describe('NectarListComponent', () => {
@@ -8,7 +8,8 @@ describe('NectarListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ NectarListComponent ]
+      declarations: [ NectarListComponent ],
+      imports: [ SharedModule ],
     })
     .compileComponents();
   }));

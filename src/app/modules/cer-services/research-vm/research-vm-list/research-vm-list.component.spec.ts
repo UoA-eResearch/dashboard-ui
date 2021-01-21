@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedModule } from '@shared/shared.module';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ResearchVmListComponent } from './research-vm-list.component';
 
 describe('ResearchVmListComponent', () => {
@@ -8,7 +9,11 @@ describe('ResearchVmListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResearchVmListComponent ]
+      declarations: [ ResearchVmListComponent ],
+      imports: [ 
+        SharedModule,
+        RouterTestingModule,
+      ],
     })
     .compileComponents();
   }));

@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedModule } from '@shared/shared.module';
 import { VisualisationListComponent } from './visualisation-list.component';
 
 describe('VisualisationListComponent', () => {
@@ -8,7 +8,8 @@ describe('VisualisationListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ VisualisationListComponent ]
+      declarations: [ VisualisationListComponent ],
+      imports: [ SharedModule ],
     })
     .compileComponents();
   }));

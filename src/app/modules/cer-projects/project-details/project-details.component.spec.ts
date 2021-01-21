@@ -5,6 +5,7 @@ import { CoreModule } from '@app/core.module';
 import { ProjectDetailsComponent } from './project-details.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
+import { SharedModule } from '@shared/shared.module';
 
 // https://medium.com/@sergeyfetiskin/testing-apollo-graphql-in-your-angular-application-595f0a04aad3
 
@@ -21,7 +22,8 @@ describe('ProjectDetailsComponent', () => {
         HttpClientTestingModule,
         CoreModule,
         BrowserAnimationsModule,
-        ApolloTestingModule
+        ApolloTestingModule,
+        SharedModule,
       ]
     })
     .compileComponents();

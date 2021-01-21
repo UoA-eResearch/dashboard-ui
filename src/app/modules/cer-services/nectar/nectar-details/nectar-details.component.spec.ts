@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
 import { NectarDetailsComponent } from './nectar-details.component';
+import { SharedModule } from '@shared/shared.module';
 
 describe('NectarDetailsComponent', () => {
   let component: NectarDetailsComponent;
@@ -15,7 +16,8 @@ describe('NectarDetailsComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
-        ApolloTestingModule
+        ApolloTestingModule,
+        SharedModule,
       ]
     })
     .compileComponents();

@@ -3,6 +3,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
 import { VisualisationDetailsComponent } from './visualisation-details.component';
+import { SharedModule } from '@shared/shared.module';
 
 describe('VisualisationDetailsComponent', () => {
   let component: VisualisationDetailsComponent;
@@ -15,7 +16,8 @@ describe('VisualisationDetailsComponent', () => {
       imports: [
         RouterTestingModule,
         HttpClientTestingModule,
-        ApolloTestingModule
+        ApolloTestingModule,
+        SharedModule
       ]
     })
     .compileComponents();

@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { SharedModule } from '@shared/shared.module';
+import { RouterTestingModule } from '@angular/router/testing';
 import { ResearchStorageListComponent } from './research-storage-list.component';
 
 describe('ResearchStorageListComponent', () => {
@@ -8,7 +9,11 @@ describe('ResearchStorageListComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ResearchStorageListComponent ]
+      declarations: [ ResearchStorageListComponent ],
+      imports: [ 
+        SharedModule,
+        RouterTestingModule,
+      ],
     })
     .compileComponents();
   }));

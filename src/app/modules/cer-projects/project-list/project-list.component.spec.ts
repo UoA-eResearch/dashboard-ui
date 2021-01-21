@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { ApolloTestingController, ApolloTestingModule } from 'apollo-angular/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { ProjectListComponent } from './project-list.component';
+import { SharedModule } from '@shared/shared.module';
 
 describe('ProjectListComponent', () => {
   let component: ProjectListComponent;
@@ -13,7 +14,8 @@ describe('ProjectListComponent', () => {
       declarations: [ ProjectListComponent ],
       imports: [
         ApolloTestingModule,
-        RouterTestingModule
+        RouterTestingModule,
+        SharedModule,
       ]
     })
     .compileComponents();

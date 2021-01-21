@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CerServicesComponent } from './cer-services.component';
+import { SharedModule } from '@shared/shared.module';
 
 describe('CerServicesComponent', () => {
   let component: CerServicesComponent;
@@ -10,7 +11,8 @@ describe('CerServicesComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ CerServicesComponent ],
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        SharedModule,
       ]
     })
     .compileComponents();
