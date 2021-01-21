@@ -1,20 +1,25 @@
 <mat-sidenav-container class="sidenav-container">
 
-  <!-- Temporary deactivated for MVP1 -->
+  <!-- Temporary modified for MVP1 -->
 
-  <!-- <mat-sidenav #drawer fixedInViewport
+  <mat-sidenav #drawer fixedInViewport
       attr.role="navigation"
       mode="over"
       opened="false">
     <mat-toolbar color="primary" class="app-toolbar" ngClass.xs="app-toolbar-xs">
-       <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+       <!-- <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
         <img src="https://via.placeholder.com/239x32">
-      </a> 
+      </a> -->
+      <a href="https://research-hub.auckland.ac.nz/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+        <img src="assets/imgs/hub-logo.svg">
+      </a>
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a>
+      <!-- <a mat-list-item *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a> -->
+      <a mat-list-item routerLink="/service/research-vm/request" routerLinkActive="mat-accent">Request VM Consultation</a>
+      <a mat-list-item routerLink="/service/research-storage/request" routerLinkActive="mat-accent">Request Research Storage</a>
     </mat-nav-list>
-  </mat-sidenav> -->
+  </mat-sidenav>
 
 
   <mat-sidenav-content>
@@ -26,7 +31,7 @@
 
               <!-- Temporary deactivated for MVP1 -->
 
-              <!-- <button 
+              <button 
                 type="button"
                 aria-label="Toggle sidenav"
                 mat-icon-button
@@ -35,7 +40,7 @@
                 (click)="drawer.toggle()"
                 > 
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-              </button> -->
+              </button>
 
 
               <!-- Temporary modified for MVP1 -->
@@ -54,7 +59,8 @@
 
               <!-- standard routes buttons -->
               <!-- <a mat-button *ngFor="let route of routes" fxHide.lt-md [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a> -->
-              <!-- <a mat-button *ngFor="let route of routes" fxHide.lt-md [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a> -->
+              <a mat-button fxHide.lt-md routerLink="/service/research-vm/request" routerLinkActive="mat-accent">Request VM Consultation</a>
+              <a mat-button fxHide.lt-md routerLink="/service/research-storage/request" routerLinkActive="mat-accent">Request Research Storage</a>
 
               <!-- login/logout/profile -->
               <div *ngIf="loginService.loggedIn$ | async as loggedIn; else signin">
