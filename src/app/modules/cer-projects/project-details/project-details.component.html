@@ -70,7 +70,7 @@
               <mat-divider></mat-divider>
 
               <mat-list role="list" *ngIf="project.services.research_drive.length > 0">
-                <h3><a href="https://research-hub.auckland.ac.nz/#/content/49">Research Storage Drive</a></h3>
+                <h3><a href="{{researchHubUrl}}#/content/49">Research Storage Drive</a></h3>
                 <mat-list-item *ngFor="let research_drive of project.services.research_drive" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/research-storage.jpg" alt="avatar">
                   <h3 matLine>{{research_drive.name}}</h3>
@@ -80,7 +80,7 @@
               <mat-divider></mat-divider>
 
               <mat-list role="list" *ngIf="project.services.vis.length > 0">
-                <h3><a href="https://research-hub.auckland.ac.nz/#/content/29">Visualisation Services</a></h3>
+                <h3><a href="{{researchHubUrl}}#/content/29">Visualisation Services</a></h3>
                 <mat-list-item *ngFor="let vis of project.services.vis" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/vis.jpg" alt="avatar">
                   <h3 matLine>{{vis.name}}</h3>
@@ -90,7 +90,7 @@
               <mat-divider></mat-divider>
               
               <mat-list role="list" *ngIf="project.services.vm.length > 0">
-                <h3><a href="https://research-hub.auckland.ac.nz/#/content/1">Research Virtual Machines</a></h3>
+                <h3><a href="{{researchHubUrl}}#/content/1">Research Virtual Machines</a></h3>
                 <mat-list-item *ngFor="let vm of project.services.vm" role="listitem">
                   <img matListAvatar class="avatar-image" src="assets/imgs/research-vm.jpg" alt="avatar">
                   <h3 matLine>{{vm.name}}</h3>

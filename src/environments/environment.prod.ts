@@ -17,4 +17,5 @@ export const environment = {
   dashboardGraphQlUrl: '',
   serverlessNowUrl: '',
   servicenowUrl: '',
+  researchHubUrl: 'https://research-hub.auckland.ac.nz/',
 };

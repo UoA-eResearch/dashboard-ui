@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { environment } from '@env';
 
 @Component({
   selector: 'app-return-to-hub',
@@ -6,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./return-to-hub.component.scss']
 })
 export class ReturnToHubComponent implements OnInit {
+  researchHubUrl = environment.researchHubUrl;
 
   constructor() { }
 

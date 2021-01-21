@@ -5,6 +5,8 @@ import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProjectMembersListFormatOptions } from '@shared/project-member-list/project-member-list-format-options';
+import { environment } from '@env';
+
 
 export const GET_PROJECT = gql`
 query Project($id: Int!) {
@@ -84,6 +86,7 @@ export class ProjectDetailsComponent implements OnInit, OnDestroy {
   loading$ = new Subject<boolean>();
   error;
   projectMembersListFormatOptions = ProjectMembersListFormatOptions;
+  researchHubUrl = environment.researchHubUrl;
   
   private querySubscription: Subscription;
   private paramsSubscription: Subscription;

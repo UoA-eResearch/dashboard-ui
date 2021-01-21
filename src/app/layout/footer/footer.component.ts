@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { format } from 'date-fns';
+import { environment } from '@env';
 
 
 @Component({
@@ -11,6 +12,7 @@ export class FooterComponent implements OnInit {
   aucklandUniUrl = 'https://auckland.ac.nz';
   eResearchUrl = 'http://eresearch.auckland.ac.nz';
   disclaimerUrl = 'https://www.auckland.ac.nz/en/admin/footer-links/disclaimer.html';
+  researchHubUrl = environment.researchHubUrl;
 
   constructor() { }
 

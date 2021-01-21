@@ -18,4 +18,5 @@ export const environment = {
   dashboardGraphQlUrl: 'https://apigw.test.amazon.auckland.ac.nz/cer-dashboard-graphql',
   serverlessNowUrl: 'https://apigw.test.amazon.auckland.ac.nz/serverless-now/',
   servicenowUrl: 'https://uoatest.service-now.com/',
+  researchHubUrl: 'https://research-hub.auckland.ac.nz/',
 };

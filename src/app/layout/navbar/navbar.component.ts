@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '@uoa/auth';
 import { Router } from '@angular/router';
+import { environment } from '@env';
 
 @Component({
   selector: 'app-navbar',
@@ -13,6 +14,7 @@ export class NavbarComponent implements OnInit {
     { path: '/my-services', label: 'My Services' },
     { path: '/help', label: 'Help' },
   ];
+  researchHubUrl = environment.researchHubUrl;
 
   constructor(public loginService: LoginService, private router: Router) { }
 
