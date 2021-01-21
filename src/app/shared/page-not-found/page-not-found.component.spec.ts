@@ -34,12 +34,6 @@ describe('PageNotFoundComponent', () => {
     expect(el.textContent).toContain('404 Not Found');
   });
 
-  it('should display the link for homepage', () => {
-    const el = fixture.debugElement.query(By.css('a')).nativeElement;
-    expect(el.getAttribute('routerLink')).toBe('/');
-    expect(el.textContent).toContain('home');
-  });
-
   afterEach(() => {
     fixture.destroy();
   });
