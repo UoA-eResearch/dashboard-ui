@@ -15,6 +15,7 @@ import { format, subYears } from 'date-fns'
 import { ErrorDialogComponent } from '@shared/error-dialog/error-dialog.component';
 import { ConfirmDialogComponent } from '@shared/confirm-dialog/confirm-dialog.component';
 import { CanComponentDeactivate } from '@app/guard/confirm-deactivate.guard'; 
+import { environment } from '@env';
 
 
 interface Person {
@@ -60,6 +61,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
   public projectMembers: FormArray;
   public requestTypeClicked = false;
   public showSizeNextYear = true;
+  public ticketUrl: string = environment.servicenowUrl + 'nav_to.do?uri=u_request.do?sys_id=';
 
   public updateOptionsList = [
     'Extend Storage',

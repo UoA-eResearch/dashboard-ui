@@ -518,17 +518,19 @@
           </p>
           <p>
             You may view your request here:
-            <a *ngIf="response" [href]="response.ticketUrl" target="_blank">{{
-              response.ticketNumber
-            }}</a>
+            <a *ngIf="response" [attr.href]="ticketUrl + response.sys_id" target="_blank">
+              {{response.display_value}}
+            </a>
           </p>
         </div>
       </div>
       <div fxLayout="column" fxLayoutAlign="end">
         <div fxLayout="row" fxLayoutAlign="end">
-          <button mat-raised-button color="accent" [routerLink]="['/content', 49]">
-            Back to Research Storage
-          </button>
+
+          <!-- Temporary modified for MVP1 -->
+          <!-- <button mat-raised-button color="accent" routerLink="/service/research-storage">Back to Research Storage</button> -->
+          <a href="https://research-hub.auckland.ac.nz/#/content/49"><button mat-raised-button color="accent">Back to Research Storage</button></a>
+
         </div>
       </div>
     </mat-step>
