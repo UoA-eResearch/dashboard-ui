@@ -1,41 +1,60 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer fixedInViewport
+
+  <!-- Temporary deactivated for MVP1 -->
+
+  <!-- <mat-sidenav #drawer fixedInViewport
       attr.role="navigation"
       mode="over"
       opened="false">
     <mat-toolbar color="primary" class="app-toolbar" ngClass.xs="app-toolbar-xs">
-      <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+       <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
         <img src="https://via.placeholder.com/239x32">
-      </a>
+      </a> 
     </mat-toolbar>
     <mat-nav-list>
       <a mat-list-item *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a>
     </mat-nav-list>
-  </mat-sidenav>
+  </mat-sidenav> -->
+
+
   <mat-sidenav-content>
     <div class="sidenav-content-wrapper">
       <div class="sidenav-content" fxLayout="column" ngClass.xs="sidenav-content-xs">
         <div class="app-toolbar-container">
           <mat-toolbar color="primary" class="site-content app-toolbar" ngClass.xs="site-content app-toolbar-xs">
             <mat-toolbar-row class="app-toolbar-row" fxLayout="row" ngClass.xs="app-toolbar-row-xs">
-              <button 
+
+              <!-- Temporary deactivated for MVP1 -->
+
+              <!-- <button 
                 type="button"
                 aria-label="Toggle sidenav"
                 mat-icon-button
                 style="margin-right: 6px;" 
                 fxHide.gt-sm
                 (click)="drawer.toggle()"
-                >
+                > 
                 <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-              </button>
-              <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
-                <img src="https://via.placeholder.com/239x32">
+              </button> -->
+
+
+              <!-- Temporary modified for MVP1 -->
+
+              <a href="https://research-hub.auckland.ac.nz/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+                <img src="assets/imgs/hub-logo.svg">
               </a>
+              <!-- <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+                <img src="https://via.placeholder.com/239x32">
+              </a> -->
+
 
               <span style="flex: 1 1 auto;"></span>
               
+              <!-- Temporary modified for MVP1 -->
+
               <!-- standard routes buttons -->
-              <a mat-button *ngFor="let route of routes" fxHide.lt-md [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a>
+              <!-- <a mat-button *ngFor="let route of routes" fxHide.lt-md [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a> -->
+              <!-- <a mat-button *ngFor="let route of routes" fxHide.lt-md [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a> -->
 
               <!-- login/logout/profile -->
               <div *ngIf="loginService.loggedIn$ | async as loggedIn; else signin">
@@ -64,9 +83,13 @@
                       </mat-list>
     
                       <div fxLayout="row" fxLayoutAlign="end">
+
+                        <!-- Temporary deactivated for MVP1 -->
+
                         <button class="signout-button" mat-raised-button style="color: black; background-color: white;" (click)="logout()">
                           Sign Out
                         </button>
+
                       </div>
                     </div>
                   </mat-menu>

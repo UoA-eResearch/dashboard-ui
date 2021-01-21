@@ -1,13 +1,15 @@
 <div class="cer-services-content">
 
-  <mat-form-field appearance="fill" *ngIf="isServiceBaseRoute()">
+  <!-- Temporarily deactivated for MVP1 -->
+
+  <!-- <mat-form-field appearance="fill" *ngIf="isServiceBaseRoute()">
     <mat-label>Service</mat-label>
     <mat-select>
       <mat-option *ngFor="let service of services" [value]="service.value" [routerLink]="service.link">
         {{service.viewValue}}
       </mat-option>
     </mat-select>
-  </mat-form-field>
+  </mat-form-field> -->
 
   <router-outlet></router-outlet>
   

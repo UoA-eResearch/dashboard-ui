@@ -15,6 +15,7 @@ import { ConfirmDialogComponent } from './confirm-dialog/confirm-dialog.componen
 import { ErrorDialogComponent } from './error-dialog/error-dialog.component';
 import { StripHtmlPipe } from './pipe/strip-html.pipe';
 import { ProjectMemberListComponent } from './project-member-list/project-member-list.component';
+import { ReturnToHubComponent } from './return-to-hub/return-to-hub.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { ProjectMemberListComponent } from './project-member-list/project-member
     ConfirmDialogComponent,
     ErrorDialogComponent,
     StripHtmlPipe,
-    ProjectMemberListComponent
+    ProjectMemberListComponent,
+    ReturnToHubComponent
   ],
   imports: [
     CommonModule,
