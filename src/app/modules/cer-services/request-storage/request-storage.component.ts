@@ -49,7 +49,6 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
   private dataRequirementsSub: Subscription;
   private endDateSub: Subscription;
   public title = 'Request Research Storage';
-  public image = 'content/vault.jpg';
   public response: any;
   public requestTypeForm: FormGroup;
   public projectForm: FormGroup;
@@ -130,23 +129,32 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
     'Project Owner'
   ];
 
-  constructor(private formBuilder: FormBuilder, dateAdapter: DateAdapter<NativeDateAdapter>,
+  constructor(
+    private formBuilder: FormBuilder,
+    dateAdapter: DateAdapter<NativeDateAdapter>,
     private serverlessNowService: ServerlessNowService,
     public loginService: LoginService,
-    public dialog: MatDialog, private location: Location, private route: ActivatedRoute,
-    private el: ElementRef) {
+    public dialog: MatDialog,
+    private location: Location,
+    private route: ActivatedRoute,
+    private el: ElementRef
+  ) {
     dateAdapter.setLocale('en-GB');
   }
 
   async ngOnInit() {
 
     this.requestTypeForm = this.formBuilder.group({
-      requestType: new FormControl('New', Validators.required)
+      requestType: new FormControl('New', Validators.required),
+      isPersonalDropbox: new FormControl(false)
     });
 
     this.projectForm = this.formBuilder.group({
       title: new FormControl(undefined, Validators.required),
-      abstract: new FormControl(undefined, [Validators.required, Validators.minLength(500)]),
+      abstract: new FormControl(undefined, [
+        Validators.required,
+        Validators.minLength(500)
+      ]),
       storageOptions: new FormControl(undefined, Validators.required),
       endDate: new FormControl(undefined, [Validators.required]),
       fieldOfResearch: new FormControl(undefined, Validators.required),
@@ -192,24 +200,48 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       };
     }
 
-    this.projectMembers = this.formBuilder.array([], Validators.compose([
-      Validators.required,
-      projectOwnerValidator(),
-      roleMinimumCountValidator('dataContact', 1),
-      roleMinimumCountValidator('dataOwner', 1)
-    ]));
+    function projectOwnerIsEmployee(): ValidatorFn {
+      return (formArray: FormArray) => {
+        let isValid = false;
+        formArray.value.forEach((projectMember) => {
+          let regex = /.*auckland.ac.nz$/;
+          if (projectMember.roles.projectOwner && regex.test(projectMember.email)) {
+            isValid = true;
+          }
+        });
+        return isValid ? null : { invalidProjectOwnerEmail: true }
+      };
+    }
+
+    this.projectMembers = this.formBuilder.array(
+      [],
+      Validators.compose([
+        Validators.required,
+        projectOwnerValidator(),
+        roleMinimumCountValidator('dataContact', 1),
+        roleMinimumCountValidator('dataOwner', 1),
+        projectOwnerIsEmployee(),
+      ])
+    );
 
     this.dataInfoForm = this.formBuilder.group({
       dataRequirements: new FormControl(undefined),
       dataRequirementsOther: new FormControl(undefined),
-      shortName: new FormControl(undefined, [Validators.required]),
-      projectMembers: this.projectMembers
+      shortName: new FormControl(undefined, [
+        Validators.required,
+        Validators.maxLength(45),
+      ]),
+      projectMembers: this.projectMembers,
     });
 
-    this.dataRequirementsSub = this.dataInfoForm.get('dataRequirements').valueChanges.subscribe(
-      (items: string[]) => {
-        const dataRequirementsOther = this.dataInfoForm.get('dataRequirementsOther');
-        this.showOtherField = items && items.find((item) => item === 'Other') !== undefined;
+    this.dataRequirementsSub = this.dataInfoForm
+      .get('dataRequirements')
+      .valueChanges.subscribe((items: string[]) => {
+        const dataRequirementsOther = this.dataInfoForm.get(
+          'dataRequirementsOther'
+        );
+        this.showOtherField = 
+          items && items.find((item) => item === 'Other') !== undefined;
 
         if (this.showOtherField) {
           dataRequirementsOther.setValidators([Validators.required]);
@@ -217,19 +249,25 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
           dataRequirementsOther.setValidators([]);
           dataRequirementsOther.setValue(undefined);
         }
-      }
-    );
+      });
 
     this.dataSizeForm = this.formBuilder.group({
-      sizeThisYear: new FormControl(undefined, [Validators.required, Validators.min(1)]),
+      sizeThisYear: new FormControl(undefined, [
+        Validators.required,
+        Validators.min(1),
+      ]),
       unitThisYear: new FormControl(this.units[0], Validators.required),
-      sizeNextYear: new FormControl(undefined, [Validators.required, Validators.min(1)]),
+      sizeNextYear: new FormControl(undefined, [
+        Validators.required,
+        Validators.min(1),
+      ]),
       unitNextYear: new FormControl(this.units[0], Validators.required),
       comments: new FormControl(undefined)
     });
 
-    this.endDateSub = this.projectForm.get('endDate').valueChanges.subscribe(
-      (date: Date) => {
+    this.endDateSub = this.projectForm
+      .get('endDate')
+      .valueChanges.subscribe((date: Date) => {
         this.showSizeNextYear = new Date() <= subYears(date, 1);
 
         const sizeNextYear = this.dataSizeForm.get('sizeNextYear');
@@ -245,8 +283,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
           sizeNextYear.setValue(undefined);
           unitNextYear.setValue(undefined);
         }
-      }
-    );
+      });
 
     // Pre-populate first person in list with logged in user
     const user = await this.loginService.getUserInfo();
@@ -259,29 +296,34 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
         dataOwner: false,
         dataContact: false,
         projectOwner: false,
+      },
+    });
+
+    this.routeParamsSub = this.route.queryParams.subscribe(params => {
+      const retry = params['retry'];
+
+      if (retry) {
+        this.loadRequest();
+      } else {
+        this.clearRequest();
       }
     });
 
-    this.routeParamsSub =
-      this.route.queryParams
-        .subscribe(params => {
-          const retry = params['retry'];
-
-          if (retry) {
-            this.loadRequest();
-          } else {
-            this.clearRequest();
-          }
-        });
-
-    this.stepperSub = this.stepper.selectionChange.subscribe(selection => {
-      this.isEditable = selection.selectedIndex !== this.stepper._steps.length - 1;
+    this.stepperSub = this.stepper.selectionChange.subscribe((selection) => {
+      this.isEditable = 
+        selection.selectedIndex !== this.stepper._steps.length - 1;
       this.resultsDummyHeader.nativeElement.scrollIntoView();
     });
   }
 
   canDeactivate() {
-    if ((!this.requestTypeForm.dirty && !this.projectForm.dirty && !this.dataInfoForm.dirty && !this.dataSizeForm.dirty) || this.response !== undefined) {
+    if (
+      (!this.requestTypeForm.dirty &&
+        !this.projectForm.dirty && 
+        !this.dataInfoForm.dirty && 
+        !this.dataSizeForm.dirty) ||
+      this.response !== undefined
+    ) {
       return true;
     }
 
@@ -289,15 +331,18 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       data: {
         title: 'Leave form?',
         message: 'Leaving this form will delete all of the information you have filled in.'
-      }
+      },
     });
     const afterClosedObs = dialogRef.afterClosed();
     const afterClosedSub = afterClosedObs.subscribe();
 
-    return afterClosedObs.pipe(map(result => {
-      afterClosedSub.unsubscribe();
-      return result;
-    }), first());
+    return afterClosedObs.pipe(
+      map(result => {
+        afterClosedSub.unsubscribe();
+        return result;
+      }),
+      first()
+    );
   }
 
   saveRequest() {
@@ -306,7 +351,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       requestDetailsForm: this.requestDetailsForm.getRawValue(),
       projectForm: this.projectForm.getRawValue(),
       dataInfoForm: this.dataInfoForm.getRawValue(),
-      dataSizeForm: this.dataSizeForm.getRawValue()
+      dataSizeForm: this.dataSizeForm.getRawValue(),
     };
 
     localStorage.setItem(this.requestFormKey, JSON.stringify(form));
@@ -329,7 +374,14 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
   }
 
   clearRequest() {
-    localStorage.removeItem(this.requestFormKey)
+    localStorage.removeItem(this.requestFormKey);
+  }
+
+  /**
+   * Unchecks the personal dropbox checkbox on the first page.
+   */
+  uncheckPersonalDropboxCheckbox() {
+    this.requestTypeForm.controls.isPersonalDropbox.setValue(false);
   }
 
   addNewPerson() {
@@ -359,14 +411,12 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       lastName: new FormControl(person.lastName, Validators.required),
       email: new FormControl(person.email, [
         Validators.required,
-        Validators.pattern('.*(aucklanduni.ac.nz|auckland.ac.nz)$')
+        Validators.pattern(/.*(\@|\@.+\.)(aucklanduni.ac.nz|auckland.ac.nz)$/),
       ]),
       access: new FormControl(person.access),
       roles: rolesFormGroup
     })
-    control.push(
-      personFormGroup
-    );
+    control.push(personFormGroup);
   }
 
   deletePerson(index: number) {
@@ -381,19 +431,23 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
     this.endDateSub.unsubscribe();
   }
 
-  showErrorDialog(title: string, message: string, closeButtonName: string, timeout: number) {
+  showErrorDialog(
+    title: string,
+    message: string,
+    closeButtonName: string,
+    timeout: number
+  ) {
     return this.dialog.open(ErrorDialogComponent, {
       data: {
         title: title,
         message: message,
         closeButtonName: closeButtonName,
         timeout: timeout
-      }
+      },
     });
   }
 
   submit(requestType: string, currentForm: FormGroup) {
-
     const isValid = currentForm.valid; // Check if the form containing the submit button is valid
     currentForm.markAsTouched(); // Programmatically fire the formGroup's validators
     currentForm.markAsDirty();
@@ -403,40 +457,53 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       this.submitting = true;
       let body;
 
-      if (requestType === 'New') {
-        body = Object.assign({},
+      if (requestType === 'New' || this.requestTypeForm.controls.isPersonalDropbox.value ) {
+        body = Object.assign(
+          {},
           this.requestTypeForm.getRawValue(),
           this.projectForm.getRawValue(),
           this.dataInfoForm.getRawValue(),
-          this.dataSizeForm.getRawValue());
+          this.dataSizeForm.getRawValue()
+        );
 
         // Convert endDate into string
         body.endDate = format(body.endDate, 'yyyy-MM-dd');
       } else if (requestType === 'Existing') {
-        body = Object.assign({},
+        body = Object.assign(
+          {},
           this.requestTypeForm.getRawValue(),
-          this.requestDetailsForm.getRawValue());
+          this.requestDetailsForm.getRawValue()
+        );
       }
 
-      // restructure body to avoid needed to alter servicenow api.
+      // restructure body to avoid needing to alter servicenow api.
       if (body['projectMembers']) {
-        console.log("project members restructure.")
-        body['projectMembers'].forEach(member => {
+        console.log("project members restructure.");
+        body['projectMembers'].forEach((member) => {
           const rolesArray = [];
           const roles = member['roles'];
           Object.keys(roles).forEach(function (key) {
             if (roles[key]) {
               // Replaces camel case to a lowercase string.
-              const role = key.split(/(?=[A-Z])/).map(s => {
-                s.toLowerCase()
-                return s.charAt(0).toUpperCase() + s.slice(1);
-              }).join(' ');
+              const role = key
+                .split(/(?=[A-Z])/)
+                .map(s => {
+                  s.toLowerCase()
+                  return s.charAt(0).toUpperCase() + s.slice(1);
+                })
+                .join(' ');
               rolesArray.push(role);
             }
           });
           member['roles'] = rolesArray;
         });
       }
+
+      // convert new - dropbox to the same value as new
+      this.requestTypeForm.controls.isPersonalDropbox.value ? body["requestType"] = "New" : null;
+
+      // remove property used for form processing
+      delete body['isPersonalDropbox'];
 
       console.log('Submitting request body: ', body);
 
@@ -461,11 +528,15 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
               await this.loginService.doLogin(url);
             });
           } else {
-            this.showErrorDialog(`${err.name}: ${err.status.toString()}`, JSON.stringify(err.error), 'Close', undefined);
+            this.showErrorDialog(
+              `${err.name}: ${err.status.toString()}`,
+              JSON.stringify(err.error),
+              'Close',
+              undefined
+            );
           }
         }
       );
-
     }
   }
 }
