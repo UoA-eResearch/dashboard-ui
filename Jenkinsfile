@@ -141,7 +141,7 @@ pipeline {
                     echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
                     
                     def s3BucketName = (
-                        env.BRANCH_NAME == 'prod' ? 'eresearch.dashboard.auckland.ac.nz' : 
+                        env.BRANCH_NAME == 'prod' ? 'eresearch-dashboard.auckland.ac.nz' : 
                         env.BRANCH_NAME == 'nonprod' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' : 
                         'cer-dashboard-sandbox'
                     )
@@ -182,7 +182,7 @@ pipeline {
 
         //         script {
         //             def dashboardUrl = (
-        //                 env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.amazon.auckland.ac.nz/' : 
+        //                 env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.auckland.ac.nz/' : 
         //                 env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz/' : 
         //                 'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/'
         //             )
