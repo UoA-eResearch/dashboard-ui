@@ -121,8 +121,8 @@ pipeline {
 
                     } else if (env.BRANCH_NAME == 'prod') {
                         echo 'Setting variables for prod deployment'
-                        awsCredentialsId = 'uoa-its-prod-access'
-                        awsTokenId = 'uoa-its-prod-token'
+                        awsCredentialsId = 'aws-its-prod'
+                        awsTokenId = 'Access token for ITS Prod Account'
                         awsProfile = 'uoa-its-prod'
 
                     } else {
