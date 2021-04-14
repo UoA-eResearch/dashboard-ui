@@ -63,11 +63,37 @@
                 }
               ]
             },
-            "nonprod": {
+            "test": {
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.nonprod.ts"
+                  "with": "src/environments/environment.test.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ]
+            },
+            "dev": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
                 }
               ],
               "optimization": true,
@@ -108,8 +134,11 @@
             "production": {
               "browserTarget": "dashboard-ui:build:production"
             },
-            "nonprod": {
-              "browserTarget": "dashboard-ui:build:nonprod"
+            "test": {
+              "browserTarget": "dashboard-ui:build:test"
+            },
+            "dev": {
+              "browserTarget": "dashboard-ui:build:dev"
             },
             "sandbox": {
               "browserTarget": "dashboard-ui:build:sandbox"
@@ -161,7 +190,7 @@
           },
           "configurations": {
             "test": {
-              "devServerTarget": "dashboard-ui:serve:nonprod",
+              "devServerTarget": "dashboard-ui:serve:test",
               "baseUrl": "<NON-PROD/TEST BASE URL>"
             }
           }

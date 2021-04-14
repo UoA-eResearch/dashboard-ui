@@ -3,9 +3,9 @@ export const environment = {
   version: '1.1.VERSION_WILL_BE_REPLACED_BY_CICD',
   auth: {
     cognitoAwsRegion: 'ap-southeast-2',
-    cognitoUserPoolId: '',
-    cognitoDomain: '',
-    cognitoClientId: '',
+    cognitoUserPoolId: 'ap-southeast-2_B3Lx9B4bL',
+    cognitoDomain: 'uoapool',
+    cognitoClientId: 'TBC',
     redirectUri: 'https://eresearch-dashboard.auckland.ac.nz',
     scopes: 'openid profile https://eresearch-dashboard.auckland.ac.nz/dashboard',
     codeChallengeMethod: 'S256',

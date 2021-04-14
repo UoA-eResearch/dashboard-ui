@@ -107,8 +107,14 @@ pipeline {
                         awsTokenId = 'aws-sandbox-token'
                         awsProfile = 'uoa-sandbox'
 
-                    } else if (env.BRANCH_NAME == 'nonprod') {
-                        echo 'Setting variables for nonprod deployment'
+                    } else if (env.BRANCH_NAME == 'dev') {
+                        echo 'Setting variables for dev deployment'
+                        awsCredentialsId = 'aws-its-nonprod-access'
+                        awsTokenId = 'aws-its-nonprod-token'
+                        awsProfile = 'uoa-its-nonprod'
+
+                    } else if (env.BRANCH_NAME == 'test') {
+                        echo 'Setting variables for test deployment'
                         awsCredentialsId = 'aws-its-nonprod-access'
                         awsTokenId = 'aws-its-nonprod-token'
                         awsProfile = 'uoa-its-nonprod'
@@ -142,7 +148,8 @@ pipeline {
                     
                     def s3BucketName = (
                         env.BRANCH_NAME == 'prod' ? 'eresearch-dashboard.auckland.ac.nz' : 
-                        env.BRANCH_NAME == 'nonprod' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' : 
+                        env.BRANCH_NAME == 'test' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' : 
+                        env.BRANCH_NAME == 'dev' ? 'eresearch-dashboard-dev.connect.test.amazon.auckland.ac.nz' : 
                         'cer-dashboard-sandbox'
                     )
 
@@ -163,7 +170,8 @@ pipeline {
 
                     def awsCloudFrontDistroId = (
                         env.BRANCH_NAME == 'prod' ? '<cloudfront-distro-id-prod>' : 
-                        env.BRANCH_NAME == 'nonprod' ? 'E3GNJDU40DAKCL' : 
+                        env.BRANCH_NAME == 'test' ? 'E3GNJDU40DAKCL' : 
+                        env.BRANCH_NAME == 'dev' ? '<cloudfront-distro-id-dev>' : 
                         'E1ULTSGYFI5SZU'
                     )
 
