@@ -5,7 +5,7 @@ export const environment = {
     cognitoAwsRegion: 'ap-southeast-2',
     cognitoUserPoolId: 'ap-southeast-2_gtuqqgIIq',
     cognitoDomain: 'uoapool-nonprod',
-    cognitoClientId: '2bdqs02j8na3eko34tuuf2s0lf',
+    cognitoClientId: 'u2f373gv4v1ssb4p6jl7ph16r',
     redirectUri: 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz',
     scopes: 'openid profile https://eresearch-dashboard.auckland.ac.nz/dashboard',
     codeChallengeMethod: 'S256',
