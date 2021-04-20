@@ -121,7 +121,9 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
   }
 
   ngOnDestroy() {
-    this.routeParamsSub.unsubscribe();
+    try {
+      this.routeParamsSub.unsubscribe();
+    } catch {}
   }
 
   saveRequest() {
@@ -133,7 +135,7 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
 
     if (item !== null) {
       const value = JSON.parse(item);
-      console.log(RequestVmComponent.requestVmFormKey, value);
+      // console.log(RequestVmComponent.requestVmFormKey, value);
       this.requestVmForm.setValue(value);
     }
   }
