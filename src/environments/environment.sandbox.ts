@@ -16,7 +16,7 @@ export const environment = {
     whoNeedIdToken: []
   },
   dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/cer-dashboard-graphql',
-  serverlessNowUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/serverless-now/',
+  serverlessNowUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/serverless-now',
   servicenowUrl: 'https://uoadev.service-now.com/',
   researchHubUrl: 'https://research-hub.auckland.ac.nz/',
 };

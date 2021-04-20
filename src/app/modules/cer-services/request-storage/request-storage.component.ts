@@ -506,7 +506,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       // remove property used for form processing
       delete body['isPersonalDropbox'];
 
-      console.log('Submitting request body: ', body);
+      console.debug('Submitting request body: ', body);
 
       this.serverlessNowService.requestService('storage', body).subscribe(
         (response) => {

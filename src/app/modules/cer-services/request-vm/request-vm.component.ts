@@ -169,7 +169,7 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
         comments: values.comments
       };
 
-      this.serverlessNowService.requestService('vm', body)
+      this.serverlessNowService.requestService('virtualmachine', body)
         .subscribe(
           (response) => {
             this.response = response;
