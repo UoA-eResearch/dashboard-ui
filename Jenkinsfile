@@ -171,7 +171,7 @@ pipeline {
                     def awsCloudFrontDistroId = (
                         env.BRANCH_NAME == 'prod' ? '<cloudfront-distro-id-prod>' : 
                         env.BRANCH_NAME == 'test' ? 'E3VVN86C419VS8' : 
-                        env.BRANCH_NAME == 'dev' ? '<cloudfront-distro-id-dev>' : 
+                        env.BRANCH_NAME == 'dev' ? 'E2CGLDC4Q2XU35' : 
                         'E1ULTSGYFI5SZU'
                     )
 

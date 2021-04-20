@@ -33,4 +33,8 @@ describe('RequestStorageComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  afterEach(() => {
+    fixture.destroy();
+  });
 });
