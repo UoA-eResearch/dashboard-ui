@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 
@@ -11,7 +11,12 @@ export class ServerlessNowService {
 
   constructor(private http: HttpClient) { }
 
-  requestService(serviceName: string, body: any) {
-    return this.http.post(ServerlessNowService.hostname, body);
+  requestService(requestType: string, body: any) {
+    const options = {
+      params: {
+        requestType
+      }
+    }
+    return this.http.post(ServerlessNowService.hostname, body, options);
   }
 }
