@@ -1,0 +1,24 @@
+<div class="faqs-panel-container" ngClass.lt-md="faqs-panel-container-sm">
+  <mat-expansion-panel *ngFor="let category of faqs">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <img mat-card-avatar class="faqs-avatar" src="{{category.avatarImg}}">
+        <p class="faqs-category-title">{{category.title}}</p>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p class="faqs-description">
+      <strong class="faqs-emphasis">Description: </strong>
+      {{category.description}}
+    </p>
+    <ul *ngFor="let faq of category.faqs">
+      <mat-expansion-panel class="questions" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <li class="faqs-emphasis">{{faq.question}}</li>
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p class="faqs-text">{{faq.answer}}</p>
+      </mat-expansion-panel>
+    </ul>
+  </mat-expansion-panel>
+</div>

@@ -4,21 +4,25 @@
 
 export const environment = {
   production: false,
+  version: '1.1.VERSION_WILL_BE_REPLACED_BY_CICD',
   auth: {
     cognitoAwsRegion: 'ap-southeast-2',
-    cognitoUserPoolId: 'ap-southeast-2_pgErjyL4O',
-    cognitoDomain: 'uoapool-sandbox',
-    cognitoClientId: 'lrju6v80vse4bbaesjvnr2ff0',
+    cognitoUserPoolId: 'ap-southeast-2_gtuqqgIIq',
+    cognitoDomain: 'uoapool-nonprod',
+    cognitoClientId: '4s59akvtr9qt5e3nl5dine8pdk',
     redirectUri: 'http://localhost:4200',
-    scopes: 'openid profile https://my-domain.auckland.ac.nz/angular-test',
+    scopes: 'openid profile https://eresearch-dashboard-dev.auckland.ac.nz/dashboard',
     codeChallengeMethod: 'S256',
-    logout_uri: 'http://localhost:4200'
+    logoutUri: 'http://localhost:4200'
   },
   privateUrlKeyWords: {
-    whoNeedBearerToken: ['apigw.sandbox.amazon.auckland.ac.nz'],
+    whoNeedBearerToken: [{ url: 'apigw.test.amazon.auckland.ac.nz', optional: false }],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: 'https://apigw.sandbox.amazon.auckland.ac.nz/dev-cer-dashboard-graphql/graphql'
+  dashboardGraphQlUrl: 'https://apigw.test.amazon.auckland.ac.nz/cer-dashboard-graphql-test',
+  serverlessNowUrl: 'https://apigw.test.amazon.auckland.ac.nz/serverless-now-test',
+  servicenowUrl: 'https://uoatest.service-now.com/',
+  researchHubUrl: 'https://research-hub-dev.connect.test.amazon.auckland.ac.nz/',
 };
 
 /*

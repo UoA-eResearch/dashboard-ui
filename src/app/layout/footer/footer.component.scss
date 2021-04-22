@@ -1,0 +1,57 @@
+@import './../../../styles';
+
+footer {
+  background-color: $color-primary;
+  height: $height-footer;
+  padding-left: $padding-site;
+  padding-right: $padding-site;
+  z-index: 1; // Hide excess height of content sidenav underneath footer.
+}
+
+footer.footer-xs {
+  height: $height-footer-xs;
+  padding-left: $offset-xs;
+  padding-right: $offset-xs;
+}
+
+.footer-content {
+  height: $height-footer !important;
+  flex-direction: column;
+  box-sizing: border-box;
+  display: flex;    //temp hack
+  place-content: center;
+  align-items: center;
+}
+
+.footer-content-xs {
+  height: $height-footer-xs !important;
+}
+
+footer a {
+  text-align: left;
+  text-decoration: none;
+  color: white;
+  font-size: mat-font-size($app-base-typography, button) !important; // 14px
+  font-weight: mat-font-weight($app-base-typography, caption) !important;
+}
+
+footer.footer-xs a {
+  text-align: center;
+}
+
+.footer-divider {
+  color: white;
+  padding-left: 0.5em;
+  padding-right: 0.5em;
+}
+
+.logo-img {
+  display: block;
+  height: 5em;
+  width: 100%;
+}
+
+.logo-img-xs {
+  @extend .logo-img;
+  height: 4em;
+}

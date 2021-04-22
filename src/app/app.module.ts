@@ -1,38 +1,40 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
-import { RouteReuseStrategy } from '@angular/router';
-
-import { StorageServiceModule } from 'ngx-webstorage-service';
-
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { MaterialModule } from './app.material.module';
-
-import { AuthModule, CognitoConfigService } from 'uoa-auth-angular';
-import { AppAuthConfigService } from './services/app-auth-config.service';
-import { ErrorPagesModule } from 'uoa-error-pages-angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+
+import { CoreModule } from '@app/core.module';
+import { SharedModule } from '@shared/shared.module';
 import { GraphQLModule } from './graphql.module';
+import { ErrorPagesModule } from '@uoa/error-pages';
+
+import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
+import { NavbarComponent } from '@layout/navbar/navbar.component';
+import { FooterComponent } from '@layout/footer/footer.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ContentLayoutComponent,
+    NavbarComponent,
+    FooterComponent
   ],
   imports: [
-    AuthModule,
     BrowserModule,
+    CoreModule,
+    SharedModule,
+    GraphQLModule,
     AppRoutingModule,
-    ErrorPagesModule,
     BrowserAnimationsModule,
-    StorageServiceModule,
-    HttpClientModule,
-    MaterialModule,
-    GraphQLModule
+    ErrorPagesModule
   ],
-  providers: [
-    { provide: CognitoConfigService, useClass: AppAuthConfigService }
+  exports: [
+    ContentLayoutComponent,
+    NavbarComponent,
+    FooterComponent
   ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

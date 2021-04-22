@@ -10,6 +10,18 @@
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:4200",
             "webRoot": "${workspaceFolder}"
+        },
+        {
+            "name": "Debug tests in Chrome",
+            "type": "chrome",
+            "request": "attach",
+            "address": "localhost",
+            "port": 9222,
+            "sourceMaps": true,
+            "webRoot": "${workspaceFolder}",
+            "pathMapping": {
+                "/_karma_webpack_": "${workspaceFolder}"
+            }
         }
     ]
 }

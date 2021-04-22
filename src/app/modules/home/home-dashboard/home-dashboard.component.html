@@ -1,0 +1,30 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Access eResearch Services:</h1>
+  <mat-grid-list cols="2" rowHeight="480px">
+    <mat-grid-tile *ngFor="let card of cards | async" [colspan]="card.cols" [rowspan]="card.rows">
+
+      <mat-card class="dashboard-card">
+
+        <mat-card-header class="dashboard-header">
+          <div mat-card-avatar class="dashboard-header-image"></div>
+          <mat-card-title>
+            {{card.title}}
+          </mat-card-title>
+        </mat-card-header>
+
+        <img mat-card-image src="{{card.image}}" alt="{{card.altText}}" routerLink="{{card.routerLink}}">
+
+        <mat-card-content class="dashboard-card-content">
+          <p>{{card.content}}</p>
+        </mat-card-content>
+
+        <mat-card-actions align="end" class="dashboard-card-actions">
+          <button mat-fab color="accent" routerLink="{{card.routerLink}}">
+            <span class="material-icons">arrow_right_alt</span>
+          </button>
+        </mat-card-actions>
+
+      </mat-card>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>

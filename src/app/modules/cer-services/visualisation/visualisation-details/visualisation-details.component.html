@@ -1,0 +1,62 @@
+<div class="visualisation-container">
+  <div class="visualisation-content">
+    <div *ngIf="(loading$ | async)">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-card *ngIf="visualisation && !(loading$ | async)">
+      <div fxLayout="row wrap">
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/vis.jpg">
+        <mat-card-title>{{visualisation.name}}</mat-card-title>
+      </div>
+      <mat-card-subtitle>Visualisation Services | Manage</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card *ngIf="visualisation && !(loading$ | async)">
+      <mat-card-content>
+        <h3>Name:</h3>
+        <h4>{{visualisation.name}}</h4>
+        <h3>Service Type:</h3>
+        <h4 *ngIf="visualisation.gear_vr === 1">Gear VR</h4>
+        <h4 *ngIf="visualisation.holo_lens === 1">HoloLens</h4>
+        <h4 *ngIf="visualisation.video_based_vis === 1">Video</h4>
+        <h4 *ngIf="visualisation.vive === 1">Vive</h4>
+        <h4 *ngIf="visualisation.web_based_vis === 1">Web</h4>
+        <h3>CeR Id:</h3>
+        <p>{{visualisation.id}}</p>
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngIf="visualisation && !(loading$ | async)">
+      <div>
+        <mat-card>
+          <h3>Projects:</h3>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <mat-list role="list" *ngIf="visualisation.projects.length > 0; else noProjects">
+              <mat-list-item *ngFor="let project of visualisation.projects" role="listitem">
+                <h3 matLine class="project-title">{{project.project.title}}</h3>
+                <p matLine>Project Code: <strong>{{project.code}}</strong></p>
+                <h5 matLine>{{project.project.start_date | date}} - {{project.project.end_date | date}}</h5>
+                <button mat-flat-button color="accent" routerLink="/project/{{project.project.id}}">View</button>
+                
+                <mat-divider></mat-divider>
+              </mat-list-item>
+              
+            </mat-list>
+
+            <ng-template #noProjects>
+              <div *ngIf="!(loading$ | async) && !error">
+                <p>There are no projects associated with this visualisation service.</p>
+              </div>
+            </ng-template>
+
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

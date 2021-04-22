@@ -1,0 +1,90 @@
+<div class="research-vm-container">
+  <div class="research-vm-content">
+    <div *ngIf="(loading$ | async)">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <mat-card *ngIf="researchVm && !(loading$ | async)">
+      <div fxLayout="row wrap">
+        <img mat-card-avatar class="avatar-img" src="assets/imgs/research-vm.jpg">
+        <mat-card-title>{{researchVm.name}}</mat-card-title>
+      </div>
+      <mat-card-subtitle>Research Virtual Machine | Manage</mat-card-subtitle>
+    </mat-card>
+
+    <mat-card *ngIf="researchVm && !(loading$ | async)">
+      <mat-card-content>
+        <mat-tab-group dynamicHeight>
+          <mat-tab label="VM Specifications">
+            <div class="tab-content">
+              <h3>Created Date</h3>
+              <p>{{researchVm.date | date}}</p>
+              <mat-divider></mat-divider>
+              <h3>OS</h3>
+              <p>{{researchVm.os}}</p>
+              <mat-divider></mat-divider>
+              <h3>CPUs</h3>
+              <p>{{researchVm.cpus}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Memory (GB)</h3>
+              <p>{{researchVm.memory_gb}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Total Disk (GB)</h3>
+              <p>{{researchVm.total_disk_gb}}</p>              
+              <mat-divider></mat-divider>
+              <h3>Host Name</h3>
+              <p>{{researchVm.host}}</p>
+              <mat-divider></mat-divider>
+              <h3>Unique Id</h3>
+              <p>{{researchVm.uuid}}</p>
+              <mat-divider></mat-divider>
+              <h3>State</h3>
+              <p>{{researchVm.state}}</p>
+              <mat-divider></mat-divider>
+              <h3>CeR Id:</h3>
+              <p>{{researchVm.id}}</p>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Members">
+            <div class="tab-content">
+              <app-group-member-list [groupLabels]="memberTypes" [groups]="researchVm.groups">
+              </app-group-member-list>
+            </div>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+
+    <div *ngIf="researchVm && !(loading$ | async)">
+      <div>
+        <mat-card>
+          <h3>Related Projects:</h3>
+          <mat-divider></mat-divider>
+          <mat-card-content>
+            <mat-list role="list" *ngIf="researchVm.projects.length > 0; else noProjects">
+              <mat-list-item *ngFor="let project of researchVm.projects" role="listitem">
+                <h3 matLine class="project-title">{{project.project.title}}</h3>
+                <p matLine>Project Code: <strong>{{project.code}}</strong></p>
+                <h5 matLine>{{project.project.start_date | date}} - {{project.project.end_date | date}}</h5>
+                <button mat-flat-button color="accent" routerLink="/project/{{project.project.id}}">View</button>
+                <mat-divider></mat-divider>
+              </mat-list-item>
+              
+            </mat-list>
+
+            <ng-template #noProjects>
+              <div *ngIf="!(loading$ | async) && !error">
+                <p>There are no projects associated with this research virtual machine.</p>
+              </div>
+            </ng-template>
+
+          </mat-card-content>
+
+        </mat-card>
+      </div>
+    </div>
+    
+  </div>
+</div>
+

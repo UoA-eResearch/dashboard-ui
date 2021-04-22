@@ -1,37 +1,68 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthGuard, LoginSuccessGuard } from 'uoa-auth-angular';
-import { HomeComponent } from './components/home/home.component';
+import { AuthGuard, LoginSuccessGuard } from '@uoa/auth';
+import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
+import { PageNotFoundComponent } from './shared/page-not-found/page-not-found.component';
+import { ReturnToHubComponent } from '@shared/return-to-hub/return-to-hub.component';
 
+
+/*********************************************************
+  Some routes temporarily deactivated for Dashboard MVP1
+*********************************************************/
 
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home',
-    pathMatch: 'full',
-  },
-  {
-    path: 'error/:errorCode',
-    loadChildren: () => import('./error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
-  },
-  {
-    path: 'home',
-    canActivate: [LoginSuccessGuard],
-    component: HomeComponent,
-  },
-  {
-    path: 'my-projects',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./components/my-projects/my-projects.module').then((m) => m.MyProjectsModule)
-  },
-  {
-    path: 'my-services',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./components/my-services/my-services.module').then((m) => m.MyServicesModule)
-  },
+    component: ContentLayoutComponent,
+    children: [
+      {
+        path: '',
+        pathMatch: 'full',
+        canActivate: [LoginSuccessGuard],
+        // loadChildren: () => import('@modules/home/home.module').then(m => m.HomeModule),
+        component: ReturnToHubComponent
+      },
+      // {
+      //   path: 'my-projects',
+      //   canActivate: [AuthGuard],
+      //   loadChildren: () => import('@modules/my-projects/my-projects.module').then((m) => m.MyProjectsModule)
+      // },
+      // {
+      //   path: 'my-services',
+      //   canActivate: [AuthGuard],
+      //   loadChildren: () => import('@modules/my-services/my-services.module').then((m) => m.MyServicesModule)
+      // },
+      // {
+      //   path: 'project',
+      //   canActivate: [AuthGuard],
+      //   loadChildren: () => import('@modules/cer-projects/cer-projects.module').then((m) => m.CerProjectsModule)
+      // },
+      {
+        path: 'service',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('@modules/cer-services/cer-services.module').then((m) => m.CerServicesModule),
+      },
+      // {
+      //   path: 'help',
+      //   loadChildren: () => import('@modules/help/help.module').then((m) => m.HelpModule)
+      // },
+      {
+        path: 'notfound',
+        component: PageNotFoundComponent
+      },
+      {
+        path: 'error/:errorCode',
+        loadChildren: () => import('@modules/error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
+      },
+    ]
+  },  
+  // {
+  //   path: 'home',
+  //   redirectTo: '/'
+  // },
   {
     path: '**',
-    redirectTo: '/home',
+    redirectTo: '/notfound'
   },
 ];
 

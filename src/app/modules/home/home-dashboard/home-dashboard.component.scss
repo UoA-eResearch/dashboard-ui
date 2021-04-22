@@ -1,0 +1,47 @@
+.grid-container {
+  margin: 20px;
+}
+
+.dashboard-card {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  right: 15px;
+  bottom: 15px;
+  display:flex;
+  flex-direction: column;
+}
+
+.dashboard-header {
+  flex-shrink: 0;
+}
+
+.dashboard-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+.mat-card-title {
+  padding-top: 7px;
+}
+
+.mat-card-image {
+  padding-top: 1em;
+  cursor: pointer;
+}
+
+.more-button {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+}
+
+.dashboard-card-content {
+  text-align: start;
+  flex-grow: 1;
+}
+
+.dashboard-card-actions {
+  display: flex;
+  justify-content: flex-end;
+}

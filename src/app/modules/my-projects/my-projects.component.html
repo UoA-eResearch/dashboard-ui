@@ -1,0 +1,50 @@
+<app-header 
+  [title]="pageInfo.title"
+  [description]="pageInfo.description"
+  [imageUrl]="pageInfo.imageUrl"></app-header>
+<div class="my-projects-container" fxLayout="row wrap" fxLayoutAlign="end">
+  <div class="my-projects-content" fxFlex="1 0 auto" fxLayout="column" fxLayoutAlign="start">
+    <mat-card>
+      <mat-card-title>My Projects</mat-card-title>
+      <mat-card-subtitle>Projects | Dashboard</mat-card-subtitle>
+      <mat-card-content>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean commodo pretium leo, vitae fringilla velit iaculis quis. 
+          Nulla finibus magna ac odio commodo, in suscipit turpis euismod. Aenean vel ipsum sem. In faucibus leo ut faucibus pharetra. 
+          Nam laoreet tellus vel accumsan mollis. Fusce vel mi a erat facilisis maximus.
+        </p>
+      </mat-card-content>
+
+      <!-- <mat-card-actions align="end">
+        <button mat-flat-button color="primary">
+          Create New Project
+        </button>
+      </mat-card-actions> -->
+
+    </mat-card>
+    
+    <div class="margin-top-l margin-left-m">
+      
+      <div *ngIf="(loading$ | async)">
+        <mat-spinner></mat-spinner>
+      </div>
+
+      <div *ngIf="error">
+        Error: {{error.message}}
+      </div>
+
+      <div *ngIf="!(loading$ | async) && personProjects?.projects?.length > 0; else noProjects">
+        <app-my-projects-list [projects]="personProjects.projects"></app-my-projects-list>
+      </div>
+      <ng-template #noProjects>
+        <div *ngIf="!(loading$ | async) && !error">
+          You don't have any projects yet!
+        </div>
+      </ng-template>
+
+    </div>
+  </div>
+  
+  <app-faqs-panel></app-faqs-panel>
+  
+</div>

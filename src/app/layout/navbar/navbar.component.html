@@ -1,0 +1,121 @@
+<mat-sidenav-container class="sidenav-container">
+
+  <!-- Temporary modified for MVP1 -->
+
+  <mat-sidenav #drawer fixedInViewport
+      attr.role="navigation"
+      mode="over"
+      opened="false">
+    <mat-toolbar color="primary" class="app-toolbar" ngClass.xs="app-toolbar-xs">
+       <!-- <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+        <img src="https://via.placeholder.com/239x32">
+      </a> -->
+      <a href="{{researchHubUrl}}" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+        <img src="assets/imgs/hub-logo.svg">
+      </a>
+    </mat-toolbar>
+    <mat-nav-list>
+      <!-- <a mat-list-item *ngFor="let route of routes" [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a> -->
+      <a mat-list-item routerLink="/service/research-vm/request" routerLinkActive="mat-accent">Request VM Consultation</a>
+      <a mat-list-item routerLink="/service/research-storage/request" routerLinkActive="mat-accent">Request Research Storage</a>
+    </mat-nav-list>
+  </mat-sidenav>
+
+
+  <mat-sidenav-content>
+    <div class="sidenav-content-wrapper">
+      <div class="sidenav-content" fxLayout="column" ngClass.xs="sidenav-content-xs">
+        <div class="app-toolbar-container">
+          <mat-toolbar color="primary" class="site-content app-toolbar" ngClass.xs="site-content app-toolbar-xs">
+            <mat-toolbar-row class="app-toolbar-row" fxLayout="row" ngClass.xs="app-toolbar-row-xs">
+
+              <!-- Temporary deactivated for MVP1 -->
+
+              <button 
+                type="button"
+                aria-label="Toggle sidenav"
+                mat-icon-button
+                style="margin-right: 6px;" 
+                fxHide.gt-sm
+                (click)="drawer.toggle()"
+                > 
+                <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+              </button>
+
+
+              <!-- Temporary modified for MVP1 -->
+
+              <a href="{{researchHubUrl}}" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+                <img src="assets/imgs/hub-logo.svg">
+              </a>
+              <!-- <a routerLink="/" class="dashboard-logo" ngClass.xs="dashboard-logo-xs">
+                <img src="https://via.placeholder.com/239x32">
+              </a> -->
+
+
+              <span style="flex: 1 1 auto;"></span>
+              
+              <!-- Temporary modified for MVP1 -->
+
+              <!-- standard routes buttons -->
+              <!-- <a mat-button *ngFor="let route of routes" fxHide.lt-md [routerLink]="route.path" routerLinkActive="mat-accent">{{route.label}}</a> -->
+              <a mat-button fxHide.lt-md routerLink="/service/research-vm/request" routerLinkActive="mat-accent">Request VM Consultation</a>
+              <a mat-button fxHide.lt-md routerLink="/service/research-storage/request" routerLinkActive="mat-accent">Request Research Storage</a>
+
+              <!-- login/logout/profile -->
+              <div *ngIf="loginService.loggedIn$ | async as loggedIn; else signin">
+
+                <div *ngIf="loginService.userInfo$ | async as userInfo">
+                  <button class="button-menu" mat-button [matMenuTriggerFor]="userMenu">
+                    <mat-icon matPrefix style="margin-right: 5px;" fxHide.xs>person</mat-icon>
+                    <span id="user-fullname" fxHide fxShow.gt-md>{{ userInfo?.firstName + ' ' + userInfo?.lastName }}</span>
+                    <span id="user-firstname" fxHide fxShow.md>{{ userInfo?.firstName }}</span>
+                    <span id="user-initials" fxHide.gt-sm>{{ userInfo?.firstName?.charAt(0) + userInfo?.lastName?.charAt(0) }}</span>
+                  </button>
+    
+                  <mat-menu #userMenu="matMenu" [overlapTrigger]="false">
+                    <div class="user-menu-container">
+                      <img class="uoa-logo" src="/assets/imgs/uoa-logo.svg">
+    
+                      <mat-list class="user-menu-list">
+                        <mat-list-item>
+                          <mat-icon mat-list-icon>person</mat-icon>
+                          <p mat-line>{{ userInfo?.firstName + ' ' + userInfo?.lastName }}</p>
+                        </mat-list-item>
+                        <mat-list-item>
+                          <mat-icon mat-list-icon>email</mat-icon>
+                          <p mat-line>{{ userInfo?.email }}</p>
+                        </mat-list-item>
+                      </mat-list>
+    
+                      <div fxLayout="row" fxLayoutAlign="end">
+
+                        <!-- Temporary deactivated for MVP1 -->
+
+                        <button class="signout-button" mat-raised-button style="color: black; background-color: white;" (click)="logout()">
+                          Sign Out
+                        </button>
+
+                      </div>
+                    </div>
+                  </mat-menu>
+                </div>
+              </div>
+              <ng-template #signin>
+                <button class="signin-button" mat-button (click)="login()">Sign In</button>
+              </ng-template>
+
+            </mat-toolbar-row>
+          </mat-toolbar>
+        </div>
+
+        <router-outlet></router-outlet>
+
+      </div>
+
+      <app-footer></app-footer>
+
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+

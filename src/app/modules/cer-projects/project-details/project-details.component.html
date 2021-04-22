@@ -1,0 +1,134 @@
+<div class="project-container">
+  <div class="project-content">
+    <div *ngIf="(loading$ | async)">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <!-- project overview -->
+    <mat-card *ngIf="project && !(loading$ | async)">
+      <mat-card-title>{{project.title}}</mat-card-title>
+      <mat-card-subtitle>Projects | Manage</mat-card-subtitle>
+      <mat-card-content>
+        <div class="project-members">
+          <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions.Chips"></app-project-member-list>
+        </div>
+        <p class="project-description">
+          {{project.description | stripHtml}}
+        </p>
+      </mat-card-content>
+    </mat-card>
+
+    <!-- project details -->
+    <mat-card *ngIf="project && !(loading$ | async)">
+      <mat-card-content class="project-details">
+        <mat-tab-group dynamicHeight>
+          <mat-tab label="Project Details">
+            <div class="tab-content">            
+              <h3>Project Title</h3>
+              <p>{{project.title}}</p>
+              <mat-divider></mat-divider>
+              <h3>Description</h3>
+              <p>{{project.description | stripHtml}}</p>
+              <mat-divider></mat-divider>
+              <h3>Estimated Project End Date</h3>
+              <p>{{project.end_date | date}}</p>
+              <mat-divider></mat-divider>
+              <h3>Project Status</h3>
+              <p>{{project.status.name}}</p>
+              <mat-divider></mat-divider>
+              <h3>CeR Id</h3>
+              <p>{{project.id}}</p>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Members">
+            <div class="tab-content">
+              <app-project-member-list [projectMembers]="project.members" [listFormat]="projectMembersListFormatOptions.Detailed"></app-project-member-list>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Resources">
+            <div class="tab-content">
+              <mat-list role="list" *ngIf="project.services.dropbox.length > 0">
+                <h3><a href="https://www.dropbox.com">Dropbox</a></h3>
+                <mat-list-item *ngFor="let dropbox of project.services.dropbox" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/dropbox.svg" alt="avatar">
+                  <h3 matLine>{{dropbox.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/service/dropbox/{{dropbox.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+
+              <mat-list role="list" *ngIf="project.services.nectar.length > 0">
+                <h3><a href="https://dashboard.rc.nectar.org.au/auth/login/">Nectar Research Cloud</a></h3>
+                <mat-list-item *ngFor="let nectar of project.services.nectar" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/nectar.jpg" alt="avatar">
+                  <h3 matLine>{{nectar.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/service/nectar/{{nectar.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+
+              <mat-list role="list" *ngIf="project.services.research_drive.length > 0">
+                <h3><a href="{{researchHubUrl}}#/content/49">Research Storage Drive</a></h3>
+                <mat-list-item *ngFor="let research_drive of project.services.research_drive" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/research-storage.jpg" alt="avatar">
+                  <h3 matLine>{{research_drive.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/service/research-storage/{{research_drive.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+
+              <mat-list role="list" *ngIf="project.services.vis.length > 0">
+                <h3><a href="{{researchHubUrl}}#/content/29">Visualisation Services</a></h3>
+                <mat-list-item *ngFor="let vis of project.services.vis" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/vis.jpg" alt="avatar">
+                  <h3 matLine>{{vis.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/service/visualisation/{{vis.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+              
+              <mat-list role="list" *ngIf="project.services.vm.length > 0">
+                <h3><a href="{{researchHubUrl}}#/content/1">Research Virtual Machines</a></h3>
+                <mat-list-item *ngFor="let vm of project.services.vm" role="listitem">
+                  <img matListAvatar class="avatar-image" src="assets/imgs/research-vm.jpg" alt="avatar">
+                  <h3 matLine>{{vm.name}}</h3>
+                  <button mat-flat-button color="accent" routerLink="/service/research-vm/{{vm.id}}">View</button>
+                </mat-list-item>
+              </mat-list>
+              <mat-divider></mat-divider>
+            </div>
+          </mat-tab>
+
+          <mat-tab label="Research Outputs">
+            <div class="tab-content">
+              <div *ngIf="project.research_outputs.length > 0; else noResearchOutputs">
+                <div *ngFor="let researchoutput of project.research_outputs">
+                  <h3>{{researchoutput.researchoutput.type.name}}</h3>
+                  <h4>{{researchoutput.researchoutput.date_reported | date}}</h4>
+                  <p>{{researchoutput.researchoutput.description}}</p>
+                  <p>
+                    <span *ngIf="researchoutput.researchoutput.uri"><a href="{{researchoutput.researchoutput.uri}}">{{researchoutput.researchoutput.uri}}</a></span>
+                    <span *ngIf="researchoutput.researchoutput.doi">                
+                      <a href="https://doi.org/{{researchoutput.researchoutput.doi}}">{{researchoutput.researchoutput.doi}}</a>
+                    </span>
+                  </p>
+                  <mat-divider></mat-divider>
+                </div>
+              </div>
+              
+              <ng-template #noResearchOutputs class="tab-content">
+                <div *ngIf="!(loading$ | async) && !error">
+                  <p>No outputs from this research project have been recorded here yet.</p>
+                </div>
+              </ng-template>
+            </div>            
+          </mat-tab>
+
+        </mat-tab-group>
+      </mat-card-content>
+    </mat-card>
+
+  </div>
+</div>

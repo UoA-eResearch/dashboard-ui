@@ -1,0 +1,121 @@
+@import './../../../styles';
+
+
+/*
+ * Dashboard Logo
+ */
+
+ .dashboard-logo {
+  height: 32px;
+}
+
+.dashboard-logo img {
+  @extend .dashboard-logo;
+}
+
+.dashboard-logo-xs {
+  height: 22px;
+}
+
+.dashboard-logo-xs img {
+  @extend .dashboard-logo-xs;
+}
+
+
+/*
+ * Nav
+ */
+
+.sidenav-container {
+  position: relative;
+  min-height: 100vh;
+}
+
+.sidenav-container mat-sidenav {
+  //min-width: $sidenav-width;
+  box-shadow: 3px 0 6px rgba(0, 0, 0, .24);
+  background-color: $color-background;
+}
+
+.sidenav-container mat-sidenav mat-nav-list {
+  padding-left: 1em;
+  padding-top: 1em;
+}
+
+.sidenav-content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.sidenav-content {
+  flex: 1 0 auto; // So that content takes up space correctly in IE11 (pushing sticky footer out of the way)
+  min-height: calc(100vh - #{$height-footer});
+  background-color: $color-background;
+}
+
+.sidenav-content-xs {
+  @extend .sidenav-content;
+  min-height: calc(100vh - #{$height-footer-xs});
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.app-toolbar-container {
+  position: relative;
+  background-color: $color-primary;
+  color: white;
+}
+
+.app-toolbar {
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+.app-toolbar-xs {
+  padding-left: $offset-xs;
+  padding-right: $offset-xs;
+}
+
+.app-toolbar .app-toolbar-row {
+  height: 64px;
+}
+
+.app-toolbar-xs .app-toolbar-row {
+  height: 48px;
+}
+
+/*
+ * User Profile
+ */
+.user-menu-container {
+  margin-right: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+// override material style:
+::ng-deep.mat-menu-panel {
+  max-width: none !important;
+}
+
+.user-menu-list {
+  margin-bottom: 8px;
+}
+
+.user-menu-list mat-list-item mat-icon {
+  color: $color-pink;
+}
+
+.user-menu-list mat-list-item p {
+  font-size: 0.7em !important;
+  color: black;
+}
+
+.uoa-logo {
+  max-width: 240px;
+  align-self: center;
+}
