@@ -6,10 +6,10 @@ export const environment = {
     cognitoUserPoolId: 'ap-southeast-2_B3Lx9B4bL',
     cognitoDomain: 'uoapool',
     cognitoClientId: '2id4nal7d0gg9kigm42bo8dlpl',
-    redirectUri: 'https://eresearch-dashboard.connect.amazon.auckland.ac.nz',
+    redirectUri: 'https://eresearch-dashboard.auckland.ac.nz',
     scopes: 'openid profile https://eresearch-dashboard-prod.auckland.ac.nz/dashboard',
     codeChallengeMethod: 'S256',
-    logoutUri: 'https://eresearch-dashboard.connect.amazon.auckland.ac.nz'
+    logoutUri: 'https://eresearch-dashboard.auckland.ac.nz'
   },
   privateUrlKeyWords: {
     whoNeedBearerToken: [{ url: 'apigw.prod.amazon.auckland.ac.nz', optional: false }],
