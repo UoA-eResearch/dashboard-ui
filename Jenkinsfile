@@ -147,7 +147,7 @@ pipeline {
                     echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
                     
                     def s3BucketName = (
-                        env.BRANCH_NAME == 'prod' ? 'eresearch-dashboard.connect.amazon.auckland.ac.nz' : 
+                        env.BRANCH_NAME == 'prod' ? 'eresearch-dashboard.auckland.ac.nz' : 
                         env.BRANCH_NAME == 'test' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' : 
                         env.BRANCH_NAME == 'dev' ? 'eresearch-dashboard-dev.connect.test.amazon.auckland.ac.nz' : 
                         'cer-dashboard-sandbox'
