@@ -16,6 +16,14 @@ pipeline {
         label("uoa-buildtools-ionic")
     }
 
+    options {
+        buildDiscarder(
+            logRotator(
+                daysToKeepStr: "30"
+            )
+        )
+    }
+
     stages {
         stage("Checkout") {
             steps {
