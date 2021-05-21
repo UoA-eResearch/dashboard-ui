@@ -16,6 +16,14 @@ pipeline {
         label("uoa-buildtools-ionic")
     }
 
+    options {
+        buildDiscarder(
+            logRotator(
+                daysToKeepStr: "30"
+            )
+        )
+    }
+
     stages {
         stage("Checkout") {
             steps {
@@ -169,7 +177,7 @@ pipeline {
                     echo "Invalidating..."
 
                     def awsCloudFrontDistroId = (
-                        env.BRANCH_NAME == 'prod' ? '<cloudfront-distro-id-prod>' : 
+                        env.BRANCH_NAME == 'prod' ? 'E2L1L7YQT93K7P' : 
                         env.BRANCH_NAME == 'test' ? 'E3VVN86C419VS8' : 
                         env.BRANCH_NAME == 'dev' ? 'E2CGLDC4Q2XU35' : 
                         'E1ULTSGYFI5SZU'
