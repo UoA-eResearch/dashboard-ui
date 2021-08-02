@@ -14,8 +14,8 @@ export class AppErrorsConfigService extends UoaErrorsConfig {
       content: `<p>Sorry, You do not have permission to view this page.</p>
       <p>
         If you believe you are seeing this page in error, contact 
-        <a href="researchdata@auckland.ac.nz" target="_blank">researchdata@auckland.ac.nz</a> (research storage requests) or
-        <a href="research-vm@auckland.ac.nz" target="_blank">research-vm@auckland.ac.nz</a> (research virtual machine requests).
+        <a href="mailto:researchdata@auckland.ac.nz" target="_blank">researchdata@auckland.ac.nz</a> (research storage requests) or
+        <a href="mailto:research-vm@auckland.ac.nz" target="_blank">research-vm@auckland.ac.nz</a> (research virtual machine requests).
       </p>`
     };
 
@@ -24,8 +24,8 @@ export class AppErrorsConfigService extends UoaErrorsConfig {
       content: `<p>Sorry, You do not have permission to view this page. Please ensure that you are logged in and try again.</p>
       <p>
         If you still do not have access and believe you are seeing this page in error, contact 
-        <a href="researchdata@auckland.ac.nz" target="_blank">researchdata@auckland.ac.nz</a> (research storage requests) or
-        <a href="research-vm@auckland.ac.nz" target="_blank">research-vm@auckland.ac.nz</a> (research virtual machine requests).
+        <a href="mailto:researchdata@auckland.ac.nz" target="_blank">researchdata@auckland.ac.nz</a> (research storage requests) or
+        <a href="mailto:research-vm@auckland.ac.nz" target="_blank">research-vm@auckland.ac.nz</a> (research virtual machine requests).
       </p>`
     };
 
@@ -37,8 +37,8 @@ export class AppErrorsConfigService extends UoaErrorsConfig {
     this.ErrorPageContent['ErrorCodeDefault'] = {
       title: `Unexpected Error`,
       content: `We’re sorry that you encountered an error with our site. If you require help, please contact
-      <a href="researchdata@auckland.ac.nz" target="_blank">researchdata@auckland.ac.nz</a> (research storage requests) or
-      <a href="research-vm@auckland.ac.nz" target="_blank">research-vm@auckland.ac.nz</a> (research virtual machine requests).`
+      <a href="mailto:researchdata@auckland.ac.nz" target="_blank">researchdata@auckland.ac.nz</a> (research storage requests) or
+      <a href="mailto:research-vm@auckland.ac.nz" target="_blank">research-vm@auckland.ac.nz</a> (research virtual machine requests).`
     }
   }
 }
