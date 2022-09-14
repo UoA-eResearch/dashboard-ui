@@ -1,23 +1,24 @@
 <footer ngClass.xs="footer-xs">
-    <div class="footer-content" ngClass.xs="footer-content-xs" fxLayout="column" fxLayoutGap="1em" fxLayoutAlign="center center">
-      <div>
-        <a [href]="aucklandUniUrl" target="_blank">
-          <img class="logo-img" ngClass.xs="logo-img-xs" src="assets/imgs/uoa-logo.svg">
-        </a>
-      </div>
-
-      <div fxLayout="row" fxLayout.xs="column">
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSfp0vhGLykABFS8g4Ow_MlRioJKm1D9v27Zqh_BKFXs2RdAtw/viewform?usp=sf_link" target="_blank">Feedback</a>
-        <span fxHide.xs class="footer-divider">•</span>
-        <a href="https://www.eresearch.auckland.ac.nz/getting-in-touch/" target="_blank">Contact</a>
-        <span fxHide.xs class="footer-divider">•</span>
-        <a href="https://www.eresearch.auckland.ac.nz/" target="_blank">About</a>
-        <span fxHide.xs class="footer-divider">•</span>
-        <a [href]="disclaimerUrl" target="_blank">Disclaimer</a>
-      </div>
-
-      <a [href]="eResearchUrl" target="_blank">
-        Copyright © {{getYear()}}, Centre for eResearch
+  <div class="footer-content" ngClass.xs="footer-content-xs" fxLayout="column" fxLayoutGap="1em"
+    fxLayoutAlign="center center">
+    <div>
+      <a [href]="aucklandUniUrl" target="_blank">
+        <img class="logo-img" ngClass.xs="logo-img-xs" src="assets/imgs/uoa-logo.svg">
       </a>
     </div>
-  </footer>
+
+    <div fxLayout="row" fxLayout.xs="column">
+      <a href="mailto:researchdata@auckland.ac.nz?subject=[eResearch Dashboard feedback]" target="_blank">Feedback</a>
+      <span fxHide.xs class="footer-divider">•</span>
+      <a [href]="eResearchUrl + '/getting-in-touch/'" target="_blank">Contact</a>
+      <span fxHide.xs class="footer-divider">•</span>
+      <a [href]="eResearchUrl" target="_blank">About CeR</a>
+      <span fxHide.xs class="footer-divider">•</span>
+      <a [href]="disclaimerUrl" target="_blank">Disclaimer</a>
+    </div>
+
+    <a [href]="eResearchUrl" target="_blank">
+      Copyright © {{getYear()}}, Centre for eResearch
+    </a>
+  </div>
+</footer>
