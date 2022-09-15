@@ -138,7 +138,7 @@ table * {
   color: map-get($dashboard-ui-navy, 500);
 }
 
-.person-flex-layout { 
+.person-flex-layout {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -306,4 +306,8 @@ div .delete-icon-container {
 .form___checkbox--indent {
   margin-left: 2rem;
   word-wrap: normal;
+}
+
+.acceptable-use-link {
+  cursor: pointer;
 }

@@ -3,7 +3,7 @@ import { map, first } from 'rxjs/operators';
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { FormArray, FormBuilder, FormControl, FormGroup, Validators, ValidatorFn } from '@angular/forms';
 import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
-import { ServerlessNowService } from '@data/service/serverless-now.service';   
+import { ServerlessNowService } from '@data/service/serverless-now.service';
 import { LoginService } from '@uoa/auth';
 import { MatHorizontalStepper } from '@angular/material/stepper';
 import { HttpErrorResponse } from '@angular/common/http';
@@ -14,8 +14,9 @@ import { Subscription } from 'rxjs';
 import { format, subYears } from 'date-fns'
 import { ErrorDialogComponent } from '@shared/error-dialog/error-dialog.component';
 import { ConfirmDialogComponent } from '@shared/confirm-dialog/confirm-dialog.component';
-import { CanComponentDeactivate } from '@app/guard/confirm-deactivate.guard'; 
+import { CanComponentDeactivate } from '@app/guard/confirm-deactivate.guard';
 import { environment } from '@env';
+import { AcceptableUseDialogComponent } from '@shared/acceptable-use-dialog/acceptable-use-dialog.component';
 
 
 interface Person {
@@ -138,7 +139,6 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
     public dialog: MatDialog,
     private location: Location,
     private route: ActivatedRoute,
-    private el: ElementRef
   ) {
     dateAdapter.setLocale('en-GB');
   }
@@ -241,7 +241,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
         const dataRequirementsOther = this.dataInfoForm.get(
           'dataRequirementsOther'
         );
-        this.showOtherField = 
+        this.showOtherField =
           items && items.find((item) => item === 'Other') !== undefined;
 
         if (this.showOtherField) {
@@ -311,7 +311,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
     });
 
     this.stepperSub = this.stepper.selectionChange.subscribe((selection) => {
-      this.isEditable = 
+      this.isEditable =
         selection.selectedIndex !== this.stepper._steps.length - 1;
       this.resultsDummyHeader.nativeElement.scrollIntoView();
     });
@@ -320,8 +320,8 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
   canDeactivate() {
     if (
       (!this.requestTypeForm.dirty &&
-        !this.projectForm.dirty && 
-        !this.dataInfoForm.dirty && 
+        !this.projectForm.dirty &&
+        !this.dataInfoForm.dirty &&
         !this.dataSizeForm.dirty) ||
       this.response !== undefined
     ) {
@@ -431,7 +431,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       this.stepperSub.unsubscribe();
       this.dataRequirementsSub.unsubscribe();
       this.endDateSub.unsubscribe();
-    } catch {}
+    } catch { }
   }
 
   showErrorDialog(
@@ -460,7 +460,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       this.submitting = true;
       let body;
 
-      if (requestType === 'New' || this.requestTypeForm.controls.isPersonalDropbox.value ) {
+      if (requestType === 'New' || this.requestTypeForm.controls.isPersonalDropbox.value) {
         body = Object.assign(
           {},
           this.requestTypeForm.getRawValue(),
@@ -541,5 +541,9 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
         }
       );
     }
+  }
+
+  showAcceptableUseDialog() {
+    this.dialog.open(AcceptableUseDialogComponent)
   }
 }

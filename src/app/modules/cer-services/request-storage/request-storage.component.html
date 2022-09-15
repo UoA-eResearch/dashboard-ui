@@ -25,20 +25,14 @@
               collaborators through Institutional Dropbox after your folder has been provisioned.
             </p>
             <mat-radio-group fxLayout="column" fxLayoutGap="1em" formControlName="requestType">
-              <mat-radio-button
-                value="New"
-                (change)="uncheckPersonalDropboxCheckbox()"
-              >New</mat-radio-button>
+              <mat-radio-button value="New" (change)="uncheckPersonalDropboxCheckbox()">New</mat-radio-button>
               <mat-radio-button value="Existing">Existing</mat-radio-button>
               <mat-error *ngIf="requestTypeForm.controls.requestType.invalid && requestTypeClicked">* Please choose an
                 option</mat-error>
-              <mat-checkbox
-                class="form___checkbox--indent"
+              <mat-checkbox class="form___checkbox--indent"
                 aria-label="This request relates to an existing personal Dropbox account"
-                [disabled]="requestTypeForm.controls.requestType.value === 'New'"
-                change
-                formControlName="isPersonalDropbox"
-              >
+                [disabled]="requestTypeForm.controls.requestType.value === 'New'" change
+                formControlName="isPersonalDropbox">
                 This request relates to an existing personal Dropbox account
               </mat-checkbox>
             </mat-radio-group>
@@ -105,6 +99,12 @@
             </div>
 
             <div fxLayout="column" fxLayoutAlign="end">
+              <div fxLayout="row" fxLayoutAlign="end">
+                <small>By making this request, you agree to the <a class="acceptable-use-link"
+                    (click)="showAcceptableUseDialog()">terms
+                    of acceptable use</a>.
+                </small>
+              </div>
               <div fxLayout="row" fxLayoutAlign="end">
                 <button mat-raised-button color="accent"
                   (click)="submit(requestTypeForm.controls.requestType.value, requestDetailsForm)"
@@ -229,7 +229,8 @@
               <mat-hint align="start">Avoid generic names like <i>my-project</i> or
                 <i>my-data</i>
               </mat-hint>
-              <mat-error *ngIf="dataInfoForm.controls.shortName.invalid">* Please enter a short name containing less than 45 characters</mat-error>
+              <mat-error *ngIf="dataInfoForm.controls.shortName.invalid">* Please enter a short name containing less
+                than 45 characters</mat-error>
             </mat-form-field>
           </div>
 
@@ -237,7 +238,8 @@
             <h3>Please provide a list of University of Auckland people who require access</h3>
             <!-- <p style="padding-left: 24px;"> -->
             <p>
-              Please also nominate at least one person in each of the given administrative roles. If you are a PhD candidate
+              Please also nominate at least one person in each of the given administrative roles. If you are a PhD
+              candidate
               or research graduate student, you must include your supervisor and designate them as the Project Owner.
             </p>
 
@@ -363,8 +365,8 @@
                     <div class="roles__divider" formGroupName="roles">
 
                     </div>
-                    <div 
-                    [ngClass.gt-sm]="['role__container--gt-sm']" [ngClass.lt-md]="['role__container--lt-md']" formGroupName="roles">
+                    <div [ngClass.gt-sm]="['role__container--gt-sm']" [ngClass.lt-md]="['role__container--lt-md']"
+                      formGroupName="roles">
                       <mat-checkbox aria-label="data owner" formControlName="dataOwner">
                         <div [ngClass.lt-md]="['person__input-info--active']"
                           [ngClass.gt-sm]="['role__checkbox-info--hidden']"
@@ -377,7 +379,8 @@
                         </div>
                       </mat-checkbox>
                     </div>
-                    <div [ngClass.gt-sm]="['role__container--gt-sm']" [ngClass.lt-md]="['role__container--lt-md']" formGroupName="roles">
+                    <div [ngClass.gt-sm]="['role__container--gt-sm']" [ngClass.lt-md]="['role__container--lt-md']"
+                      formGroupName="roles">
                       <mat-checkbox formControlName="dataContact">
                         <div [ngClass.lt-md]="['person__input-info--active']"
                           [ngClass.gt-sm]="['role__checkbox-info--hidden']"
@@ -390,7 +393,8 @@
                         </div>
                       </mat-checkbox>
                     </div>
-                    <div [ngClass.gt-sm]="['role__container--gt-sm']" [ngClass.lt-md]="['role__container--lt-md']" formGroupName="roles">
+                    <div [ngClass.gt-sm]="['role__container--gt-sm']" [ngClass.lt-md]="['role__container--lt-md']"
+                      formGroupName="roles">
                       <mat-checkbox formControlName="projectOwner">
                         <div [ngClass.lt-md]="['person__input-info--active']"
                           [ngClass.gt-sm]="['role__checkbox-info--hidden']"
@@ -500,7 +504,7 @@
           </div>
 
           <div class="form-group">
-            <h3>Is there anything else you would like to tell us?</h3>
+            <h3>Is there anything else you would like to tell us?</h3>=
             <mat-form-field floatLabel="never" class="no-floating-label input-full-width">
               <textarea matInput placeholder="Comments [optional]" formControlName="comments" type="text"></textarea>
             </mat-form-field>
@@ -512,6 +516,12 @@
         </div>
 
         <div fxLayout="column" fxLayoutAlign="end">
+          <div fxLayout="row" fxLayoutAlign="end">
+            <small>By making this request, you agree to the <a class="acceptable-use-link"
+                (click)="showAcceptableUseDialog()">terms
+                of acceptable use</a>.
+            </small>
+          </div>
           <div fxLayout="row" fxLayoutAlign="end">
             <button class="storage-request" mat-raised-button color="accent" (click)="
                 submit(requestTypeForm.controls.requestType.value, dataSizeForm)
@@ -531,8 +541,7 @@
           <p>
             Your storage request has been submitted and an acknowledgement e-mail
             sent to
-            <a [href]="'mailto:' + userInfo.email"
-              target="_blank">{{ userInfo.email }}</a>.
+            <a [href]="'mailto:' + userInfo.email" target="_blank">{{ userInfo.email }}</a>.
           </p>
           <p>
             You may view your request here:
@@ -547,7 +556,8 @@
 
           <!-- Temporary modified for MVP1 -->
           <!-- <button mat-raised-button color="accent" routerLink="/service/research-storage">Back to Research Storage</button> -->
-          <a href="{{researchHubUrl}}#/content/49"><button mat-raised-button color="accent">Back to Research Storage</button></a>
+          <a href="{{researchHubUrl}}#/content/49"><button mat-raised-button color="accent">Back to Research
+              Storage</button></a>
 
         </div>
       </div>
