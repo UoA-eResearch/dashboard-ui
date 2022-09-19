@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { MatDialogRef } from '@angular/material/dialog';
 
 import { AcceptableUseDialogComponent } from './acceptable-use-dialog.component';
 
@@ -8,9 +9,10 @@ describe('AcceptableUseDialogComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AcceptableUseDialogComponent ]
+      declarations: [AcceptableUseDialogComponent],
+      providers: [{ provide: MatDialogRef, useValue: {} }]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
