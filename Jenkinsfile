@@ -31,32 +31,13 @@ pipeline {
                 slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, message: "Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)")
             }
         }
-        
+
         stage('Build') {
             stages {
-                stage("Create new node_modules/ cache") {
-                    when {
-                        changeset "package.json"
-                    }
+                stage("Install npm packages") {
                     steps {
-                        echo "Installing dashboard-ui dependencies."
-                        sh "npm install"
-                        sh "tar cfz ./node_modules.tar.gz node_modules" // Cache new node_modules/ folder
-                        archiveArtifacts artifacts: "node_modules.tar.gz", onlyIfSuccessful: true
-                    }
-                }
-
-                stage('Load node_modules/ cache') {
-                    when {
-                        not {
-                            changeset "package.json"
-                        }
-                    }
-                    steps {
-                        echo "Loading dashboard-ui dependencies from cache."
-                        copyArtifacts filter: "node_modules.tar.gz", fingerprintArtifacts: true, optional: true, projectName: env.JOB_NAME, selector: lastWithArtifacts()
-                        sh "tar xf ./node_modules.tar.gz" // Unzip cached node_modules/ folder
-                        sh "npm install"
+                        echo "Installing dashboard-ui dependencies from package-lock.json."
+                        sh "npm ci"
                     }
                 }
 
@@ -77,10 +58,10 @@ pipeline {
                             echo "Build complete"
                         }
                     }
-                }                
+                }
             }
         }
-        
+
         stage('Run tests') {
             steps {
                 echo 'Testing dashboard-ui project'
@@ -138,7 +119,7 @@ pipeline {
                     }
 
                     echo "awsProfile set to ${awsProfile}"
-                    
+
                     withCredentials([
                         usernamePassword(credentialsId: "${awsCredentialsId}", passwordVariable: 'awsPassword', usernameVariable: 'awsUsername'),
                         string(credentialsId: "${awsTokenId}", variable: 'awsToken')
@@ -148,16 +129,16 @@ pipeline {
                 }
             }
         }
-  
+
         stage('Deploy') {
             steps {
                 script {
                     echo "Deploying dashboard-ui to S3 on ${env.BRANCH_NAME}"
-                    
+
                     def s3BucketName = (
-                        env.BRANCH_NAME == 'prod' ? 'eresearch-dashboard.auckland.ac.nz' : 
-                        env.BRANCH_NAME == 'test' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' : 
-                        env.BRANCH_NAME == 'dev' ? 'eresearch-dashboard-dev.connect.test.amazon.auckland.ac.nz' : 
+                        env.BRANCH_NAME == 'prod' ? 'eresearch-dashboard.auckland.ac.nz' :
+                        env.BRANCH_NAME == 'test' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' :
+                        env.BRANCH_NAME == 'dev' ? 'eresearch-dashboard-dev.connect.test.amazon.auckland.ac.nz' :
                         'cer-dashboard-sandbox'
                     )
 
@@ -167,7 +148,7 @@ pipeline {
                     sh "aws s3api put-bucket-tagging --bucket ${s3BucketName} --tagging ${tagSet} --profile ${awsProfile}"
                     echo "Tags updated"
                 }
-                
+
             }
         }
 
@@ -177,14 +158,14 @@ pipeline {
                     echo "Invalidating..."
 
                     def awsCloudFrontDistroId = (
-                        env.BRANCH_NAME == 'prod' ? 'E2L1L7YQT93K7P' : 
-                        env.BRANCH_NAME == 'test' ? 'E3VVN86C419VS8' : 
-                        env.BRANCH_NAME == 'dev' ? 'E2CGLDC4Q2XU35' : 
+                        env.BRANCH_NAME == 'prod' ? 'E2L1L7YQT93K7P' :
+                        env.BRANCH_NAME == 'test' ? 'E3VVN86C419VS8' :
+                        env.BRANCH_NAME == 'dev' ? 'E2CGLDC4Q2XU35' :
                         'E1ULTSGYFI5SZU'
                     )
 
                     echo "Cloudfront distro id: ${awsCloudFrontDistroId}"
-                    
+
                     sh "aws cloudfront create-invalidation --distribution-id ${awsCloudFrontDistroId} --paths '/*' --profile ${awsProfile}"
                     echo "Invalidation started"
                 }
@@ -198,8 +179,8 @@ pipeline {
 
         //         script {
         //             def dashboardUrl = (
-        //                 env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.auckland.ac.nz/' : 
-        //                 env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz/' : 
+        //                 env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.auckland.ac.nz/' :
+        //                 env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz/' :
         //                 'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/'
         //             )
 
@@ -224,7 +205,7 @@ pipeline {
         //     }
         // }
     }
-    
+
     post {
         success {
             echo "Jenkins job ran successfully. Deployed to ${env.BRANCH_NAME}"
