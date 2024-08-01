@@ -38,7 +38,7 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
   public response: any;
   private routeParamsSub: Subscription;
   public title = 'Request a Research Virtual Machine Consultation';
-  public ticketUrl: string = environment.servicenowUrl + 'nav_to.do?uri=u_request.do?sys_id=';
+  public ticketUrl: string = environment.servicenowUrl + 'nav_to.do?uri=sc_request.do?sys_id=';
   public researchHubUrl: string = environment.researchHubUrl;
 
   private static getTimes() {
@@ -123,7 +123,7 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
   ngOnDestroy() {
     try {
       this.routeParamsSub.unsubscribe();
-    } catch {}
+    } catch { }
   }
 
   saveRequest() {
