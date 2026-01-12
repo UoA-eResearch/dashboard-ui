@@ -13,7 +13,7 @@ tagSet = '''TagSet=[\
 
 pipeline {
     agent {
-        label("uoa-buildtools-ionic")
+        label("uoa-buildtools-node24")
     }
 
     options {
