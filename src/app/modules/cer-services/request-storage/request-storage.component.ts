@@ -61,7 +61,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
   public projectMembers: FormArray;
   public requestTypeClicked = false;
   public showSizeNextYear = true;
-  public ticketUrl: string = environment.servicenowUrl + 'nav_to.do?uri=u_request.do?sys_id=';
+  public ticketUrl: string = environment.servicenowUrl + 'nav_to.do?uri=sc_request.do?sys_id=';
   public researchHubUrl: string = environment.researchHubUrl;
 
   public updateOptionsList = [
