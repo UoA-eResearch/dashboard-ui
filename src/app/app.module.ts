@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from '@app/core.module';
 import { SharedModule } from '@shared/shared.module';
-import { GraphQLModule } from './graphql.module';
 import { ErrorPagesModule } from '@uoa/error-pages';
 
 import { ContentLayoutComponent } from '@layout/content-layout/content-layout.component';
@@ -24,7 +23,6 @@ import { FooterComponent } from '@layout/footer/footer.component';
     BrowserModule,
     CoreModule,
     SharedModule,
-    GraphQLModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ErrorPagesModule

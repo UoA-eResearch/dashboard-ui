@@ -15,7 +15,6 @@ export const environment = {
     whoNeedBearerToken: [{ url: 'apigw.test.amazon.auckland.ac.nz', optional: false }],
     whoNeedIdToken: []
   },
-  dashboardGraphQlUrl: 'https://apigw.test.amazon.auckland.ac.nz/cer-dashboard-graphql-dev',
   serverlessNowUrl: 'https://apigw.test.amazon.auckland.ac.nz/serverless-now-dev/',
   servicenowUrl: 'https://uoatest.service-now.com/',
   researchHubUrl: 'https://research-hub-dev.connect.test.amazon.auckland.ac.nz/',

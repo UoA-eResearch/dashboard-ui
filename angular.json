@@ -31,7 +31,6 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "graphql-tag",
               "crypto-js",
               "zen-observable"
             ]
@@ -114,14 +113,6 @@
                   "maximumWarning": "100kb"
                 }
               ]
-            },
-            "sandbox": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.sandbox.ts"
-                }
-              ]
             }
           }
         },
@@ -139,9 +130,6 @@
             },
             "dev": {
               "browserTarget": "dashboard-ui:build:dev"
-            },
-            "sandbox": {
-              "browserTarget": "dashboard-ui:build:sandbox"
             }
           }
         },

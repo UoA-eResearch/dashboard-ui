@@ -90,13 +90,7 @@ pipeline {
                     def awsCredentialsId = ''
                     def awsTokenId = ''
 
-                    if (env.BRANCH_NAME == 'sandbox') {
-                        echo 'Setting variables for sandbox deployment'
-                        awsCredentialsId = 'aws-sandbox-user'
-                        awsTokenId = 'aws-sandbox-token'
-                        awsProfile = 'uoa-sandbox'
-
-                    } else if (env.BRANCH_NAME == 'dev') {
+                    if (env.BRANCH_NAME == 'dev') {
                         echo 'Setting variables for dev deployment'
                         awsCredentialsId = 'aws-its-nonprod-access'
                         awsTokenId = 'aws-its-nonprod-token'
@@ -138,8 +132,7 @@ pipeline {
                     def s3BucketName = (
                         env.BRANCH_NAME == 'prod' ? 'eresearch-dashboard.auckland.ac.nz' :
                         env.BRANCH_NAME == 'test' ? 'eresearch-dashboard.connect.test.amazon.auckland.ac.nz' :
-                        env.BRANCH_NAME == 'dev' ? 'eresearch-dashboard-dev.connect.test.amazon.auckland.ac.nz' :
-                        'cer-dashboard-sandbox'
+                        'eresearch-dashboard-dev.connect.test.amazon.auckland.ac.nz'
                     )
 
                     sh "aws s3 sync www s3://${s3BucketName} --delete --profile ${awsProfile}"
@@ -160,8 +153,7 @@ pipeline {
                     def awsCloudFrontDistroId = (
                         env.BRANCH_NAME == 'prod' ? 'E2L1L7YQT93K7P' :
                         env.BRANCH_NAME == 'test' ? 'E3VVN86C419VS8' :
-                        env.BRANCH_NAME == 'dev' ? 'E2CGLDC4Q2XU35' :
-                        'E1ULTSGYFI5SZU'
+                        'E2CGLDC4Q2XU35'
                     )
 
                     echo "Cloudfront distro id: ${awsCloudFrontDistroId}"
@@ -171,39 +163,6 @@ pipeline {
                 }
             }
         }
-
-        // stage('BrowserStack e2e Tests') {
-        //     steps {
-        //         echo 'Deployed to ' + env.BRANCH_NAME + ', launching BrowserStack e2e Tests'
-        //         slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🚀 Deploy successful - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>).\n 📹 Launching BrowserStack e2e tests. <https://automate.browserstack.com/dashboard|Watch Videos>")
-
-        //         script {
-        //             def dashboardUrl = (
-        //                 env.BRANCH_NAME == 'prod' ? 'https://eresearch-dashboard.auckland.ac.nz/' :
-        //                 env.BRANCH_NAME == 'nonprod' ? 'https://eresearch-dashboard.connect.test.amazon.auckland.ac.nz/' :
-        //                 'https://eresearch-dashboard.sandbox.amazon.auckland.ac.nz/'
-        //             )
-
-        //             echo "eResearch Dashboard URL: ${dashboardUrl}"
-
-        //             try {
-        //                 // Set Browserstack account credentials as env vars
-        //                 withCredentials([
-        //                     usernamePassword(credentialsId: 'Browserstack-Credentials', passwordVariable: 'BROWSERSTACK_CREDENTIALS_KEY', usernameVariable: 'BROWSERSTACK_CREDENTIALS_USER'),
-        //                     usernamePassword(credentialsId: 'Automation-Test-Account', passwordVariable: 'TEST_ACCT_PASSWORD', usernameVariable: 'TEST_ACCT_USERNAME')
-        //                 ]) {
-        //                     sh "./node_modules/.bin/protractor e2e/protractor.conf.browserstack-remote --baseUrl=${dashboardUrl}"
-        //                 }
-
-        //                 slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#5eff00", message: "🙆‍♀️🙆🙆‍♂️ All BrowserStack e2e tests passed")
-
-        //             } catch(exc) {
-        //                 slackSend(channel: slackChannel, tokenCredentialId: slackCredentials, color: "#f2ae3f", message: "🙅‍♀️🙅🙅‍♂️ One or more BrowserStack e2e tests failed. Consider reverting to an earlier deploy")
-        //                 error 'BrowserStack e2e tests failed'
-        //             }
-        //         }
-        //     }
-        // }
     }
 
     post {
