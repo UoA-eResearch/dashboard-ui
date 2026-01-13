@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { MatDialogRef } from '@angular/material/dialog';
 
 import { AcceptableUseDialogComponent } from './acceptable-use-dialog.component';
@@ -7,7 +7,7 @@ describe('AcceptableUseDialogComponent', () => {
   let component: AcceptableUseDialogComponent;
   let fixture: ComponentFixture<AcceptableUseDialogComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [AcceptableUseDialogComponent],
       providers: [{ provide: MatDialogRef, useValue: {} }]
