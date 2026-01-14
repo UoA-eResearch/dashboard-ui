@@ -93,7 +93,7 @@ export class RequestVmComponent implements OnInit, OnDestroy, CanComponentDeacti
   }
 
   excludeWeekendsFilter(d: Date): boolean {
-    const day = d.getDay();
+    const day = d?.getDay();
     // Prevent Saturday and Sunday from being selected.
     return day !== 0 && day !== 6;
   }
