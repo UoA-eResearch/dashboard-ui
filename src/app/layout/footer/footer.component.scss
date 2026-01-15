@@ -1,3 +1,4 @@
+@use '~@angular/material' as mat;
 @import './../../../styles';
 
 footer {
@@ -31,8 +32,8 @@ footer a {
   text-align: left;
   text-decoration: none;
   color: white;
-  font-size: mat-font-size($app-base-typography, button) !important; // 14px
-  font-weight: mat-font-weight($app-base-typography, caption) !important;
+  font-size: mat.font-size($app-base-typography, button) !important; // 14px
+  font-weight: mat.font-weight($app-base-typography, caption) !important;
 }
 
 footer.footer-xs a {
