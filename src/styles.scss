@@ -1,15 +1,15 @@
-
+@use "sass:math";
 @import 'themes';
 @import 'typography';
 
 /* You can add global styles to this file, and also import other style files */
 
-html, body { 
-  height: 100%; 
+html, body {
+  height: 100%;
 }
 
-body { 
-  margin: 0; font-family: $font-family; 
+body {
+  margin: 0; font-family: $font-family;
 }
 
 /*
@@ -78,7 +78,7 @@ span {
 
 .site-padding {
   @extend .site-content;
-  margin-top: $offset-gt-xs / 2.0;
+  margin-top: math.div($offset-xs, 2);
   margin-bottom: 5em;
   padding-top: $padding-site;
   padding-left: $padding-site;
@@ -87,7 +87,7 @@ span {
 
 .site-padding-xs {
   @extend .site-content;
-  margin-top: $offset-xs / 2.0;
+  margin-top: math.div($offset-xs, 2);
   margin-bottom: $offset-xs;
   padding-top: $offset-xs;
   padding-left: $offset-xs;
@@ -96,9 +96,9 @@ span {
 
 .site-padding-sm {
   @extend .site-content;
-  margin-top: $offset-xs / 2.0;
+  margin-top: math.div($offset-xs, 2);
   margin-bottom: 5em;
-  padding-top: $padding-site / 2.0;
+  padding-top: math.div($padding-site, 2);
   padding-left: $padding-site;
   padding-right: $padding-site;
 }
