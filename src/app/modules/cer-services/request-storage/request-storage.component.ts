@@ -230,7 +230,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       dataRequirementsOther: new FormControl(undefined),
       shortName: new FormControl(undefined, [
         Validators.required,
-        Validators.maxLength(45),
+        Validators.maxLength(30),
       ]),
       projectMembers: this.projectMembers,
     });
