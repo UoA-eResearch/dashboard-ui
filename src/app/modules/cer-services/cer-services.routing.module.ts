@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { ConfirmDeactivateGuard } from '@app/guard/confirm-deactivate.guard';
+import { confirmDeactivateGuard } from '@app/guard/confirm-deactivate.guard';
 import { CerServicesComponent } from './cer-services.component';
 // import { DropboxListComponent } from './dropbox/dropbox-list/dropbox-list.component';
 // import { DropboxDetailsComponent } from './dropbox/dropbox-details/dropbox-details.component';
@@ -55,7 +55,7 @@ const routes: Routes = [
       {
         path: 'research-storage/request',
         component: RequestStorageComponent,
-        canDeactivate: [ConfirmDeactivateGuard]
+        canDeactivate: [confirmDeactivateGuard]
       },
       // {
       //   path: 'research-storage/:id',
@@ -68,7 +68,7 @@ const routes: Routes = [
       {
         path: 'research-vm/request',
         component: RequestVmComponent,
-        canDeactivate: [ConfirmDeactivateGuard]
+        canDeactivate: [confirmDeactivateGuard]
       },
       // {
       //   path: 'research-vm/:id',

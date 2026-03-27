@@ -15,25 +15,20 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "outputPath": "www",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "browser": "src/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "aot": true,
             "assets": [
               "src/assets"
             ],
             "styles": [
               "src/styles.scss"
             ],
-            "scripts": [],
-            "allowedCommonJsDependencies": [
-              "crypto-js",
-              "zen-observable"
-            ]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -46,10 +41,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -71,10 +63,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -96,10 +85,7 @@
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
-              "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -116,24 +102,24 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "dashboard-ui:build"
+            "buildTarget": "dashboard-ui:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "dashboard-ui:build:production"
+              "buildTarget": "dashboard-ui:build:production"
             },
             "test": {
-              "browserTarget": "dashboard-ui:build:test"
+              "buildTarget": "dashboard-ui:build:test"
             },
             "dev": {
-              "browserTarget": "dashboard-ui:build:dev"
+              "buildTarget": "dashboard-ui:build:dev"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "dashboard-ui:build"
+            "buildTarget": "dashboard-ui:build"
           }
         },
         "test": {
@@ -152,36 +138,8 @@
             ],
             "scripts": []
           }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-              "e2e/tsconfig.json"
-            ],
-            "exclude": [
-              "**/node_modules/**",
-              "**/e2e/**"
-            ]
-          }
-        },
-        "e2e": {
-          "builder": "@angular-devkit/build-angular:protractor",
-          "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "dashboard-ui:serve"
-          },
-          "configurations": {
-            "test": {
-              "devServerTarget": "dashboard-ui:serve:test",
-              "baseUrl": "<NON-PROD/TEST BASE URL>"
-            }
-          }
         }
       }
     }
-  },
-  "defaultProject": "dashboard-ui"
+  }
 }
