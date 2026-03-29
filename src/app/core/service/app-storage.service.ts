@@ -12,11 +12,11 @@ export class AppStorageService implements StorageService {
     return localforage.getItem(key);
   }
 
-  setItem(key: string, val: any): void {
-    localforage.setItem(key, val);
+  async setItem(key: string, val: any): Promise<void> {
+    await localforage.setItem(key, val);
   }
 
-  removeItem(key: string): void {
-    localforage.removeItem(key);
+  async removeItem(key: string): Promise<void> {
+    await localforage.removeItem(key);
   }
 }

@@ -1,4 +1,5 @@
-@import './../../../../themes.scss';
+@use 'sass:map';
+@use './../../../../themes' as *;
 
 .form-group {
   margin-top: 1em;
@@ -93,7 +94,7 @@ mat-stepper
 }
 
 h3 {
-  color: map-get($dashboard-ui-navy, 500);
+  color: map.get($dashboard-ui-navy, 500);
 }
 
 // pointer-events: none !important;
@@ -116,7 +117,7 @@ table * {
 
 .person-grid-body {
   margin-bottom: 1rem;
-  border: 1px solid map-get($dashboard-ui-teal, 100);
+  border: 1px solid map.get($dashboard-ui-teal, 100);
   border-radius: 0.5rem;
 }
 
@@ -128,14 +129,14 @@ table * {
   margin-bottom: 0.5rem;
   font-weight: 600;
   text-align: center;
-  color: map-get($dashboard-ui-navy, 500);
+  color: map.get($dashboard-ui-navy, 500);
 }
 
 .person-flex-layout {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  background-color: map-get($dashboard-ui-teal, 100);
+  background-color: map.get($dashboard-ui-teal, 100);
 
    -moz-box-shadow:    1px 1px 2px 2px #ccc;
   -webkit-box-shadow: 1px 1px 2px 2px #ccc;
@@ -171,10 +172,10 @@ div.person-grid-body .person-section__wrapper--enabled {
   div {
     &.access, &.roles {
       font-size: 115%;
-      color: map-get($dashboard-ui-pink, 500);
+      color: map.get($dashboard-ui-pink, 500);
       margin-bottom: 0.5em;
     }
-    color: map-get($dashboard-ui-navy, 500);
+    color: map.get($dashboard-ui-navy, 500);
     margin: auto;
     text-align: center;
   }
@@ -278,10 +279,10 @@ div .delete-icon-container {
   flex-direction: row;
   align-items: center;
   font-weight: 600;
-  color: map-get($dashboard-ui-navy, 500);
+  color: map.get($dashboard-ui-navy, 500);
 
   .mat-icon {
-  color: map-get($dashboard-ui-teal, 500);
+  color: map.get($dashboard-ui-teal, 500);
   }
 }
 

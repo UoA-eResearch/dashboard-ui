@@ -1,6 +1,8 @@
 @use "sass:math";
-@import 'themes';
-@import 'typography';
+@forward 'themes';
+@forward 'typography';
+@use 'themes' as *;
+@use 'typography' as *;
 
 /* You can add global styles to this file, and also import other style files */
 

@@ -9,6 +9,7 @@ interface Service {
 
 @Component({
   selector: 'app-cer-services',
+  standalone: false,
   templateUrl: './cer-services.component.html',
   styleUrls: ['./cer-services.component.scss']
 })

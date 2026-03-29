@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { format } from 'date-fns';
 
-
 @Component({
   selector: 'app-footer',
+  standalone: false,
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

@@ -4,6 +4,7 @@ import { Breakpoints, BreakpointObserver } from '@angular/cdk/layout';
 
 @Component({
   selector: 'app-home-dashboard',
+  standalone: false,
   templateUrl: './home-dashboard.component.html',
   styleUrls: ['./home-dashboard.component.scss']
 })

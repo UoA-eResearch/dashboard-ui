@@ -3,6 +3,7 @@ import { PageInfo } from '@data/type/PageInfo';
 
 @Component({
   selector: 'app-home',
+  standalone: false,
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })

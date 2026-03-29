@@ -5,6 +5,7 @@ import { environment } from '@env';
 
 @Component({
   selector: 'app-navbar',
+  standalone: false,
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })

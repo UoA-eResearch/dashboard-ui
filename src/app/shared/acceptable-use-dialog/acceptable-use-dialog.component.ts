@@ -3,6 +3,7 @@ import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-acceptable-use-dialog',
+  standalone: false,
   templateUrl: 'acceptable-use-dialog.component.html'
 })
 export class AcceptableUseDialogComponent {

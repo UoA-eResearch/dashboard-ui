@@ -3,6 +3,7 @@ import { environment } from '@env';
 
 @Component({
   selector: 'app-return-to-hub',
+  standalone: false,
   templateUrl: './return-to-hub.component.html',
   styleUrls: ['./return-to-hub.component.scss']
 })

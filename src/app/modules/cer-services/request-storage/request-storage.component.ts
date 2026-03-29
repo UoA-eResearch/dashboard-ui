@@ -32,9 +32,9 @@ interface Person {
   };
 }
 
-
 @Component({
-  selector: 'app-request-data',
+  selector: 'app-request-storage',
+  standalone: false,
   templateUrl: './request-storage.component.html',
   styleUrls: ['./request-storage.component.scss']
 })
@@ -300,13 +300,13 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       },
     });
 
-    this.routeParamsSub = this.route.queryParams.subscribe(params => {
+    this.routeParamsSub = this.route.queryParams.subscribe(async params => {
       const retry = params['retry'];
 
       if (retry) {
         this.loadRequest();
       } else {
-        this.clearRequest();
+        await this.clearRequest();
       }
     });
 
@@ -346,7 +346,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
     );
   }
 
-  saveRequest() {
+  async saveRequest() {
     const form = {
       requestTypeForm: this.requestTypeForm.getRawValue(),
       requestDetailsForm: this.requestDetailsForm.getRawValue(),
@@ -355,7 +355,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
       dataSizeForm: this.dataSizeForm.getRawValue(),
     };
 
-    localStorage.setItem(this.requestFormKey, JSON.stringify(form));
+    await localStorage.setItem(this.requestFormKey, JSON.stringify(form));
   }
 
   loadRequest() {
@@ -374,8 +374,8 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
     }
   }
 
-  clearRequest() {
-    localStorage.removeItem(this.requestFormKey);
+  async clearRequest() {
+    await localStorage.removeItem(this.requestFormKey);
   }
 
   /**
@@ -527,7 +527,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
             );
             dialogRef.afterClosed().subscribe(async () => {
               const url = this.location.path(false) + '?retry=true';
-              this.saveRequest();
+              await this.saveRequest();
               await this.loginService.doLogin(url);
             });
           } else {
