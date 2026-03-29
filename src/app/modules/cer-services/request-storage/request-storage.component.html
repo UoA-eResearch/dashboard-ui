@@ -10,7 +10,7 @@
     to add them into the comments field at the end of the form.
   </p>
   <div #resultsDummyHeader style="margin-top: 3em;"></div>
-  <mat-horizontal-stepper #stepper linear="true">
+  <mat-stepper linear #stepper>
     <mat-step [editable]="isEditable" [stepControl]="requestTypeForm">
       <form [formGroup]="requestTypeForm" novalidate>
         <ng-template matStepLabel>Request Type</ng-template>
@@ -563,5 +563,5 @@
         </div>
       </div>
     </mat-step>
-  </mat-horizontal-stepper>
+  </mat-stepper>
 </mat-card>

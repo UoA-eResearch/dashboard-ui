@@ -28,7 +28,7 @@ const routes: Routes = [
       },
       {
         path: 'error/:errorCode',
-        loadChildren: () => import('@modules/error-routing/error-routing.module').then((m) => m.ErrorRoutingModule),
+        loadChildren: () => import('./error-routing/error.routes').then((m) => m.errorRoutes),
       },
     ]
   },

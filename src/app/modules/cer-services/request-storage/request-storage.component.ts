@@ -5,7 +5,7 @@ import { FormArray, FormBuilder, FormControl, FormGroup, Validators, ValidatorFn
 import { DateAdapter, NativeDateAdapter } from '@angular/material/core';
 import { ServerlessNowService } from '@data/service/serverless-now.service';
 import { LoginService } from '@uoa/auth';
-import { MatHorizontalStepper } from '@angular/material/stepper';
+import { MatStepper } from '@angular/material/stepper';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Location } from '@angular/common';
 import { MatDialog } from '@angular/material/dialog';
@@ -42,7 +42,7 @@ export class RequestStorageComponent implements OnInit, OnDestroy, CanComponentD
   private requestFormKey = 'requestStorageForm';
 
   @ViewChild('resultsDummyHeader') private resultsDummyHeader: ElementRef;
-  @ViewChild('stepper') stepper: MatHorizontalStepper;
+  @ViewChild('stepper') stepper: MatStepper;
   public dateToday = new Date();
   public submitting = false;
   private routeParamsSub: Subscription;

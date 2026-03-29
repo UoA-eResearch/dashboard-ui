@@ -5,13 +5,6 @@
   margin-bottom: 3em;
 }
 
-//div.mat-horizontal-stepper-header-container {
-//  margin-top: 1em !important;
-//  margin-bottom: 1em;
-//}
-
-
-
 /* src: https://github.com//issues/4580 */
 ::ng-deep mat-form-field {
   &.ng-valid {
@@ -92,9 +85,9 @@
   min-width: 0 !important;
 }
 
-mat-horizontal-stepper
+mat-stepper
   :host ::ng-deep
-  div.mat-horizontal-stepper-header-container
+  div.mat-stepper-header-container
   > :last-child {
   pointer-events: none !important;
 }

@@ -49,3 +49,6 @@ Thumbs.db
 # Tests
 local.log
 debug.log
+
+# Angular specific
+.angular/cache

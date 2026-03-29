@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { LayoutModule } from '@angular/cdk/layout';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './app.material.module';
-import { ErrorPagesModule } from '@uoa/error-pages';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { HeaderComponent } from './header/header.component';
@@ -30,7 +29,6 @@ import { AcceptableUseDialogComponent } from './acceptable-use-dialog/acceptable
     RouterModule,
     MaterialModule,
     LayoutModule,
-    ErrorPagesModule,
     FormsModule,
     ReactiveFormsModule,
   ],
@@ -39,7 +37,6 @@ import { AcceptableUseDialogComponent } from './acceptable-use-dialog/acceptable
     RouterModule,
     MaterialModule,
     LayoutModule,
-    ErrorPagesModule,
     HeaderComponent,
     PageNotFoundComponent,
     ConfirmDialogComponent,
